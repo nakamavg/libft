@@ -10,6 +10,10 @@ int main()
 	int n = ft_strlen(str);
 	int i = 0;
 	int ir = 0;
+	int mayus = 0;
+	
+	ft_putstr_fd("String original ->",0);
+
 	while (i<n)
 	{
 	ft_putchar_fd(str[i],0);
@@ -20,6 +24,12 @@ int main()
 	{
 		ft_putchar_fd(ft_tolower(str[ir]),0);
 		ir++;
+	}
+	ft_putstr_fd(" \n String convertido a mayus:\n",0);
+	while(mayus < n)
+	{
+		ft_putchar_fd(ft_toupper(str[mayus]),0);
+		mayus++;
 	}
 	return 0;
 }

@@ -46,9 +46,13 @@
   - ✔️ OK  
   - *Explicación:* Devuelve 1 si es numero o letra y 0 si  es otra cosa.
 
-  - [ft_tolower](ft_isalnum.c) 
+  - [ft_tolower](ft_tolower.c) 
   - ✔️ OK  
-  - *Explicación:* convierte mayus en minus.
+  - *Explicación:* convierte mayus en minus comprabando que sea mayus.
+
+   - [ft_toupper](ft_toupper.c) 
+  - ✔️ OK  
+  - *Explicación:* convierte minus en mayus comprabando que sean minus.
 
 
 ## Funciones Pendientes
@@ -77,4 +81,3 @@
 | ft_strnstr   | ❌ Pendiente | -                   |
 | ft_strrchr   | ❌ Pendiente | -                   |
 | ft_strstr    | ❌ Pendiente | -                   |
-| ft_toupper   | ❌ Pendiente | -                   |
