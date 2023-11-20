@@ -6,7 +6,7 @@
 /*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 04:41:06 by nakama            #+#    #+#             */
-/*   Updated: 2023/11/20 07:02:20 by dgomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/20 07:07:07 by dgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		ft_isalpha(int c);//comprueba letras
 int		ft_isdigit(int c);//comprueba numeros
 int		ft_isascii(int c);//comprueba que el estandar ascii
 int		ft_isprint(int c);//comprueba que es printable
+int		ft_isalnum(int c);//comprueba numeros y letras 
+
 void	ft_putstr_fd(char *s, int fd);//con filedescriptor
 //Cabeceras de las funciones que queremos incluir en la lib
 

@@ -47,6 +47,10 @@
   - ✔️ OK  
   - *Explicación:* Devuelve 0 o 1 dependiendo de si lo que recibe esta dentro o fuera de los caracteres imprimibles.
   - *Código:* [Ver aquí](#ft_isprint-code)
+   - [ft_isalnum](ft_isalnum.c) 
+  - ✔️ OK  
+  - *Explicación:* Devuelve 1 si es numero o letra y 0 si  es otra cosa.
+  - *Código:* [Ver aquí](#ft_isalnum-code)
 
 
 ## Funciones Pendientes
@@ -57,7 +61,6 @@
 | ft_atoi      | ❌ Pendiente | -                   |
 | ft_bzero     | ❌ Pendiente | -                   |
 | ft_calloc    | ❌ Pendiente | -                   |
-| ft_isalnum   | ❌ Pendiente | -                   |
 | ft_memccpy   | ❌ Pendiente | -                   |
 | ft_memchr    | ❌ Pendiente | -                   |
 | ft_memcmp    | ❌ Pendiente | -                   |

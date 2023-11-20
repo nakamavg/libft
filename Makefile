@@ -7,6 +7,7 @@ SRCS	=	  ft_strlen.c \
 				  ft_isascii.c\
 			     ft_putstr_fd.c\
 				 	ft_isprint.c\
+					 ft.isalnum.c\
 			
 OBJS		= ${SRCS:.c=.o}
 INCLUDES	=./

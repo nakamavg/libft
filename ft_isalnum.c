@@ -6,7 +6,18 @@
 /*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:00:14 by nakama            #+#    #+#             */
-/*   Updated: 2023/11/20 07:01:40 by dgomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/20 07:04:44 by dgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+int	ft_isalnum(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	else
+		return (0);
+}
