@@ -4,7 +4,9 @@
 
 - [libft.h](libft.h)        
   - ✔️ OK  
-  - *Explicación:* -
+  - *Explicación:* - Esta estructura, con #ifndef, #define y #endif, se utiliza para asegurarse de que el contenido del archivo de cabecera (libft.h) se incluya una sola vez en un programa. Evita problemas potenciales que podrían surgir si el mismo archivo se incluye más de una vez en diferentes partes del código.
+
+	En otras palabras, este mecanismo garantiza que el código contenido en libft.h se añada al programa solo si aún no ha sido incluido previamente. Esto es importante para evitar conflictos y errores que podrían surgir al tener duplicados o superposiciones en la inclusión del archivo.	
   - *Código:* -
 
 - [Makefile](Makefile)      
