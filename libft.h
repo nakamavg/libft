@@ -6,7 +6,7 @@
 /*   By: nakama <nakama@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 04:41:06 by nakama            #+#    #+#             */
-/*   Updated: 2023/11/20 04:07:43 by nakama           ###   ########.fr       */
+/*   Updated: 2023/11/20 04:42:14 by nakama           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@
 
 size_t	ft_strlen(const char *s);//Obtiene longitud
 void	ft_putchar_fd(char c, int fd);//filedescriptor o salida standar 
-int	ft_isalpha(int c);//comprueba letras
+int		ft_isalpha(int c);//comprueba letras
+int		ft_isdigit(int c);//comprueba numeros
 void	ft_putstr_fd(char *s, int fd);//con filedescriptor
-
-
 //Cabeceras de las funciones que queremos incluir en la lib
 
 #endif//Declaracion final de la libreria, "cerrarla"

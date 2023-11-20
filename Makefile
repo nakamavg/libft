@@ -3,6 +3,7 @@ NAME	=	libft.a
 SRCS	=	  ft_strlen.c \
 			ft_putchar_fd.c\
 				ft_isalpha.c\
+				ft_isdigit.c\
 			   ft_putstr_fd.c\
 			
 OBJS		= ${SRCS:.c=.o}
