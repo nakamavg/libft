@@ -18,7 +18,7 @@ El uso de `size_t` como tipo de retorno de `strlen` permite que la función pued
  * (cadena nula) como el contenido a escribir, y sabemos que escribiremos
  * solo un carácter en nuestro descriptor de archivo deseado, por lo que usamos
  * 1 como tamaño a escribir. */
-[ft_isascii](ft_isascii.c)
+-[ft_isascii](ft_isascii.c)
  /*
 La elección de utilizar 127 en lugar de 177 en la función ft_isascii está relacionada con la definición estándar del conjunto de caracteres ASCII.
 
