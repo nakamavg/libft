@@ -51,6 +51,10 @@
   - ✔️ OK  
   - *Explicación:* Devuelve 1 si es numero o letra y 0 si  es otra cosa.
   - *Código:* [Ver aquí](#ft_isalnum-code)
+     - [ft_tolower](ft_isalnum.c) 
+  - ✔️ OK  
+  - *Explicación:* convierte mayus en minus.
+  - *Código:* [Ver aquí](#ft_isalnum-code)
 
 
 ## Funciones Pendientes

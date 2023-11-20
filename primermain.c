@@ -4,20 +4,22 @@
 //vamos a por ello dejamos este main para el recuerdo
 int main()
 {
-	char str[]="hola";
+	char str[]="HOLA123";
 	char isnumber[]="\nCONTIENE NUMERO";
 	char e= 'e';
 	int n = ft_strlen(str);
 	int i = 0;
+	int ir = 0;
 	while (i<n)
 	{
 	ft_putchar_fd(str[i],0);
-
-	if(ft_isalpha(str[i]) == 0)
-	{
-		write(1,"\nCONTIENE NUMERO",20);
-	}
 	i++;
+	}
+	ft_putstr_fd(" \n String convertido a minusculas:\n",0);
+	while(ir < n)
+	{
+		ft_putchar_fd(ft_tolower(str[ir]),0);
+		ir++;
 	}
 	return 0;
 }
