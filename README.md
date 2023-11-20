@@ -17,28 +17,30 @@
 ## Mandatory part
 ### Part I
 
-- ft_atoi               | ❌ Pendiente
-- ft_bzero              | ❌ Pendiente
-- ft_calloc             | ❌ Pendiente
-- ft_isalnum            | ❌ Pendiente
-- ft_isprint            | ❌ Pendiente
-- ft_memccpy            | ❌ Pendiente
-- ft_memchr             | ❌ Pendiente
-- ft_memcmp             | ❌ Pendiente
-- ft_memcpy             | ❌ Pendiente
-- ft_memmove            | ❌ Pendiente
-- ft_memset             | ❌ Pendiente
-- ft_strcat             | ❌ Pendiente
-- ft_strchr             | ❌ Pendiente
-- ft_strcmp             | ❌ Pendiente
-- ft_strcpy             | ❌ Pendiente
-- ft_strdup             | ❌ Pendiente
-- ft_strlcat            | ❌ Pendiente
-- ft_strncat            | ❌ Pendiente
-- ft_strncmp            | ❌ Pendiente
-- ft_strncpy            | ❌ Pendiente
-- ft_strnstr            | ❌ Pendiente
-- ft_strrchr            | ❌ Pendiente
-- ft_strstr             | ❌ Pendiente
-- ft_tolower            | ❌ Pendiente
-- ft_toupper            | ❌ Pendiente
+| **Función** | **Estado** | **Explicación/Código** |
+|-------------|------------|-------------------------|
+| ft_atoi     | ❌ Pendiente| - |
+| ft_bzero    | ❌ Pendiente| - |
+| ft_calloc   | ❌ Pendiente| - |
+| ft_isalnum  | ❌ Pendiente| - |
+| ft_isprint  | ❌ Pendiente| - |
+| ft_memccpy  | ❌ Pendiente| - |
+| ft_memchr   | ❌ Pendiente| - |
+| ft_memcmp   | ❌ Pendiente| - |
+| ft_memcpy   | ❌ Pendiente| - |
+| ft_memmove  | ❌ Pendiente| - |
+| ft_memset   | ❌ Pendiente| - |
+| ft_strcat   | ❌ Pendiente| - |
+| ft_strchr   | ❌ Pendiente| - |
+| ft_strcmp   | ❌ Pendiente| - |
+| ft_strcpy   | ❌ Pendiente| - |
+| ft_strdup   | ❌ Pendiente| - |
+| ft_strlcat  | ❌ Pendiente| - |
+| ft_strncat  | ❌ Pendiente| - |
+| ft_strncmp  | ❌ Pendiente| - |
+| ft_strncpy  | ❌ Pendiente| - |
+| ft_strnstr  | ❌ Pendiente| - |
+| ft_strrchr  | ❌ Pendiente| - |
+| ft_strstr   | ❌ Pendiente| - |
+| ft_tolower  | ❌ Pendiente| - |
+| ft_toupper  | ❌ Pendiente| - |
