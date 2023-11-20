@@ -43,6 +43,10 @@
   - ✔️ OK  
   - *Explicación:* Imprime la cadena de caracteres en el descriptor de archivo especificado o en la salida estándar.
   - *Código:* [Ver aquí](#ft_purstr_fd-code)
+  - [ft_isprint](ft_isprint.c) 
+  - ✔️ OK  
+  - *Explicación:* Devuelve 0 o 1 dependiendo de si lo que recibe esta dentro o fuera de los caracteres imprimibles.
+  - *Código:* [Ver aquí](#ft_isprint-code)
 
 
 ## Funciones Pendientes
