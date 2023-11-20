@@ -58,7 +58,6 @@
 | ft_bzero     | ❌ Pendiente | -                   |
 | ft_calloc    | ❌ Pendiente | -                   |
 | ft_isalnum   | ❌ Pendiente | -                   |
-| ft_isprint   | ❌ Pendiente | -                   |
 | ft_memccpy   | ❌ Pendiente | -                   |
 | ft_memchr    | ❌ Pendiente | -                   |
 | ft_memcmp    | ❌ Pendiente | -                   |
