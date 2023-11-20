@@ -18,7 +18,11 @@ El uso de `size_t` como tipo de retorno de `strlen` permite que la función pued
  * (cadena nula) como el contenido a escribir, y sabemos que escribiremos
  * solo un carácter en nuestro descriptor de archivo deseado, por lo que usamos
  * 1 como tamaño a escribir. */
+[ft_isascii](ft_isascii.c)
+ /*
+La elección de utilizar 127 en lugar de 177 en la función ft_isascii está relacionada con la definición estándar del conjunto de caracteres ASCII.
 
+El conjunto de caracteres ASCII utiliza códigos numéricos del 0 al 127 (7 bits). En este rango, se encuentran los caracteres básicos del inglés, como letras, números y algunos símbolos. Fuera de este rango, es común encontrar conjuntos de caracteres extendidos o caracteres especiales que dependen del conjunto de caracteres específico que esté en uso (por ejemplo, ISO-8859-1 o UTF-8). */
 
 # Supported functions
 ## Mandatory part
