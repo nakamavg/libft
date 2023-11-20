@@ -7,8 +7,17 @@
 La función `strlen` en C devuelve un valor de tipo `size_t` porque está diseñada para representar tamaños de objetos en bytes. `size_t` es un tipo entero sin signo que puede almacenar el tamaño máximo posible de un objeto en la plataforma en la que se está ejecutando el programa.
 
 El uso de `size_t` como tipo de retorno de `strlen` permite que la función pueda manejar correctamente tamaños grandes de cadenas de caracteres. Además, al ser un tipo sin signo, `size_t` puede representar tamaños de objetos mayores que los tipos de datos con signo, ya que no se desperdicia un bit para representar el signo.
-
-
+[ft_putchar_fd](ft_putchar_fd.c)
+ * Esta función es similar a ft_putchar, pero toma un descriptor de archivo (fd)
+ * como parámetro. En lugar de escribir automáticamente en la salida estándar,
+ * puedes elegir escribir en un descriptor de archivo obtenido de la llamada
+ * al sistema open, o puedes usar 0, 1 o 2 para referirte a la entrada,
+ * salida o error estándar, respectivamente. La función utiliza la función
+ * write, similar a ft_putchar, pero esta vez usa el fd proporcionado como el
+ * primer parámetro de write. Aún usamos la dirección de nuestro carácter c
+ * (cadena nula) como el contenido a escribir, y sabemos que escribiremos
+ * solo un carácter en nuestro descriptor de archivo deseado, por lo que usamos
+ * 1 como tamaño a escribir. */
 
 
 # Supported functions

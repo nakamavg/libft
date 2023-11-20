@@ -1,6 +1,8 @@
 NAME	=	libft.a
 
-SRCS	=	ft_strlen.c \
+SRCS	=	  ft_strlen.c \
+			ft_putchar_fd.c\
+				ft_isalpha.c\
 			
 OBJS		= ${SRCS:.c=.o}
 INCLUDES	=./
