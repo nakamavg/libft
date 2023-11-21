@@ -14,6 +14,8 @@ SRCS	=	ft_strlen.c \
 			ft_toupper.c \
 			ft_strlcpy.c \
 			ft_bzero.c \
+			ft_strncmp.c \
+
 
 # Lista de archivos de objeto generados a partir de los archivos fuente
 OBJS	=	${SRCS:.c=.o}

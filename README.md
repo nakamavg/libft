@@ -16,6 +16,7 @@
 - [ft_toupper](#ft_toupper)
 - [ft_strlcpy](#ft_strlcpy)
 - [ft_bzero](#ft_bzero)
+- [ft_strncmp](#ft_strcmp)
 - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
 - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
 - [Funciones Pendientes](#funciones-pendientes)
@@ -159,6 +160,39 @@ int main() {
 
     return 0;
 }
+
+```
+- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+### [ft_strncmp](ft_strncmp.c) 
+
+  - ✔️ OK  
+  - **Explicación:** Esta función se utiliza para comparar dos cadenas hasta n caracteres .;
+  Si las letras De la primera cadena son mayores devuelve un numero positivo, si son menores un 
+  numero negativo y si son iguales un 0;
+```c
+int ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+    size_t x;
+    unsigned char *str1;
+    unsigned char *str2;
+
+    // Inicializar variables
+    x = 0;
+    str1 = (unsigned char*)s1;
+    str2 = (unsigned char*)s2;
+    // hago casting a unsigned char para asegurarme que comparo byte a byte la cadena;
+    // Iterar a través de las cadenas hasta el final o hasta que se comparen n caracteres
+    while (str1[x] && str2[x] && (x < n - 1) && str1[x] == str2[x])
+        x++;
+
+    // Verificar si n es mayor a  0
+  if (n > 0)
+  //si n es mayor a 0 devuelvo la diferencia entre el primer y segundo string 
+    return (str1[x] - str2[x]);
+else
+    return (0);
+}
+
 
 ```
 - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
