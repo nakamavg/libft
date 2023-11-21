@@ -25,51 +25,52 @@
 ### [libft.h](libft.h)
   - ✔️ OK  
   - **Explicación:** Esta estructura, con `#ifndef`, `#define`, y `#endif`, se utiliza para asegurarse de que el contenido del archivo de cabecera (`libft.h`) se incluya una sola vez en un programa. Evita problemas potenciales que podrían surgir si el mismo archivo se incluye más de una vez en diferentes partes del código. En otras palabras, este mecanismo garantiza que el código contenido en `libft.h` se añada al programa solo si aún no ha sido incluido previamente. Esto es importante para evitar conflictos y errores que podrían surgir al tener duplicados o superposiciones en la inclusión del archivo.
-
+- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ### [Makefile](Makefile)      
   - ✔️ OK  
   - **Explicación:** Explicado en el código comentado.
-
+  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ### [ft_strlen](ft_strlen.c)  
   - ✔️ OK  
   - **Explicación:** La función `strlen` en C devuelve un valor de tipo `size_t` porque está diseñada para representar tamaños de objetos en bytes. `size_t` es un tipo entero sin signo que puede almacenar el tamaño máximo posible de un objeto en la plataforma en la que se está ejecutando el programa. El uso de `size_t` como tipo de retorno de `strlen` permite que la función pueda manejar correctamente tamaños grandes de cadenas de caracteres. Además, al ser un tipo sin signo, `size_t` puede representar tamaños de objetos mayores que los tipos de datos con signo, ya que no se desperdicia un bit para representar el signo.
-
+  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ### [ft_putchar_fd](ft_putchar_fd.c) 
   - ✔️ OK  
   - **Explicación:** Esta función es similar a `ft_putchar`, pero toma un descriptor de archivo (`fd`) como parámetro. En lugar de escribir automáticamente en la salida estándar, puedes elegir escribir en un descriptor de archivo obtenido de la llamada al sistema `open`, o puedes usar 0, 1 o 2 para referirte a la entrada, salida o error estándar, respectivamente. La función utiliza la función `write`, similar a `ft_putchar`, pero esta vez usa el `fd` proporcionado como el primer parámetro de `write`. Aún usamos la dirección de nuestro carácter `c` (cadena nula) como el contenido a escribir, y sabemos que escribiremos solo un carácter en nuestro descriptor de archivo deseado, por lo que usamos 1 como tamaño a escribir. 
-
+  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ### [ft_isascii](ft_isascii.c) 
   - ✔️ OK  
   - **Explicación:** La elección de utilizar 127 en lugar de 177 está relacionada con la definición estándar del conjunto de caracteres ASCII.
-
+  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ### [ft_isdigit](ft_isdigit.c) 
   - ✔️ OK  
   - **Explicación:** Comprueba que sean números.
-
+  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ### [ft_isalpha](ft_isalpha.c) 
   - ✔️ OK  
   - **Explicación:** Comprueba que sean letras.
-
+  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ### [ft_putstr_fd](ft_putstr_fd.c) 
   - ✔️ OK  
   - **Explicación:** Imprime la cadena de caracteres en el descriptor de archivo especificado o en la salida estándar.
+  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
  
 ### [ft_isprint](ft_isprint.c) 
   - ✔️ OK  
   - **Explicación:** Devuelve 0 o 1 dependiendo de si lo que recibe está dentro o fuera de los caracteres imprimibles.
-  
+  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ### [ft_isalnum](ft_isalnum.c) 
   - ✔️ OK  
   - **Explicación:** Devuelve 1 si es número o letra y 0 si es otra cosa.
-
+- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ### [ft_tolower](ft_tolower.c) 
   - ✔️ OK  
   - **Explicación:** Convierte mayúsculas en minúsculas comprobando que sea mayúscula.
-
+  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ### [ft_toupper](ft_toupper.c) 
   - ✔️ OK  
   - **Explicación:** Convierte minúsculas en mayúsculas comprobando que sean minúsculas.
-
+  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ### [ft_strlcpy](ft_strlcpy.c) 
   - ✔️ OK  
   - **Explicación:** La función `strlcpy` copia hasta `size - 1` caracteres desde la cadena de origen (`src`) a la cadena de destino (`dst`), asegurando que el final siempre acabe en null. La cadena resultante no superará `size - 1`, y si `size` es 0, no se realizará ninguna copia y devolverá el tamaño de `src`. Devuelve la longitud de la cadena de origen, es decir, el número de caracteres que habrían sido copiados si no se hubiera producido truncamiento.
@@ -115,7 +116,9 @@ size_t ft_strlcpy(char *dst, const char *src, size_t destsize)
     // Devuelve la longitud de la cadena de origen
     return (count);
 }
+
 ```
+- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ### [ft_bzero](ft_bzero.c) 
 
   - ✔️ OK  
@@ -154,6 +157,7 @@ int main() {
 }
 
 ```
+- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 
 ## Compilación de la Biblioteca
 
@@ -188,31 +192,7 @@ int main() {
 
 3. **Ejecución del Programa:**
    - Ahora puedes ejecutar tu programa como de costumbre.
-
-### ft_bzero
-explicacion linea a  linea;
-
-```c
-
-void ft_bzero(void *s, size_t n)
-{
-    size_t x;
-
-    // Inicializa el contador x
-    x = 0;
-
-    // Recorre los primeros n bytes de la memoria apuntada por s
-    while (x < n)
-    {
-        // Establece el byte actual en 0 (cero) hacemos que sea unsigned char
-        ((unsigned char*)s)[x] = 0;
-        // Establece el byte actual en la posición x de la memoria apuntada por s en 0 (cero). Se utiliza un casting para tratar la memoria como un array de unsigned char, asegurándose de que se establezca correctamente el byte en 0.
-        // Incrementa el contador para pasar al siguiente byte
-        x++;
-    }
-}
-
-```
+- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 
 ## Compilación de la Biblioteca
 
@@ -247,7 +227,7 @@ void ft_bzero(void *s, size_t n)
 
 3. **Ejecución del Programa:**
    - Ahora puedes ejecutar tu programa como de costumbre.
-
+- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ## Funciones Pendientes
 
 
@@ -273,3 +253,4 @@ void ft_bzero(void *s, size_t n)
 | ft_strnstr   | ❌ Pendiente | -                   |
 | ft_strrchr   | ❌ Pendiente | -                   |
 | ft_strstr    | ❌ Pendiente | -                   |
+- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
