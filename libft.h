@@ -6,7 +6,7 @@
 /*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 04:41:06 by nakama            #+#    #+#             */
-/*   Updated: 2023/11/21 20:07:08 by dgomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/21 23:35:44 by dgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_putstr_fd(char *s, int fd);//con filedescriptor
 size_t	ft_strlcpy(char *dst, const char *src, size_t destsize);
 void	ft_bzero(void *s, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);//
+void	*ft_memset(void *b, int c, size_t len);
 
 //Cabeceras de las funciones que queremos incluir en la lib
 

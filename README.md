@@ -17,6 +17,7 @@
 - [ft_strlcpy](#ft_strlcpy)
 - [ft_bzero](#ft_bzero)
 - [ft_strncmp](#ft_strncmp)
+- [ft_memset](#ft_memset)
 - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
 - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
 - [Funciones Pendientes](#funciones-pendientes)
@@ -220,6 +221,12 @@ nakama@MacBook-Air-de-David libft %
 
 - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 
+### [ft_memset](ft_metset.c) 
+  - ✔️ OK  
+  - **Explicación:** esta funcion lo que hace es apuntar a la direccion de memoria y la rellena con el valor que le pases por c hasta n veces, no tiene complicacion
+  aclar que el bucle es contador < len y hacer casting
+  a usnigned char para ir byte a byte.
+  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ## Compilación de la Biblioteca
 
 1. **Makefile:**
@@ -301,16 +308,11 @@ nakama@MacBook-Air-de-David libft %
 | ft_memcmp    | ❌ Pendiente | -                   |
 | ft_memcpy    | ❌ Pendiente | -                   |
 | ft_memmove   | ❌ Pendiente | -                   |
-| ft_memset    | ❌ Pendiente | -                   |
 | ft_strcat    | ❌ Pendiente | -                   |
 | ft_strchr    | ❌ Pendiente | -                   |
-| ft_strcmp    | ❌ Pendiente | -                   |
-| ft_strcpy    | ❌ Pendiente | -                   |
 | ft_strdup    | ❌ Pendiente | -                   |
 | ft_strlcat   | ❌ Pendiente | -                   |
 | ft_strncat   | ❌ Pendiente | -                   |
-| ft_strncmp   | ❌ Pendiente | -                   |
-| ft_strncpy   | ❌ Pendiente | -                   |
 | ft_strnstr   | ❌ Pendiente | -                   |
 | ft_strrchr   | ❌ Pendiente | -                   |
 | ft_strstr    | ❌ Pendiente | -                   |

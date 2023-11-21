@@ -1,5 +1,5 @@
 #include "libft.h"
-
+#include <stdio.h>
 //primera parte por mucho que tenga putchar necesito putstring
 //vamos a por ello dejamos este main para el recuerdo
 int main()
@@ -10,6 +10,7 @@ int main()
 	int n = ft_strlen(str);
 	int i = 0;
 	int ir = 0;
+	int c = 0;
 	int mayus = 0;
 	
 	ft_putstr_fd("String original ->",0);
@@ -31,5 +32,14 @@ int main()
 		ft_putchar_fd(ft_toupper(str[mayus]),0);
 		mayus++;
 	}
+	ft_putstr_fd(" \n String Pasado por la funcion memset :\n",0);
+	ft_memset(str,'a',n);//n longitud de str
+	ft_putstr_fd(str,0);
+	ft_putstr_fd(" \n String Pasado por la funcion bzero :\n",0);
+	ft_bzero(str,n);
+  while (c < n) {
+        printf("%d ", (int)str[c]);
+        c++;
+    }
 	return 0;
 }

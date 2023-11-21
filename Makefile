@@ -15,6 +15,8 @@ SRCS	=	ft_strlen.c \
 			ft_strlcpy.c \
 			ft_bzero.c \
 			ft_strncmp.c \
+			ft_memset.c \
+
 
 
 # Lista de archivos de objeto generados a partir de los archivos fuente
