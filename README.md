@@ -103,6 +103,40 @@ size_t ft_strlcpy(char *dst, const char *src, size_t destsize)
 }
 ```
 
+## Compilación de la Biblioteca
+
+1. **Makefile:**
+   - Asegúrate de tener un Makefile bien configurado. Este archivo se encargará de compilar tus archivos fuente y generar la biblioteca estática.
+
+     ```make
+     libft.a: ${OBJS}
+        ar rc $@ $^
+     ```
+
+2. **Comandos de Compilación:**
+   - Ejecuta el comando `make` en tu terminal. Esto debería compilar tus archivos fuente y generar la biblioteca `libft.a`. Si hay errores, asegúrate de revisar los mensajes del compilador y ajusta el código según sea necesario.
+
+## Uso de la Biblioteca en un Programa
+
+1. **Inclusión de Encabezados:**
+   - Asegúrate de incluir el archivo de encabezado `libft.h` en tus programas que utilicen funciones de la librería. Esto se hace con la siguiente línea al inicio de tu archivo fuente:
+
+     ```c
+     #include "libft.h"
+     ```
+
+2. **Enlazado con la Biblioteca:**
+   - Al compilar tu programa, asegúrate de enlazarlo con la biblioteca. Esto se hace generalmente añadiendo `-L.` y `-lft` al comando de compilación. Aquí hay un ejemplo:
+
+     ```bash
+     gcc -o mi_programa mi_programa.c -L. -lft
+     ```
+
+     Esto indica al compilador buscar la biblioteca en el directorio actual (`-L.`) y enlazarla (`-lft`).
+
+3. **Ejecución del Programa:**
+   - Ahora puedes ejecutar tu programa como de costumbre.
+
 ## Funciones Pendientes
 
 
