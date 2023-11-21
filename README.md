@@ -2,20 +2,20 @@
 
 ## Índice
 - [Funciones Resueltas](#funciones-resueltas)
-- [libft.h](#libft-h)
+- [libft.h](#libfth)
 - [Makefile](#makefile)
-- [ft_strlen](#ft-strlen)
-- [ft_putchar_fd](#ft-putchar-fd)
-- [ft_isascii](#ft-isascii)
-- [ft_isdigit](#ft-isdigit)
-- [ft_isalpha](#ft-isalpha)
-- [ft_putstr_fd](#ft-putstr-fd)
-- [ft_isprint](#ft-isprint)
-- [ft_isalnum](#ft-isalnum)
-- [ft_tolower](#ft-tolower)
-- [ft_toupper](#ft-toupper)
-- [ft_strlcpy](#ft-strlcpy)
-- [ft_bzero](#ft-bzero)
+- [ft_strlen](#ft_strlen)
+- [ft_putchar_fd](#ft_putchar_fd)
+- [ft_isascii](#ft_isascii)
+- [ft_isdigit](#ft_isdigit)
+- [ft_isalpha](#ft_isalpha)
+- [ft_putstr_fd](#ft_putstr_fd)
+- [ft_isprint](#ft_isprint)
+- [ft_isalnum](#ft_isalnum)
+- [ft_tolower](#ft_tolower)
+- [ft_toupper](#ft_toupper)
+- [ft_strlcpy](#ft_strlcpy)
+- [ft_bzero](#ft_bzero)
 - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
 - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
 - [Funciones Pendientes](#funciones-pendientes)
@@ -138,6 +138,19 @@ void ft_bzero(void *s, size_t n)
         // Incrementa el contador para pasar al siguiente byte
         x++;
     }
+}
+int main() {
+    char s[10];
+	
+    ft_bzero(s, sizeof(s));
+
+    int c = 0;
+    while (c < sizeof(s)) {
+        printf("%d ", (int)s[c]); //Necesitamos hacer el casting a entero para que salgan los 0 por pantalla
+        c++;
+    }
+
+    return 0;
 }
 
 ```
