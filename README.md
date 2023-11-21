@@ -221,7 +221,7 @@ nakama@MacBook-Air-de-David libft %
 
 - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 
-### [ft_memset](ft_metset.c) 
+### [ft_memset](ft_memset.c) 
   - ✔️ OK  
   - **Explicación:** esta funcion lo que hace es apuntar a la direccion de memoria y la rellena con el valor que le pases por c hasta n veces, no tiene complicacion
   aclar que el bucle es contador < len y hacer casting
