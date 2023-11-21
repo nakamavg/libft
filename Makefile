@@ -12,6 +12,7 @@ SRCS	=	ft_strlen.c \
 			ft_isalnum.c \
 			ft_tolower.c \
 			ft_toupper.c \
+			ft_strlcpy.c \
 
 # Lista de archivos de objeto generados a partir de los archivos fuente
 OBJS	=	${SRCS:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 04:41:06 by nakama            #+#    #+#             */
-/*   Updated: 2023/11/20 23:18:44 by dgomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/21 01:23:18 by dgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int		ft_isalnum(int c);//comprueba numeros y letras
 int		ft_tolower(int c);//pasa a minuscualas las mayusculas
 int		ft_toupper(int c);// pasa a mayus las minus
 void	ft_putstr_fd(char *s, int fd);//con filedescriptor
+size_t	ft_strlcpy(char *dst, const char *src, size_t destsize);//copia src en destino con dstsize-1
+
 //Cabeceras de las funciones que queremos incluir en la lib
 
 #endif//Declaracion final de la libreria, "cerrarla"

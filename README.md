@@ -53,7 +53,56 @@
    - [ft_toupper](ft_toupper.c) 
   - ✔️ OK  
   - *Explicación:* convierte minus en mayus comprabando que sean minus.
+   - [ft_strlcpy](ft_strlcpy.c) 
+  - ✔️ OK  
+  - *Explicación:* La función strlcpy copia hasta size - 1 caracteres desde la cadena de origen (src) a la dest, asegurando que el final siempre acaba en null , la cadena resultante no superara size - 1  si el size es 0 no se realizara ninguna copia y devolvera el tamaño de src.
+  Valor de retorno:
+ºDevuelve la longitud de la cadena de origen, es decir, el número de caracteres que habrían sido ºcopiados si no se hubiera producido truncamiento.
+# ft_strlcpy
 
+Esta es una implementación propia de la función `ft_strlcpy` que intenta emular el comportamiento de la función original `strlcpy`.
+
+```c
+#include "libft.h"
+
+size_t ft_strlcpy(char *dst, const char *src, size_t destsize)
+{
+    size_t count;
+    size_t i;
+
+    // Inicialización de contadores
+    count = 0;
+    i = 0;
+
+    // Verifica si los punteros son nulos
+    if (!dst || !src)
+        return (0);
+
+    // Calcula la longitud de la cadena de origen
+    while (src[count])
+    {
+        count++;
+    }
+
+    // Si destsize es menor que 1, devuelve la longitud de la cadena de origen
+    if (destsize < 1)
+        return (count);
+
+    // Copia la cadena de origen a la cadena de destino
+    while (src[i] && i < destsize - 1)
+    {
+        dst[i] = src[i];
+        i++;
+    }
+
+    // Asegura que la cadena de destino esté nula-terminada
+    if (destsize)
+        dst[i] = '\0';
+
+    // Devuelve la longitud de la cadena de origen
+    return (count);
+}
+```
 
 ## Funciones Pendientes
 
