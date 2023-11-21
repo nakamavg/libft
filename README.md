@@ -16,7 +16,7 @@
 - [ft_toupper](#ft_toupper)
 - [ft_strlcpy](#ft_strlcpy)
 - [ft_bzero](#ft_bzero)
-- [ft_strncmp](#ft_strcmp)
+- [ft_strncmp](#ft_strncmp)
 - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
 - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
 - [Funciones Pendientes](#funciones-pendientes)
