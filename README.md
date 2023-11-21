@@ -59,8 +59,7 @@
   Valor de retorno:
 ºDevuelve la longitud de la cadena de origen, es decir, el número de caracteres que habrían sido ºcopiados si no se hubiera producido truncamiento.
 # ft_strlcpy
-
-Esta es una implementación propia de la función `ft_strlcpy` que intenta emular el comportamiento de la función original `strlcpy`.
+explicacion linea a  linea;
 
 ```c
 #include "libft.h"
