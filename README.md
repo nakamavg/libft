@@ -192,9 +192,32 @@ int ft_strncmp(const char *s1, const char *s2, size_t n)
 else
     return (0);
 }
+//main de ejemplo
+int main() {
+    const char *str1 = "Hello, World!";
+    const char *str2 = "Hello, C!";
+    size_t n = 8;
 
+    int result = ft_strncmp(str1, str2, n);
+
+    if (result == 0) {
+        printf("Las primeras %zu letras son iguales.\n", n);
+    } else if (result < 0) {
+        printf("Las primeras %zu letras de la cadena \"%s\" son menores que las de la cadena \"%s\".\n", n, str1, str2);
+    } else {
+        printf("Las primeras %zu letras de la cadena \"%s\" son mayores que las de la cadena \"%s\".\n", n, str1, str2);
+    }
+
+    return 0;
+}
 
 ```
+``\`
+nakama@MacBook-Air-de-David libft % ./a.out 
+Las primeras 8 letras de la cadena "Hello, World!" son mayores que las de la cadena "Hello, C!".
+nakama@MacBook-Air-de-David libft %
+``\`
+
 - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 
 ## Compilación de la Biblioteca
