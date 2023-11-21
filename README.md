@@ -1,4 +1,22 @@
 # DUDAS QUE ME SURGIERON A TRAVÉS DE LOS EJERCICIOS
+- [Funciones Resueltas](#funciones-resueltas)
+  - [libft.h](#libfth)
+  - [Makefile](#makefile)
+  - [ft_strlen](#ft_strlen)
+  - [ft_putchar_fd](#ft_putchar_fd)
+  - [ft_isascii](#ft_isascii)
+  - [ft_isdigit](#ft_isdigit)
+  - [ft_isalpha](#ft_isalpha)
+  - [ft_putstr_fd](#ft_putstr_fd)
+  - [ft_isprint](#ft_isprint)
+  - [ft_isalnum](#ft_isalnum)
+  - [ft_tolower](#ft_tolower)
+  - [ft_toupper](#ft_toupper)
+  - [ft_strlcpy](#ft_strlcpy)
+- [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
+- [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
+- [Funciones Pendientes](#funciones-pendientes)
+
 
 ## Funciones Resueltas
 
