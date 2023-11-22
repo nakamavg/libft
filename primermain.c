@@ -32,14 +32,22 @@ int main()
 		ft_putchar_fd(ft_toupper(str[mayus]),0);
 		mayus++;
 	}
+	ft_putstr_fd(" \n String Pasado por la funcion memcpy :\n",0);
+	//funcion de ft_memcpy a la que le pasamos memcpy para comprobar que hay llegado aqui
+	//como la funcion devuelve un string podemos meterla dentro de ft_putstr_fd
+
+	ft_putstr_fd(ft_memcpy(str,"memcpy",n),0);
 	ft_putstr_fd(" \n String Pasado por la funcion memset :\n",0);
+	//setea toda la longitud de str con el caracter a
 	ft_memset(str,'a',n);//n longitud de str
 	ft_putstr_fd(str,0);
 	ft_putstr_fd(" \n String Pasado por la funcion bzero :\n",0);
+	//metemos todo ceros y hacemos el casting para imprimirlo por consola 
 	ft_bzero(str,n);
   while (c < n) {
         printf("%d ", (int)str[c]);
         c++;
     }
+	
 	return 0;
 }

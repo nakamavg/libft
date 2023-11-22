@@ -18,6 +18,7 @@
 - [ft_bzero](#ft_bzero)
 - [ft_strncmp](#ft_strncmp)
 - [ft_memset](#ft_memset)
+- [ft_memcpy](#ft_memcpy)
 - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
 - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
 - [Funciones Pendientes](#funciones-pendientes)
@@ -226,6 +227,11 @@ nakama@MacBook-Air-de-David libft %
   - **Explicación:** esta funcion lo que hace es apuntar a la direccion de memoria y la rellena con el valor que le pases por c hasta n veces, no tiene complicacion
   aclar que el bucle es contador < len y hacer casting
   a usnigned char para ir byte a byte.
+  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+### [ft_memcpy](ft_memcpy.c)      
+  - ✔️ OK  
+  - **Explicación:** Como en la funcion general devolvemos un puntero a el dst declaramos dentro de la funcion nuestros unsigned char para seguir con la buena practica de comparar byte a byte gracias a hacerle un casting a los string que nos entran por cabecera.
+  El objetivo de funciones como memcpy es proporcionar una operación de copia de memoria que pueda trabajar con datos de cualquier tipo. Al devolver un puntero de tipo void *, la función permite al usuario decidir el tipo de datos que se están copiando y cómo interpretar los resultados.
   - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
 ## Compilación de la Biblioteca
 
