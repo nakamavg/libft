@@ -33,52 +33,52 @@
   le estas diciendo al compilador que si no esta definada la definas y acabas el definir al final de todas las cabaceras, ahorra tiempo de trabajo por que solo va a compilar las lineas que añadas nuevas en la libreria.
   Esta estructura, con `#ifndef`, `#define`, y `#endif`, se utiliza para asegurarse de que el contenido del archivo de cabecera (`libft.h`) se incluya una sola vez en un programa. Evita problemas potenciales que podrían surgir si el mismo archivo se incluye más de una vez en diferentes partes del código. En otras palabras, este mecanismo garantiza que el código contenido en `libft.h` se añada al programa solo si aún no ha sido incluido previamente. Esto es importante para evitar conflictos y errores que podrían surgir al tener duplicados o superposiciones en la inclusión del archivo.
     
-- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+- [subir](#Índice)
 ### [Makefile](Makefile)      
   - ✔️ OK  
   - **Explicación:** Explicado en el código comentado.
-  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+  - [subir](#índice)
 ### [ft_strlen](ft_strlen.c)  
   - ✔️ OK  
   - **Explicación:** La función `strlen` en C devuelve un valor de tipo `size_t` porque está diseñada para representar tamaños de objetos en bytes. `size_t` es un tipo entero sin signo que puede almacenar el tamaño máximo posible de un objeto en la plataforma en la que se está ejecutando el programa. El uso de `size_t` como tipo de retorno de `strlen` permite que la función pueda manejar correctamente tamaños grandes de cadenas de caracteres. Además, al ser un tipo sin signo, `size_t` puede representar tamaños de objetos mayores que los tipos de datos con signo, ya que no se desperdicia un bit para representar el signo.
-  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+  - [subir](#índice)
 ### [ft_putchar_fd](ft_putchar_fd.c) 
   - ✔️ OK  
   - **Explicación:** Esta función es similar a `ft_putchar`, pero toma un descriptor de archivo (`fd`) como parámetro. En lugar de escribir automáticamente en la salida estándar, puedes elegir escribir en un descriptor de archivo obtenido de la llamada al sistema `open`, o puedes usar 0, 1 o 2 para referirte a la entrada, salida o error estándar, respectivamente. La función utiliza la función `write`, similar a `ft_putchar`, pero esta vez usa el `fd` proporcionado como el primer parámetro de `write`. Aún usamos la dirección de nuestro carácter `c` (cadena nula) como el contenido a escribir, y sabemos que escribiremos solo un carácter en nuestro descriptor de archivo deseado, por lo que usamos 1 como tamaño a escribir. 
-  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+  - [subir](#índice)
 ### [ft_isascii](ft_isascii.c) 
   - ✔️ OK  
   - **Explicación:** La elección de utilizar 127 en lugar de 177 está relacionada con la definición estándar del conjunto de caracteres ASCII.
-  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+  - [subir](#índice)
 ### [ft_isdigit](ft_isdigit.c) 
   - ✔️ OK  
   - **Explicación:** Comprueba que sean números.
-  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+  - [subir](#Índice)
 ### [ft_isalpha](ft_isalpha.c) 
   - ✔️ OK  
   - **Explicación:** Comprueba que sean letras.
-  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+  - [subir](#Índice)
 ### [ft_putstr_fd](ft_putstr_fd.c) 
   - ✔️ OK  
   - **Explicación:** Imprime la cadena de caracteres en el descriptor de archivo especificado o en la salida estándar.
-  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+  - [subir](#Índice)
  
 ### [ft_isprint](ft_isprint.c) 
   - ✔️ OK  
   - **Explicación:** Devuelve 0 o 1 dependiendo de si lo que recibe está dentro o fuera de los caracteres imprimibles.
-  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+  - [subir](#Índice)
 ### [ft_isalnum](ft_isalnum.c) 
   - ✔️ OK  
   - **Explicación:** Devuelve 1 si es número o letra y 0 si es otra cosa.
-- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+- [subir](#Índice)
 ### [ft_tolower](ft_tolower.c) 
   - ✔️ OK  
   - **Explicación:** Convierte mayúsculas en minúsculas comprobando que sea mayúscula.
-  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+  - [subir](#Índice)
 ### [ft_toupper](ft_toupper.c) 
   - ✔️ OK  
   - **Explicación:** Convierte minúsculas en mayúsculas comprobando que sean minúsculas.
-  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+  - [subir](#Índice)
 ### [ft_strlcpy](ft_strlcpy.c) 
   - ✔️ OK  
   - **Explicación:** La función `strlcpy` copia hasta `size - 1` caracteres desde la cadena de origen (`src`) a la cadena de destino (`dst`), asegurando que el final siempre acabe en null. La cadena resultante no superará `size - 1`, y si `size` es 0, no se realizará ninguna copia y devolverá el tamaño de `src`. Devuelve la longitud de la cadena de origen, es decir, el número de caracteres que habrían sido copiados si no se hubiera producido truncamiento.
@@ -126,7 +126,7 @@ size_t ft_strlcpy(char *dst, const char *src, size_t destsize)
 }
 
 ```
-- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+- [subir](#Índice)
 ### [ft_bzero](ft_bzero.c) 
 
   - ✔️ OK  
@@ -165,7 +165,7 @@ int main() {
 }
 
 ```
-- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+- [subir](#Índice)
 ### [ft_strncmp](ft_strncmp.c) 
 
   - ✔️ OK  
@@ -221,19 +221,19 @@ Las primeras 8 letras de la cadena "Hello, World!" son mayores que las de la cad
 nakama@MacBook-Air-de-David libft %
 ``\`
 
-- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+- [subir](#Índice)
 
 ### [ft_memset](ft_memset.c) 
   - ✔️ OK  
   - **Explicación:** esta funcion lo que hace es apuntar a la direccion de memoria y la rellena con el valor que le pases por c hasta n veces, no tiene complicacion
   aclar que el bucle es contador < len y hacer casting
   a usnigned char para ir byte a byte.
-  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+  - [subir](#Índice)
 ### [ft_memcpy](ft_memcpy.c)      
   - ✔️ OK  
   - **Explicación:** Como en la funcion general devolvemos un puntero a el dst declaramos dentro de la funcion nuestros unsigned char para seguir con la buena practica de comparar byte a byte gracias a hacerle un casting a los string que nos entran por cabecera.
   El objetivo de funciones como memcpy es proporcionar una operación de copia de memoria que pueda trabajar con datos de cualquier tipo. Al devolver un puntero de tipo void *, la función permite al usuario decidir el tipo de datos que se están copiando y cómo interpretar los resultados.
-  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+  - [subir](#Índice)
   ### [ft_atoi](ft_atoi.c)      
   - ✔️ OK  
   - **Explicación:** Convertir un char a un entero .
@@ -287,7 +287,7 @@ int	ft_atoi(const char *str)
 	return (num * sign);
 }
 ```
-  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+  - [subir](#Índice)
 
 
 ## Compilación de la Biblioteca
@@ -323,7 +323,7 @@ int	ft_atoi(const char *str)
 
 3. **Ejecución del Programa:**
    - Ahora puedes ejecutar tu programa como de costumbre.
-- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+- [subir](#Índice)
 
 ## Compilación de la Biblioteca
 
@@ -358,7 +358,7 @@ int	ft_atoi(const char *str)
 
 3. **Ejecución del Programa:**
    - Ahora puedes ejecutar tu programa como de costumbre.
-- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+- [subir](#Índice)
 ## Funciones Pendientes
 
 
@@ -377,4 +377,4 @@ int	ft_atoi(const char *str)
 | ft_strnstr   | ❌ Pendiente | -                   |
 | ft_strrchr   | ❌ Pendiente | -                   |
 | ft_strstr    | ❌ Pendiente | -                   |
-- [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+- [subir](#Índice)
