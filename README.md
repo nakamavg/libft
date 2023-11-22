@@ -1,4 +1,4 @@
-# DUDAS QUE ME SURGIERON A TRAVÉS DE LOS EJERCICIOS
+# CREAR UNA Libreria en C
 
 ## Índice
 - [Funciones Resueltas](#funciones-resueltas)
