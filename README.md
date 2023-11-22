@@ -19,6 +19,7 @@
 - [ft_strncmp](#ft_strncmp)
 - [ft_memset](#ft_memset)
 - [ft_memcpy](#ft_memcpy)
+- [ft_atoi](#ft_atoi)
 - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
 - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
 - [Funciones Pendientes](#funciones-pendientes)
@@ -233,6 +234,62 @@ nakama@MacBook-Air-de-David libft %
   - **Explicación:** Como en la funcion general devolvemos un puntero a el dst declaramos dentro de la funcion nuestros unsigned char para seguir con la buena practica de comparar byte a byte gracias a hacerle un casting a los string que nos entran por cabecera.
   El objetivo de funciones como memcpy es proporcionar una operación de copia de memoria que pueda trabajar con datos de cualquier tipo. Al devolver un puntero de tipo void *, la función permite al usuario decidir el tipo de datos que se están copiando y cómo interpretar los resultados.
   - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+  ### [ft_atoi](ft_atoi.c)      
+  - ✔️ OK  
+  - **Explicación:** Convertir un char a un entero .
+  Para esta funcion estoy usando 2 funciones extras de mi libreria vease [ft_isspace](ft_isspace.c) y [ft_isdigit](ft_isdigit.c) queda mas legible y entendible. Para esta funcion hay que tener en cuenta que la función isspace verifica si un carácter es un espacio en blanco según la configuración de espacio en blanco en la localización actual. Esto incluye caracteres como el espacio (' '), tabulación horizontal ('\t'), retorno de carro ('\r'), avance de página ('\f'), nueva línea ('\n') ya que la funcion original que estamos imitando asi lo hace
+  2147483647 es el entero positivo mas grande que entra dentro de un int 
+  -2147483648 es el entero negativo mas pequeño , tendremos problemas de overflow si no lo controlamos.
+  
+```c
+
+#include "libft.h"
+
+int	ft_atoi(const char *str)
+{
+	int			count;
+	long int	num;
+	long int	sign;
+
+	count = 0;
+	num = 0;
+	sign = 1;
+  ///MIENTRAS STR COUNT TENGA ESPACIOS , CORREMOS EL CONTADOR, PARA AVANZAR DE POSICION
+	while (ft_isspace(str[count]))
+		count++;
+    ///SI EN LA POSICION ACTUAL HAY UN GUION Y EL SIGUIENTE NUMERO ESTA ENTRE EL O Y EL 9 METEMOS EL -1
+    // YA QUE SI NO COMPROBAMOS QUE HAYA UN NUMERO DESPUES NO ESTAMOS HACIENDO LO QUE LA FUNCION PIDE 
+
+	if ((str[count] == '-' ) && ft_isdigit(str[count +1]))
+		sign = -1;
+    //VEASE LA DIFERENCIA AQUI EL GUION NO TIENE NADA DELANTE Y HAY QUE INCLUIRLO DESPUES DE LA PRIMERA COMPROBACION
+    // APROBECHAMOS EL BUCLE PARA VER SI HAY UN SIMBOLO MAS 
+	if (str[count] == '-' || str[count] == '+')
+		count++;
+	while (ft_isdigit(str[count]))
+	{
+    ///EL RESULTADO ES IGUAL A RESULTADO X 10 + CASTING DEL CHAR - EL CARACTER 0 CUALQUIER NUMERO CARACTER MENOS CERO CARACTER DA SU VALOR EN NUMERO ES DECIR
+    // 1 VALE EN SU CONVERSION A DECIMAL DE ASCII 49 Y  0 VALE  48
+    //49 - 48 = 1 
+    //NUM = NUM * 10 + 1 = 11 
+    //RECORDEMOS QUE NUM LO INICIALIZAMOS EN 0 PERO LA SIGUIENTE VEZ VALDRA 1 
+    //AHORA NUM VALE UNO SI TUVIERAMOS UN 11
+    //LA SIGUIENTE ITERACCION DEL WHILE SERIA
+    // NUM = 1X10 +1 
+		num = num * 10 + (int)(str[count] - '0');
+    // CONTROL DE VALORES MAXIMO Y VALOR MINIMO PARA EVITAR OVERFLOW COMO LA FUNCION ORIGINAL
+		if (num * sign > 2147483647)
+			return (-1);
+		if (num * sign < -2147483648)
+			return (0);
+		count++;
+	}
+	return (num * sign);
+}
+```
+  - [subir](#dudas-que-me-surgieron-a-través-de-los-ejercicios)
+
+
 ## Compilación de la Biblioteca
 
 1. **Makefile:**
@@ -307,12 +364,10 @@ nakama@MacBook-Air-de-David libft %
 
 | Función      | Estado      | Explicación/Código |
 |--------------|-------------|---------------------|
-| ft_atoi      | ❌ Pendiente | -                   |
 | ft_calloc    | ❌ Pendiente | -                   |
 | ft_memccpy   | ❌ Pendiente | -                   |
 | ft_memchr    | ❌ Pendiente | -                   |
 | ft_memcmp    | ❌ Pendiente | -                   |
-| ft_memcpy    | ❌ Pendiente | -                   |
 | ft_memmove   | ❌ Pendiente | -                   |
 | ft_strcat    | ❌ Pendiente | -                   |
 | ft_strchr    | ❌ Pendiente | -                   |
