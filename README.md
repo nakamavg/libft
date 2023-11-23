@@ -234,6 +234,82 @@ nakama@MacBook-Air-de-David libft %
   - **Explicación:** Como en la funcion general devolvemos un puntero a el dst declaramos dentro de la funcion nuestros unsigned char para seguir con la buena practica de comparar byte a byte gracias a hacerle un casting a los string que nos entran por cabecera.
   El objetivo de funciones como memcpy es proporcionar una operación de copia de memoria que pueda trabajar con datos de cualquier tipo. Al devolver un puntero de tipo void *, la función permite al usuario decidir el tipo de datos que se están copiando y cómo interpretar los resultados.
   - [subir](#Índice)
+  ### [ft_memccpy](ft_memccpy.c)      
+  - ✔️ OK  
+  - **Explicación:** Se Difrencia de la anterior en lo que su propio nombre indica:
+  MEMORY COPY with CONDITION 
+  Hace lo mismo que la anterior pero esta tiene una condicion de Stop
+  Copia lo que pasemos por src hasta que en el destino encuentre lo que le pasamos a la funcion por c 
+  Devuelve un puntero al siguiente byte de caracter c
+  Si no encuentra el caracter c en los primeros N bytes devuelve un puntero nulo
+  Es importante saber que la funcion se va a parar en lo que ocurra primero es decir 
+  si tiene espacio para n bytes antes de encontrar el caracter lo va hacer
+  Si se encuentra primero el caracter va a copiar el espacio que tenga desde el principio al caracter
+  
+Ejemplos Para entender como trabaja la funcion
+```c
+  #include <stdio.h>
+#include <string.h>
+
+int main() {
+    char source[] = "Hola";
+    char destination[] = "Holo";
+
+    // Copiar todo el contenido de source a destination
+    // como aqui le estamos pasando el caracter nulo va a recorrer todo el array de caracteres 
+    // destination y como le pasamos por n el sizeof de source va a copiar el hola cp,`ñeta
+    char *result = memccpy(destination, source, '\0', sizeof(source));
+
+    if (result != NULL) {
+        // '\0' se encontró antes de copiar toda la cadena source
+        printf("Copia completa: %s\n", destination);
+    } else {
+        // '\0' (terminador nulo) no se encontró antes de copiar toda la cadena source
+        printf("La copia no está completa.\n");
+    }
+
+    return 0;
+}
+
+  ```
+En el siguiente caso jugamos para testear la funcionalidad y entender mejor como trabaja memccpy
+  ```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char Gerardo[] = "Gerardo";
+    char David[] = "David";
+
+    // Copiar desde David hasta encontrar 'i' o hasta el final de David
+    char *puntero = memccpy(Gerardo, David, 'i', sizeof(David));
+
+    if (puntero != NULL) {
+        // 'D' se encontró antes de copiar toda la cadena David
+        size_t longitud_copiada = puntero - Gerardo - 1;  // Excluir el carácter 'D'
+        printf("Copia completa: %.*s\n", (int)longitud_copiada, Gerardo);
+    } else {
+        // 'D' no se encontró en la cadena David
+        printf("Carácter 'D' no encontrado en la cadena David.\n");
+    }
+
+    return 0;
+}
+
+
+  ```
+  En Este caso Tendriamos Como Resultado Davi , si le Dijeramos una D tendriamos como resultado D
+  Ahora bien si tenemos este caso
+  ```c
+      char *puntero = memccpy(Gerardo, David, 'x', sizeof(David));
+
+  ```
+  El puntero valdra nullo por que no encontro el caracter x, pero si que modificara
+  Gerardo a David
+  [Prueba con la funcion original para este caso](pmemccpy.c)
+
+  Copiara 
+  - [subir](#Índice)
   ### [ft_atoi](ft_atoi.c)      
   - ✔️ OK  
   - **Explicación:** Convertir un char a un entero .
