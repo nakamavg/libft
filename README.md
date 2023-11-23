@@ -19,6 +19,7 @@
 - [ft_strncmp](#ft_strncmp)
 - [ft_memset](#ft_memset)
 - [ft_memcpy](#ft_memcpy)
+- [ft_memccpy](#ft_memccpy)
 - [ft_atoi](#ft_atoi)
 - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
 - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
@@ -236,15 +237,7 @@ nakama@MacBook-Air-de-David libft %
   - [subir](#Índice)
   ### [ft_memccpy](ft_memccpy.c)      
   - ✔️ OK  
-  - **Explicación:** Se Diferencia de la anterior en lo que su propio nombre indica:
-  MEMORY COPY with CONDITION 
-  Hace lo mismo que la anterior pero esta tiene una condicion de Stop
-  Copia lo que pasemos por src hasta que en el destino encuentre lo que le pasamos a la funcion por c 
-  Devuelve un puntero al siguiente byte de caracter c
-  Si no encuentra el caracter c en los primeros N bytes devuelve un puntero nulo
-  Es importante saber que la funcion se va a parar en lo que ocurra primero es decir 
-  si tiene espacio para n bytes antes de encontrar el caracter lo va hacer
-  Si se encuentra primero el caracter va a copiar el espacio que tenga desde el principio al caracter
+  - **Explicación:** Así que, la función memccpy es como la versión intensiva de copiar y pegar en el universo de la programación. Imagina que quieres mover un cacho de datos (como una cadena) desde un lugar hasta otro, pero con un toque emocionante. Aquí está el truco: esta función no solo copia, también tiene un "detector de parada". ¿Qué significa eso? Sencillo, copia hasta que encuentra el carácter que le digas que pare (c) o hasta que haya copiado cierta cantidad de bytes (n). Y si topa con ese carácter especial, te dice dónde se quedó la diversión. Pero si no lo encuentra, te devuelve un "NULL" como diciendo "no lo hallé, amigo". Es como un copiar y pegar con actitud, siempre deteniéndose en lo que ocurra primero: llegar al límite de bytes o encontrar ese carácter particular.
   
 Ejemplos Para entender como trabaja la funcion
 ```c
