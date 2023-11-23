@@ -236,7 +236,7 @@ nakama@MacBook-Air-de-David libft %
   - [subir](#Índice)
   ### [ft_memccpy](ft_memccpy.c)      
   - ✔️ OK  
-  - **Explicación:** Se Difrencia de la anterior en lo que su propio nombre indica:
+  - **Explicación:** Se Diferencia de la anterior en lo que su propio nombre indica:
   MEMORY COPY with CONDITION 
   Hace lo mismo que la anterior pero esta tiene una condicion de Stop
   Copia lo que pasemos por src hasta que en el destino encuentre lo que le pasamos a la funcion por c 
