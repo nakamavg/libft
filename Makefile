@@ -33,7 +33,7 @@ INCLUDES	=	./
 CC	=	gcc
 
 # Banderas de compilación, incluyendo advertencias y el directorio de inclusión
-CFLAGS	=	-Wall -Wextra -Werror -I. -c
+CFLAGS	=	-Wall -Wextra -Werror 
 
 # Comando para eliminar archivos
 RM	=	rm -f
