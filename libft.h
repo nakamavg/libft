@@ -6,7 +6,7 @@
 /*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 04:41:06 by nakama            #+#    #+#             */
-/*   Updated: 2023/11/22 21:25:36 by dgomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/24 05:37:05 by dgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 //Desde aqui ya nos evita tener que llamarlas en los .C de las funciones
 # include <string.h>
+# include <stdio.h>
 
 size_t	ft_strlen(const char *s);//Obtiene longitud
 void	ft_putchar_fd(char c, int fd);//filedescriptor o salida standar 
@@ -38,6 +39,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 int		ft_iscntrl(int c);//Copia de Ctype.h caracteres control
 int		ft_atoi(const char *str);
 int		ft_isspace(int c);
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
+
 //Cabeceras de las funciones que queremos incluir en la lib
 
 #endif//Declaracion final de la libreria, "cerrarla"

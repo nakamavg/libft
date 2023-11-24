@@ -1,64 +1,60 @@
-# Nombre de la biblioteca que se generará
-NAME	=	libft.a
+#  Defininimos el nombre del archivo de biblioteca que se va a crear
+NAME = libft.a
 
-# Lista de archivos fuente para la biblioteca
-SRCS	=	ft_strlen.c \
-			ft_putchar_fd.c \
-			ft_isalpha.c \
-			ft_isdigit.c \
-			ft_isascii.c \
-			ft_putstr_fd.c \
-			ft_isprint.c \
-			ft_isalnum.c \
-			ft_tolower.c \
-			ft_toupper.c \
-			ft_strlcpy.c \
-			ft_bzero.c \
-			ft_strncmp.c \
-			ft_memset.c \
-			ft_memcpy.c \
-			ft_iscntrl.c \
-			ft_isspace.c \
-			ft_atoi.c \
+#  Definimos el directorio donde se encuentran los archivos fuente
+SRC_DIR = src
 
+# Definimos el directorio donde se crearán los archivos objeto
+OBJ_DIR = obj
 
+# Con la función wildcard buscamos todos los archivos con la extensión .c en el directorio src
+SRCS = $(wildcard $(SRC_DIR)/*.c)
 
-# Lista de archivos de objeto generados a partir de los archivos fuente
-OBJS	=	${SRCS:.c=.o}
+# Definimos la lista de todos los archivos objeto con la función patsbust que sirve para reemplazar el prefijo 
+# $(SRC_DIR) por el sufijo $(SRC_DIR) en cada archivo fuente de la lista SRCS, Por lo tanto los archivos fuente
+# en el directorio src se convertiran en archivos objeto en el directorio obj
+OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
-# Directorio que contiene los archivos de encabezado
-INCLUDES	=	./
+# Definimos el directorio donde se encuentran los archivos de encabezado
+INCLUDES = ./
 
-# Compilador a utilizar
-CC	=	gcc
+# Definimos el compilador
+CC = gcc
 
-# Banderas de compilación, incluyendo advertencias y el directorio de inclusión
-CFLAGS	=	-Wall -Wextra -Werror 
+# Definimos las opciones para el compilado
+# -Wall y -Wextra -> Para activar las advertencias de compilacion
+# -Werror -> Convierte las advertencias en errores
+# -I$(INCLUDES) -> indica al compilador que busque los archivos de encabezado en el directorio especificado
+# -c -> Compila los archivos fuente en archivos objeto
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES) -c
 
-# Comando para eliminar archivos
-RM	=	rm -f
+# Definimos el comando para eliminar los archivos objeto, el modificador -f se utiliza para eliminar los archivos
+# recursivamente
+RM = rm -f
 
-# Regla para construir archivos de objeto a partir de archivos fuente
-.c.o:
-	${CC} ${CFLAGS} -c $< -o $@
+# Crea el directorio obj en caso de que no exista
+$(shell mkdir -p $(OBJ_DIR))
 
-# Regla para construir la biblioteca a partir de archivos de objeto
-${NAME}: ${OBJS}
-	ar rc $@ $^
+# Compilamos cada archivo fuente (.c) en un archivo objeto (.o)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Objetivo predeterminado que construye la biblioteca
-all: ${NAME}
+# Creamos el archivo de biblioteca libft.a 
+$(NAME): $(OBJS)
+	ar rc $(NAME) $(OBJS)
+	ranlib $(NAME)
 
-# Regla para eliminar archivos de objeto
+# Compilamos todos los archivos fuente y creamos el archivo de biblioteca libft.a
+all: $(NAME)
+
+# Comando para eliminar todos los archivos objeto
 clean:
-	${RM} ${OBJS}
+	$(RM) $(OBJS)
 
-# Regla para eliminar archivos de objeto y la biblioteca
+# Comando para eliminar el archivo de biblioteca libft.a	
 fclean: clean
-	${RM} ${NAME}
+	$(RM) $(NAME)
 
-# Regla para realizar una limpieza completa y reconstruir la biblioteca
+# Comando que vuelve a compilar todos los archivos fuente y crea el archivo de biblioteca libft.a
 re: fclean all
-
-# Indica que los objetivos "all", "clean", "fclean", y "re" no están asociados con archivos
 .PHONY: all clean fclean re

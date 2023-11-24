@@ -1,5 +1,5 @@
 {
 	"files.associations": {
-		"string.h": "c"
+		"libft.h": "c"
 	}
 }

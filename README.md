@@ -1,32 +1,39 @@
 # CREAR UNA Libreria en C
 
 ## Índice
-- [Funciones Resueltas](#funciones-resueltas)
-- [libft.h](#libfth)
-- [Makefile](#makefile)
-- [ft_strlen](#ft_strlen)
-- [ft_putchar_fd](#ft_putchar_fd)
-- [ft_isascii](#ft_isascii)
-- [ft_isdigit](#ft_isdigit)
-- [ft_isalpha](#ft_isalpha)
-- [ft_putstr_fd](#ft_putstr_fd)
-- [ft_isprint](#ft_isprint)
-- [ft_isalnum](#ft_isalnum)
-- [ft_tolower](#ft_tolower)
-- [ft_toupper](#ft_toupper)
-- [ft_strlcpy](#ft_strlcpy)
-- [ft_bzero](#ft_bzero)
-- [ft_strncmp](#ft_strncmp)
-- [ft_memset](#ft_memset)
-- [ft_memcpy](#ft_memcpy)
-- [ft_memccpy](#ft_memccpy)
-- [ft_atoi](#ft_atoi)
-- [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
-- [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
-- [Funciones Pendientes](#funciones-pendientes)
-
+- [CREAR UNA Libreria en C](#crear-una-libreria-en-c)
+  - [Índice](#índice)
+  - [Funciones Resueltas](#funciones-resueltas)
+    - [libft.h](#libfth)
+    - [Makefile](#makefile)
+    - [ft\_strlen](#ft_strlen)
+    - [ft\_putchar\_fd](#ft_putchar_fd)
+    - [ft\_isascii](#ft_isascii)
+    - [ft\_isdigit](#ft_isdigit)
+    - [ft\_isalpha](#ft_isalpha)
+    - [ft\_putstr\_fd](#ft_putstr_fd)
+    - [ft\_isprint](#ft_isprint)
+    - [ft\_isalnum](#ft_isalnum)
+    - [ft\_tolower](#ft_tolower)
+    - [ft\_toupper](#ft_toupper)
+    - [ft\_strlcpy](#ft_strlcpy)
+    - [ft\_bzero](#ft_bzero)
+    - [ft\_strncmp](#ft_strncmp)
+    - [ft\_memset](#ft_memset)
+    - [ft\_memcpy](#ft_memcpy)
+    - [ft\_memccpy](#ft_memccpy)
+    - [ft\_atoi](#ft_atoi)
+  - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
+  - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
+  - [Compilación de la Biblioteca](#compilación-de-la-biblioteca-1)
+  - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa-1)
+  - [Funciones Pendientes](#funciones-pendientes)
 ## Funciones Resueltas
-
+  - SI clickas en enlace te llevara al codigo de mi funcion
+  - Muchas veces me veras explicar funciones o mains en este readme y tambien habra enlace
+  - a algunos de mis mains, recomiendo que juegues con ellos mejores los mios
+  - Y si encuentras algo mal explicado o algo que no estes de acuerdo avisame porfavor.
+  - Estamos todos aprendiendo.
 ### [libft.h](libft.h)
   - ✔️ OK  
   - **Explicación:** 
@@ -38,12 +45,14 @@
 ### [Makefile](Makefile)      
   - ✔️ OK  
   - **Explicación:** Explicado en el código comentado.
+  - ACTUALIZACION GRACIAS A LA AYUDA DE 
+  - [Ivan Varela](https://github.com/ivarela77?tab=stars)
   - [subir](#índice)
 ### [ft_strlen](ft_strlen.c)  
   - ✔️ OK  
   - **Explicación:** La función `strlen` en C devuelve un valor de tipo `size_t` porque está diseñada para representar tamaños de objetos en bytes. `size_t` es un tipo entero sin signo que puede almacenar el tamaño máximo posible de un objeto en la plataforma en la que se está ejecutando el programa. El uso de `size_t` como tipo de retorno de `strlen` permite que la función pueda manejar correctamente tamaños grandes de cadenas de caracteres. Además, al ser un tipo sin signo, `size_t` puede representar tamaños de objetos mayores que los tipos de datos con signo, ya que no se desperdicia un bit para representar el signo.
   - [subir](#índice)
-### [ft_putchar_fd](ft_putchar_fd.c) 
+### [ft_putchar_fd](src/ft_putchar_fd.c) 
   - ✔️ OK  
   - **Explicación:** Esta función es similar a `ft_putchar`, pero toma un descriptor de archivo (`fd`) como parámetro. En lugar de escribir automáticamente en la salida estándar, puedes elegir escribir en un descriptor de archivo obtenido de la llamada al sistema `open`, o puedes usar 0, 1 o 2 para referirte a la entrada, salida o error estándar, respectivamente. La función utiliza la función `write`, similar a `ft_putchar`, pero esta vez usa el `fd` proporcionado como el primer parámetro de `write`. Aún usamos la dirección de nuestro carácter `c` (cadena nula) como el contenido a escribir, y sabemos que escribiremos solo un carácter en nuestro descriptor de archivo deseado, por lo que usamos 1 como tamaño a escribir. 
   - [subir](#índice)
@@ -87,45 +96,71 @@
 
 ```c
 #include "libft.h"
+ERROR DEPURADO GRACIAS A LOS TESTERS DE WARMACHINE 
+TE QUIERO WARMACHINE
+// size_t ft_strlcpy(char *dst, const char *src, size_t destsize)
+// {
+//     size_t count;
+//     size_t i;
 
-size_t ft_strlcpy(char *dst, const char *src, size_t destsize)
+//     // Inicialización de contadores
+//     count = 0;
+//     i = 0;
+
+//     // Verifica si los punteros son nulos
+//     if (!dst || !src)
+//         return (0);
+
+//     // Calcula la longitud de la cadena de origen
+//     while (src[count])
+//     {
+//         count++;
+//     }
+
+//     // Si destsize es menor que 1, devuelve la longitud de la cadena de origen
+//     if (destsize < 1)
+//         return (count);
+
+//     // Copia la cadena de origen a la cadena de destino
+//     while (src[i] && i < destsize - 1)
+//     {
+//         dst[i] = src[i];
+//         i++;
+//     }
+
+//     // Asegura que la cadena de destino esté nula-terminada
+//     if (destsize)
+//         dst[i] = '\0';
+
+//     // Devuelve la longitud de la cadena de origen
+//     return (count);
+// }
+```c
+#include "libft.h"
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t destsize)
 {
-    size_t count;
-    size_t i;
+	size_t	count;
+	size_t	i;
 
-    // Inicialización de contadores
-    count = 0;
-    i = 0;
-
-    // Verifica si los punteros son nulos
-    if (!dst || !src)
-        return (0);
-
-    // Calcula la longitud de la cadena de origen
-    while (src[count])
-    {
-        count++;
-    }
-
-    // Si destsize es menor que 1, devuelve la longitud de la cadena de origen
-    if (destsize < 1)
-        return (count);
-
-    // Copia la cadena de origen a la cadena de destino
-    while (src[i] && i < destsize - 1)
-    {
-        dst[i] = src[i];
-        i++;
-    }
-
-    // Asegura que la cadena de destino esté nula-terminada
-    if (destsize)
-        dst[i] = '\0';
-
-    // Devuelve la longitud de la cadena de origen
-    return (count);
+	i = 0;
+  //Gracias a Enterarme en el atoi
+  //De que puedo usar funciones propias de la libreria
+  //que estamos construllendo Implementamos ft_strlen
+  // y me estaba dando un error que subsane gracias a la war machine
+  // aqui corregido
+	count = ft_strlen(src);
+	if (destsize > 0)
+	{
+		while (src[i] && i < destsize - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (count);
 }
-
 ```
 - [subir](#Índice)
 ### [ft_bzero](ft_bzero.c) 
@@ -238,6 +273,38 @@ nakama@MacBook-Air-de-David libft %
   ### [ft_memccpy](ft_memccpy.c)      
   - ✔️ OK  
   - **Explicación:** Así que, la función memccpy es como la versión intensiva de copiar y pegar en el universo de la programación. Imagina que quieres mover un cacho de datos (como una cadena) desde un lugar hasta otro, pero con un toque emocionante. Aquí está el truco: esta función no solo copia, también tiene un "detector de parada". ¿Qué significa eso? Sencillo, copia hasta que encuentra el carácter que le digas que pare (c) o hasta que haya copiado cierta cantidad de bytes (n). Y si topa con ese carácter especial, te dice dónde se quedó la diversión. Pero si no lo encuentra, te devuelve un "NULL" como diciendo "no lo hallé, amigo". Es como un copiar y pegar con actitud, siempre deteniéndose en lo que ocurra primero: llegar al límite de bytes o encontrar ese carácter particular.
+  - Atencion Warning 
+    - Recordar que si no encuentra el char que le pases el puntero que devuelve va a ser nulo
+    - Pero va a copiar toda la cadena de texto que le pases hasta los n bytes
+    - [ver main  de testeo con mi funcion](miftmccpy.c)
+```c
+
+#include "libft.h"
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+{
+  //inicializacion de variables
+  //para comparar byte a byte  
+	const unsigned char	*source;
+	unsigned char		*destiny;
+	unsigned char		character;
+	size_t				i;
+
+	i = 0;
+  //hacemos 
+	source = (const unsigned char *)src;
+	destiny = (unsigned char *)dst;
+	character = (unsigned char)c;
+	while (i < n)
+	{
+		destiny[i] = source[i];
+		if (source[i] == character)
+			return (dst + i + 1);
+		i++;
+	}
+	return (NULL);
+}
+
+  ```
   
 Ejemplos Para entender como trabaja la funcion
 ```c
@@ -313,7 +380,6 @@ int main() {
 ```c
 
 #include "libft.h"
-
 int	ft_atoi(const char *str)
 {
 	int			count;
@@ -378,8 +444,7 @@ int	ft_atoi(const char *str)
    - Asegúrate de incluir el archivo de encabezado `libft.h` en tus programas que utilicen funciones de la librería. Esto se hace con la siguiente línea al inicio de tu archivo fuente:
 
      ```c
-     #include "libft.h"
-     ```
+     #include "libft.h"     ```
 
 2. **Enlazado con la Biblioteca:**
    - Al compilar tu programa, asegúrate de enlazarlo con la biblioteca. Esto se hace generalmente añadiendo `-L.` y `-lft` al comando de compilación. Aquí hay un ejemplo:
@@ -413,8 +478,7 @@ int	ft_atoi(const char *str)
    - Asegúrate de incluir el archivo de encabezado `libft.h` en tus programas que utilicen funciones de la librería. Esto se hace con la siguiente línea al inicio de tu archivo fuente:
 
      ```c
-     #include "libft.h"
-     ```
+     #include "libft.h"     ```
 
 2. **Enlazado con la Biblioteca:**
    - Al compilar tu programa, asegúrate de enlazarlo con la biblioteca. Esto se hace generalmente añadiendo `-L.` y `-lft` al comando de compilación. Aquí hay un ejemplo:
