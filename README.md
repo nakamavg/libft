@@ -56,40 +56,40 @@
   - ✔️ OK  
   - **Explicación:** Esta función es similar a `ft_putchar`, pero toma un descriptor de archivo (`fd`) como parámetro. En lugar de escribir automáticamente en la salida estándar, puedes elegir escribir en un descriptor de archivo obtenido de la llamada al sistema `open`, o puedes usar 0, 1 o 2 para referirte a la entrada, salida o error estándar, respectivamente. La función utiliza la función `write`, similar a `ft_putchar`, pero esta vez usa el `fd` proporcionado como el primer parámetro de `write`. Aún usamos la dirección de nuestro carácter `c` (cadena nula) como el contenido a escribir, y sabemos que escribiremos solo un carácter en nuestro descriptor de archivo deseado, por lo que usamos 1 como tamaño a escribir. 
   - [subir](#índice)
-### [ft_isascii](ft_isascii.c) 
+### [ft_isascii](src/ft_isascii.c) 
   - ✔️ OK  
   - **Explicación:** La elección de utilizar 127 en lugar de 177 está relacionada con la definición estándar del conjunto de caracteres ASCII.
   - [subir](#índice)
-### [ft_isdigit](ft_isdigit.c) 
+### [ft_isdigit](src/ft_isdigit.c) 
   - ✔️ OK  
   - **Explicación:** Comprueba que sean números.
   - [subir](#Índice)
-### [ft_isalpha](ft_isalpha.c) 
+### [ft_isalpha](src/ft_isalpha.c) 
   - ✔️ OK  
   - **Explicación:** Comprueba que sean letras.
   - [subir](#Índice)
-### [ft_putstr_fd](ft_putstr_fd.c) 
+### [ft_putstr_fd](src/ft_putstr_fd.c) 
   - ✔️ OK  
   - **Explicación:** Imprime la cadena de caracteres en el descriptor de archivo especificado o en la salida estándar.
   - [subir](#Índice)
  
-### [ft_isprint](ft_isprint.c) 
+### [ft_isprint](src/ft_isprint.c) 
   - ✔️ OK  
   - **Explicación:** Devuelve 0 o 1 dependiendo de si lo que recibe está dentro o fuera de los caracteres imprimibles.
   - [subir](#Índice)
-### [ft_isalnum](ft_isalnum.c) 
+### [ft_isalnum](src/ft_isalnum.c) 
   - ✔️ OK  
   - **Explicación:** Devuelve 1 si es número o letra y 0 si es otra cosa.
 - [subir](#Índice)
-### [ft_tolower](ft_tolower.c) 
+### [ft_tolower](src/ft_tolower.c) 
   - ✔️ OK  
   - **Explicación:** Convierte mayúsculas en minúsculas comprobando que sea mayúscula.
   - [subir](#Índice)
-### [ft_toupper](ft_toupper.c) 
+### [ft_toupper](src/ft_toupper.c) 
   - ✔️ OK  
   - **Explicación:** Convierte minúsculas en mayúsculas comprobando que sean minúsculas.
   - [subir](#Índice)
-### [ft_strlcpy](ft_strlcpy.c) 
+### [ft_strlcpy](src/ft_strlcpy.c) 
   - ✔️ OK  
   - **Explicación:** La función `strlcpy` copia hasta `size - 1` caracteres desde la cadena de origen (`src`) a la cadena de destino (`dst`), asegurando que el final siempre acabe en null. La cadena resultante no superará `size - 1`, y si `size` es 0, no se realizará ninguna copia y devolverá el tamaño de `src`. Devuelve la longitud de la cadena de origen, es decir, el número de caracteres que habrían sido copiados si no se hubiera producido truncamiento.
   explicacion linea a  linea;
@@ -163,7 +163,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t destsize)
 }
 ```
 - [subir](#Índice)
-### [ft_bzero](ft_bzero.c) 
+### [ft_bzero](src/ft_bzero.c) 
 
   - ✔️ OK  
   - **Explicación:** se utiliza para establecer los primeros n bytes de la memoria apuntada por s a cero (es decir, establecer esos bytes en 0).;
@@ -202,7 +202,7 @@ int main() {
 
 ```
 - [subir](#Índice)
-### [ft_strncmp](ft_strncmp.c) 
+### [ft_strncmp](src/ft_strncmp.c) 
 
   - ✔️ OK  
   - **Explicación:** Esta función se utiliza para comparar dos cadenas hasta n caracteres .;
@@ -259,13 +259,13 @@ nakama@MacBook-Air-de-David libft %
 
 - [subir](#Índice)
 
-### [ft_memset](ft_memset.c) 
+### [ft_memset](src/ft_memset.c) 
   - ✔️ OK  
   - **Explicación:** esta funcion lo que hace es apuntar a la direccion de memoria y la rellena con el valor que le pases por c hasta n veces, no tiene complicacion
   aclar que el bucle es contador < len y hacer casting
   a usnigned char para ir byte a byte.
   - [subir](#Índice)
-### [ft_memcpy](ft_memcpy.c)      
+### [ft_memcpy](src/ft_memcpy.c)      
   - ✔️ OK  
   - **Explicación:** Como en la funcion general devolvemos un puntero a el dst declaramos dentro de la funcion nuestros unsigned char para seguir con la buena practica de comparar byte a byte gracias a hacerle un casting a los string que nos entran por cabecera.
   El objetivo de funciones como memcpy es proporcionar una operación de copia de memoria que pueda trabajar con datos de cualquier tipo. Al devolver un puntero de tipo void *, la función permite al usuario decidir el tipo de datos que se están copiando y cómo interpretar los resultados.
@@ -357,6 +357,7 @@ int main() {
 }
 
 
+
   ```
   En Este caso Tendriamos Como Resultado Davi , si le Dijeramos una D tendriamos como resultado D
   Ahora bien si tenemos este caso
@@ -370,7 +371,7 @@ int main() {
 
   Copiara 
   - [subir](#Índice)
-  ### [ft_atoi](ft_atoi.c)      
+  ### [ft_atoi](src/ft_atoi.c)      
   - ✔️ OK  
   - **Explicación:** Convertir un char a un entero .
   Para esta funcion estoy usando 2 funciones extras de mi libreria vease [ft_isspace](ft_isspace.c) y [ft_isdigit](ft_isdigit.c) queda mas legible y entendible. Para esta funcion hay que tener en cuenta que la función isspace verifica si un carácter es un espacio en blanco según la configuración de espacio en blanco en la localización actual. Esto incluye caracteres como el espacio (' '), tabulación horizontal ('\t'), retorno de carro ('\r'), avance de página ('\f'), nueva línea ('\n') ya que la funcion original que estamos imitando asi lo hace

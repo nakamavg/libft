@@ -7,17 +7,20 @@ int main() {
 	//4horas por este MALDITO CABRON AL NO INICIALIZARLAS LES QUEDA
 	//MIERDA
 	//SE ARREGLA CON ESTO
-    ft_bzero(dst)
+    ft_bzero(dst1,20);
+    ft_bzero(dst2,20);
+    
+
     
 
 
 
     // Uso de la versión estándar de memccpy
-    char *puntero1 = memccpy(dst1, src, 'd',ft_strlen(dst1));
+    char *puntero1 = memccpy(dst1, src, ' ',20);
     printf("Después de memccpy: %s\n", dst1);
 
     // Uso de mi versión de ft_memccpy
-    char *puntero2 = ft_memccpy(dst2, src, 'd',ft_strlen(dst2));
+    char *puntero2 = ft_memccpy(dst2, src, ' ',20);
     printf("Después de ft_memccpy: %s\n", dst2);
 
     // Imprimir el puntero devuelto por ambas funciones
