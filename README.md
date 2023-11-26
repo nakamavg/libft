@@ -23,6 +23,7 @@
     - [ft\_memcpy](#ft_memcpy)
     - [ft\_memccpy](#ft_memccpy)
     - [ft\_atoi](#ft_atoi)
+    - [ft\_memchar](#ft_memchar)
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
   - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca-1)
@@ -48,7 +49,7 @@
   - ACTUALIZACION GRACIAS A LA AYUDA DE 
   - [Ivan Varela](https://github.com/ivarela77?tab=stars)
   - [subir](#índice)
-### [ft_strlen](ft_strlen.c)  
+### [ft_strlen](src/ft_strlen.c)  
   - ✔️ OK  
   - **Explicación:** La función `strlen` en C devuelve un valor de tipo `size_t` porque está diseñada para representar tamaños de objetos en bytes. `size_t` es un tipo entero sin signo que puede almacenar el tamaño máximo posible de un objeto en la plataforma en la que se está ejecutando el programa. El uso de `size_t` como tipo de retorno de `strlen` permite que la función pueda manejar correctamente tamaños grandes de cadenas de caracteres. Además, al ser un tipo sin signo, `size_t` puede representar tamaños de objetos mayores que los tipos de datos con signo, ya que no se desperdicia un bit para representar el signo.
   - [subir](#índice)
@@ -270,13 +271,13 @@ nakama@MacBook-Air-de-David libft %
   - **Explicación:** Como en la funcion general devolvemos un puntero a el dst declaramos dentro de la funcion nuestros unsigned char para seguir con la buena practica de comparar byte a byte gracias a hacerle un casting a los string que nos entran por cabecera.
   El objetivo de funciones como memcpy es proporcionar una operación de copia de memoria que pueda trabajar con datos de cualquier tipo. Al devolver un puntero de tipo void *, la función permite al usuario decidir el tipo de datos que se están copiando y cómo interpretar los resultados.
   - [subir](#Índice)
-  ### [ft_memccpy](ft_memccpy.c)      
+  ### [ft_memccpy](src/ft_memccpy.c)      
   - ✔️ OK  
   - **Explicación:** Así que, la función memccpy es como la versión intensiva de copiar y pegar en el universo de la programación. Imagina que quieres mover un cacho de datos (como una cadena) desde un lugar hasta otro, pero con un toque emocionante. Aquí está el truco: esta función no solo copia, también tiene un "detector de parada". ¿Qué significa eso? Sencillo, copia hasta que encuentra el carácter que le digas que pare (c) o hasta que haya copiado cierta cantidad de bytes (n). Y si topa con ese carácter especial, te dice dónde se quedó la diversión. Pero si no lo encuentra, te devuelve un "NULL" como diciendo "no lo hallé, amigo". Es como un copiar y pegar con actitud, siempre deteniéndose en lo que ocurra primero: llegar al límite de bytes o encontrar ese carácter particular.
   - Atencion Warning 
     - Recordar que si no encuentra el char que le pases el puntero que devuelve va a ser nulo
     - Pero va a copiar toda la cadena de texto que le pases hasta los n bytes
-    - [ver main  de testeo con mi funcion](miftmccpy.c)
+    - [ver main  de testeo con mi funcion](src/miftmccpy.c)
 ```c
 
 #include "libft.h"
@@ -425,6 +426,126 @@ int	ft_atoi(const char *str)
 ```
   - [subir](#Índice)
 
+### [ft_memchar](src/ft_memchr.c) 
+  - ✔️ OK  
+  - **Explicación:** funcion que busca un caracter c (convertido a usgined char) en el string
+  - y devuelve un puntero si lo encuentra a su posicion si no lo encuentra devuelve null
+```c
+  #include "libft.h"
+
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+    // Declaración de variables
+	const unsigned char *pointer; // Puntero para tratar la memoria como bytes individuales
+	size_t index; // Índice para iterar a través de la memoria
+
+    // Inicialización de variables
+	index = 0; // Inicialización del índice a 0
+	pointer = (unsigned char *)(s); // Conversión del puntero de entrada a unsigned char
+
+    // Bucle while para recorrer los primeros n bytes de memoria
+	while (n > index)
+	{
+        // Comprobación de igualdad entre el byte actual y el valor de c
+		if (pointer[index] == (unsigned char)(c))
+			return ((void *)&pointer[index]); // Devolución del puntero al byte encontrado
+		index++; // Incremento del índice para pasar al siguiente byte
+	}
+
+    // Si no se encontró ninguna coincidencia, se devuelve NULL
+	return (NULL);
+}
+```
+- [subir](#Índice)
+  
+  - Testeo basico donde comparo las direcciones apuntas por mi funcion 
+  - y la original. 
+```c
+int	main(void)
+{	
+    char str[] = "hola";
+    // Creo punteros con ft_memchr de todos los caracteres
+    char *puntero_ft = ft_memchr(str, 'h', 5);
+    char *puntero2_ft = ft_memchr(str, 'o', 5);
+    char *puntero3_ft = ft_memchr(str, 'l', 5);
+    char *puntero4_ft = ft_memchr(str, 'a', 5);
+
+    // Imprimo las direcciones para ver si son continuas (ft_memchr)
+    printf("\n ft_memchr - Dirección apuntada por el primero %p", (void *)puntero_ft);
+    printf("\n ft_memchr - Dirección apuntada por el segundo %p", (void *)puntero2_ft);
+    printf("\n ft_memchr - Dirección apuntada por el tercero %p", (void *)puntero3_ft);
+    printf("\n ft_memchr - Dirección apuntada por el cuarto %p", (void *)puntero4_ft);
+
+    // Creo punteros con memchr de todos los caracteres
+    char *puntero_std = memchr(str, 'h', 5);
+    char *puntero2_std = memchr(str, 'o', 5);
+    char *puntero3_std = memchr(str, 'l', 5);
+    char *puntero4_std = memchr(str, 'a', 5);
+
+    // Imprimo las direcciones para ver si son continuas (memchr)
+    printf("\n memchr   - Dirección apuntada por el primero %p", (void *)puntero_std);
+    printf("\n memchr   - Dirección apuntada por el segundo %p", (void *)puntero2_std);
+    printf("\n memchr   - Dirección apuntada por el tercero %p", (void *)puntero3_std);
+    printf("\n memchr   - Dirección apuntada por el cuarto %p", (void *)puntero4_std);
+}
+
+  ```
+  - [subir](#Índice)
+  - Caso adicional: Carácter no encontrado
+
+```c
+    char *noEncontrado_ft = ft_memchr(str, 'z', 5);
+    char *noEncontrado_std = memchr(str, 'z', 5);
+    printf("\n ft_memchr - Dirección apuntada por 'noEncontrado': %p", (void *)noEncontrado_ft);
+    printf("\n memchr   - Dirección apuntada por 'noEncontrado': %p", (void *)noEncontrado_std);
+```
+  - Caso adicional: Búsqueda en una cadena vacía
+```c
+    char strVacia[] = "";
+    char *enCadenaVacia_ft = ft_memchr(strVacia, 'a', 0);
+    char *enCadenaVacia_std = memchr(strVacia, 'a', 0);
+    printf("\n ft_memchr - Dirección apuntada por 'enCadenaVacia': %p", (void *)enCadenaVacia_ft);
+    printf("\n memchr   - Dirección apuntada por 'enCadenaVacia': %p", (void *)enCadenaVacia_std);
+```
+- [subir](#Índice)
+- 
+  - Caso adicional: Búsqueda en una cadena corta
+  
+  ```c
+    char strCorta[] = "abc";
+    char *enCadenaCorta_ft = ft_memchr(strCorta, 'b', 2);
+    char *enCadenaCorta_std = memchr(strCorta, 'b', 2);
+    printf("\n ft_memchr - Dirección apuntada por 'enCadenaCorta': %p", (void *)enCadenaCorta_ft);
+    printf("\n memchr   - Dirección apuntada por 'enCadenaCorta': %p", (void *)enCadenaCorta_std);
+ 
+  ```
+  - [subir](#Índice)
+  -     // Caso adicional: Búsqueda de un carácter nulo
+  ```c
+    char *nuloEncontrado_ft = ft_memchr(str, '\0', 5);
+    char *nuloEncontrado_std = memchr(str, '\0', 5);
+    printf("\n ft_memchr - Dirección apuntada por 'nuloEncontrado': %p", (void *)nuloEncontrado_ft);
+    printf("\n memchr   - Dirección apuntada por 'nuloEncontrado': %p", (void *)nuloEncontrado_std);
+    ```
+    - [subir](#Índice)
+  - Caso adicional: Búsqueda en una cadena más larga
+    ```c
+    char strLarga[] = "This is a longer string.";
+    char *enCadenaLarga_ft = ft_memchr(strLarga, 'r', 20);
+    char *enCadenaLarga_std = memchr(strLarga, 'r', 20);
+    printf("\n ft_memchr - Dirección apuntada por 'enCadenaLarga': %p", (void *)enCadenaLarga_ft);
+    printf("\n memchr   - Dirección apuntada por 'enCadenaLarga': %p", (void *)enCadenaLarga_std);
+  ```
+  - [subir](#Índice)
+    - Caso adicional: Búsqueda en una cadena completa
+    ```c
+    char strCompleta[] = "fullstring";
+    char *enCadenaCompleta_ft = ft_memchr(strCompleta, 'g', 11);
+    char *enCadenaCompleta_std = memchr(strCompleta, 'g', 11);
+    printf("\n ft_memchr - Dirección apuntada por 'enCadenaCompleta': %p", (void *)enCadenaCompleta_ft);
+    printf("\n memchr   - Dirección apuntada por 'enCadenaCompleta': %p", (void *)enCadenaCompleta_std);
+  ```
+- [subir](#Índice)
 
 ## Compilación de la Biblioteca
 
@@ -499,9 +620,6 @@ int	ft_atoi(const char *str)
 | Función      | Estado      | Explicación/Código |
 |--------------|-------------|---------------------|
 | ft_calloc    | ❌ Pendiente | -                   |
-| ft_memccpy   | ❌ Pendiente | -                   |
-| ft_memchr    | ❌ Pendiente | -                   |
-| ft_memcmp    | ❌ Pendiente | -                   |
 | ft_memmove   | ❌ Pendiente | -                   |
 | ft_strcat    | ❌ Pendiente | -                   |
 | ft_strchr    | ❌ Pendiente | -                   |

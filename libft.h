@@ -6,7 +6,7 @@
 /*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 04:41:06 by nakama            #+#    #+#             */
-/*   Updated: 2023/11/24 05:37:05 by dgomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/26 01:59:54 by dgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_iscntrl(int c);//Copia de Ctype.h caracteres control
 int		ft_atoi(const char *str);
 int		ft_isspace(int c);
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
-
+void	*ft_memchr(const void *s, int c, size_t n);
 //Cabeceras de las funciones que queremos incluir en la lib
 
 #endif//Declaracion final de la libreria, "cerrarla"
