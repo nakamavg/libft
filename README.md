@@ -758,7 +758,7 @@ size_t		ft_strlcat(char *dst, const char *src, size_t size)
 	size_t		src_len;
 	size_t		index;
 
-	//si no existe size devolvemos el tamaño de dst 
+	//si no existe size devolvemos el tamaño de src 
 	if (!size)
 		return (ft_strlen(src) + size);
 	//asignamos a src temporal el tamaño de src 
