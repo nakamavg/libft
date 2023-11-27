@@ -3,40 +3,34 @@
 ## Índice
 - [CREAR UNA Libreria en C](#crear-una-libreria-en-c)
   - [Índice](#índice)
-  - [Funciones Resueltas](#funciones-resueltas)
-    - [libft.h](#libfth)
-    - [Makefile](#makefile)
-    - [ft\_strlen](#ft_strlen)
-    - [ft\_putchar\_fd](#ft_putchar_fd)
-    - [ft\_isascii](#ft_isascii)
-    - [ft\_isdigit](#ft_isdigit)
-    - [ft\_isalpha](#ft_isalpha)
-    - [ft\_putstr\_fd](#ft_putstr_fd)
-    - [ft\_isprint](#ft_isprint)
-    - [ft\_isalnum](#ft_isalnum)
-    - [ft\_tolower](#ft_tolower)
-    - [ft\_toupper](#ft_toupper)
-    - [ft\_strlcpy](#ft_strlcpy)
-    - [ft\_bzero](#ft_bzero)
-    - [ft\_strncmp](#ft_strncmp)
-    - [ft\_memset](#ft_memset)
-    - [ft\_memcpy](#ft_memcpy)
-    - [ft\_memccpy](#ft_memccpy)
-    - [ft\_atoi](#ft_atoi)
-    - [ft\_memchar](#ft_memchar)
-- [Implementación de la función `memmove` en C](#implementación-de-la-función-memmove-en-c)
-- [Verificación de Superposición de Regiones de Memoria](#verificación-de-superposición-de-regiones-de-memoria)
+     - [libft.h](#libfth)
+     [Makefile](#makefile)
+    - [`ft\_strlen`](#ft_strlen)
+    [`ft\_putchar\_fd`](#ft_putchar_fd)
+     [`ft\_isascii`](#ft_isascii)
+    [`ft\_isdigit`](#ft_isdigit)
+     [`ft\_isalpha`](#ft_isalpha)
+     [`ft\_putstr\_fd`](#ft_putstr_fd)
+    [`ft\_isprint`](#ft_isprint)
+    [`ft\_isalnum`](#ft_isalnum)
+     [`ft\_tolower`](#ft_tolower)
+    [`ft\_toupper`](#ft_toupper)
+    [`ft\_strlcpy`](#ft_strlcpy)
+     [`ft\_bzero`](#ft_bzero)
+     [`ft\_strncmp`](#ft_strncmp)
+    [`ft\_memset`](#ft_memset)
+     [`ft\_memcpy`](#ft_memcpy)
+     [`ft\_memccpy`](#ft_memccpy)
+     [`ft\_atoi`](#ft_atoi)
+     [`ft\_memchar`](#ft_memchar)
+    - [`ft_memmove`](#ft_memmove)
+      - [Implementación de la función `memmove` en C](#implementación-de-la-función-memmove-en-c)
+      - [Verificación de Superposición de Regiones de Memoria](#verificación-de-superposición-de-regiones-de-memoria)
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
   - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca-1)
   - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa-1)
   - [Funciones Pendientes](#funciones-pendientes)
-## Funciones Resueltas
-  - SI clickas en enlace te llevara al codigo de mi funcion
-  - Muchas veces me veras explicar funciones o mains en este readme y tambien habra enlace
-  - a algunos de mis mains, recomiendo que juegues con ellos mejores los mios
-  - Y si encuentras algo mal explicado o algo que no estes de acuerdo avisame porfavor.
-  - Estamos todos aprendiendo.
 ### [libft.h](libft.h)
   - ✔️ OK  
   - **Explicación:** 
@@ -548,7 +542,7 @@ int	main(void)
     printf("\n memchr   - Dirección apuntada por 'enCadenaCompleta': %p", (void *)enCadenaCompleta_std);
   ```
 - [subir](#Índice)
-  ### [ft_memmove](src/ft_memmove.c) 
+# [ft_memmove](src/ft_memmove.c) 
   - ✔️ OK  
   - **Explicación:** 
     - Hace lo mismo que memcopy lo malo es que memcopy puede tener compartamiento indefinido cuando
