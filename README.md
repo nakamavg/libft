@@ -4,27 +4,12 @@
 - [CREAR UNA Libreria en C](#crear-una-libreria-en-c)
   - [Índice](#índice)
   - [Funciones Resueltas](#funciones-resueltas)
-    - [libft.h](#libfth)
-    - [Makefile](#makefile)
-    - [ft\_strlen](#ft_strlen)
-    - [ft\_putchar\_fd](#ft_putchar_fd)
-    - [ft\_isascii](#ft_isascii)
-    - [ft\_isdigit](#ft_isdigit)
-    - [ft\_isalpha](#ft_isalpha)
-    - [ft\_putstr\_fd](#ft_putstr_fd)
-    - [ft\_isprint](#ft_isprint)
-    - [ft\_isalnum](#ft_isalnum)
-    - [ft\_tolower](#ft_tolower)
-    - [ft\_toupper](#ft_toupper)
-    - [ft\_strlcpy](#ft_strlcpy)
-    - [ft\_bzero](#ft_bzero)
-    - [ft\_strncmp](#ft_strncmp)
-    - [ft\_memset](#ft_memset)
-    - [ft\_memcpy](#ft_memcpy)
-    - [ft\_memccpy](#ft_memccpy)
-    - [ft\_atoi](#ft_atoi)
-    - [ft\_memchar](#ft_memchar)
-    - [ft\_memmove](#ft_memmove)
+    | [libft.h](#libfth) | [Makefile](#makefile) | [ft_strlen](#ft_strlen) | [ft_putchar_fd](#ft_putchar_fd) | [ft_isascii](#ft_isascii) |
+|------------------|----------------------|------------------------|-------------------------------|--------------------------|
+| [ft_isdigit](#ft_isdigit) | [ft_isalpha](#ft_isalpha) | [ft_putstr_fd](#ft_putstr_fd) | [ft_isprint](#ft_isprint) | [ft_isalnum](#ft_isalnum) |
+| [ft_tolower](#ft_tolower) | [ft_toupper](#ft_toupper) | [ft_strlcpy](#ft_strlcpy) | [ft_bzero](#ft_bzero) | [ft_strncmp](#ft_strncmp) |
+| [ft_memset](#ft_memset) | [ft_memcpy](#ft_memcpy) | [ft_memccpy](#ft_memccpy) | [ft_atoi](#ft_atoi) | [ft_memchar](#ft_memchar) |
+| [ft_memmove](#ft_memmove) | | | | |
 
 - [Verificación de Superposición de Regiones de Memoria](#verificación-de-superposición-de-regiones-de-memoria)
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
