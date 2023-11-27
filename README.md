@@ -726,7 +726,6 @@ si no se cumple lo anterior escribimos hacia delante como en un memcopy
 | Función      | Estado      | Explicación/Código |
 |--------------|-------------|---------------------|
 | ft_calloc    | ❌ Pendiente | -                   |
-| ft_memmove   | ❌ Pendiente | -                   |
 | ft_strcat    | ❌ Pendiente | -                   |
 | ft_strchr    | ❌ Pendiente | -                   |
 | ft_strdup    | ❌ Pendiente | -                   |
