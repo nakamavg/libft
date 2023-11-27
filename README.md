@@ -5,24 +5,27 @@
   - [Índice](#índice)
     - [libft.h](#libfth)
     - [Makefile](#makefile)
-    - [ft\_strlen](#ft_strlen)
-    - [ft\_putchar\_fd](#ft_putchar_fd)
-    - [ft\_isascii](#ft_isascii)
-    - [ft\_isdigit](#ft_isdigit)
-    - [ft\_isalpha](#ft_isalpha)
-    - [ft\_putstr\_fd](#ft_putstr_fd)
-    - [ft\_isprint](#ft_isprint)
-    - [ft\_isalnum](#ft_isalnum)
-    - [ft\_tolower](#ft_tolower)
-    - [ft\_toupper](#ft_toupper)
-    - [ft\_strlcpy](#ft_strlcpy)
-    - [ft\_bzero](#ft_bzero)
-    - [ft\_strncmp](#ft_strncmp)
-    - [ft\_memset](#ft_memset)
-    - [ft\_memcpy](#ft_memcpy)
-    - [ft\_memccpy](#ft_memccpy)
-    - [ft\_atoi](#ft_atoi)
-    - [ft\_memchar](#ft_memchar)
+  - [`ft_strlen`](#ft_strlen)
+    [`ft_putchar\_fd`](#ft_putchar_fd)
+     [`ft_isascii`](#ft_isascii)
+    [`ft_isdigit`](#ft_isdigit)
+     [`ft_isalpha`](#ft_isalpha)
+     [`ft_putstr_fd`](#ft_putstr_fd)
+    [`ft_isprint`](#ft_isprint)
+    [`ft_isalnum`](#ft_isalnum)
+     [`ft_tolower`](#ft_tolower)
+    [`ft_toupper`](#ft_toupper)
+    [`ft_strlcpy`](#ft_strlcpy)
+     [`ft_bzero`](#ft_bzero)
+     [`ft_strncmp`](#ft_strncmp)
+    [`ft_memset`](#ft_memset)
+     [`ft_memcpy`](#ft_memcpy)
+     [`ft_memccpy`](#ft_memccpy)
+     [`ft_atoi`](#ft_atoi)
+     [`ft_memchar`](#ft_memchar)
+    - [`ft_memmove`](#ft_memmove)
+    [`ft_memcmp`](#ft_memcmp)
+    - [`ft_strchr` y `ft_strrchr`](#ft_strchr-y-ft_strrchr)
 - [Implementación de la función `memmove` en C](#implementación-de-la-función-memmove-en-c)
 - [Verificación de Superposición de Regiones de Memoria](#verificación-de-superposición-de-regiones-de-memoria)
   - [ft\_memcpm](#ft_memcpm)
@@ -666,6 +669,84 @@ si no se cumple lo anterior escribimos hacia delante como en un memcopy
     - Devuelve la diferencia si los 2 strings son diferentes o 0 si son iguales
   - [subir](#Índice)
 
+## [ft_strchr](src/ft_strchr.c) y [ft_strrchr](src/ft_strrchr.c)
+  - ✔️ OK  
+  - **Explicacion** Son dos funciones muy parecidas.
+    - La diferencia es que `ft_strchr` devuelve un puntero al primer char que igual al que le metamos para comparar y `ft_strrchr` lo devuelve al ultimo 
+    que sea igual en la cadena
+ - ```c
+    char	*ft_strchr(const char *s, int c)
+    {
+  	// Declarar variables
+	  char	*str1;
+	  char	c_copy;
+	  size_t	index;
+
+	  // Inicializar variables
+	index = 0;
+  	str1 = (char *)s;
+  	c_copy = c;
+
+	// Bucle para buscar el carácter en la cadena
+	  while (str1[index] != c_copy)
+	  {
+		// Si llegamos al final de la cadena 
+    //y no encontramos el carácter, devolvemos NULL
+		if (str1[index] == '\0')
+			return (NULL);
+		
+		// Incrementar el índice para avanzar en la cadena
+		index++;
+	  }
+
+	// Devolver un puntero al lugar donde se encontró el carácter
+	  return ((char *)str1 + index);
+    }  
+    ```
+    - Como queremos encontrar el primero vamos de principio a final  sin embargo en `ft_strrchar` queremos encontrar el char y ademas que sea el ultimo que haya en la cadena 
+```c
+char	*strrchr(const char *s, int c)
+{
+	char	*str1;
+	size_t	len;
+	
+	// Inicializamos str1 antes de usarla
+	str1 = (char *)s;
+
+	// Como esta vez el man nos dice que devuelve un puntero
+	// a la última vez que aparece el char, empezamos desde el final 
+	len = ft_strlen(str1);
+
+	// Este if sirve para evitar entrar en el while y ahorrarnos
+	// tiempo de ejecución del programa en estes casos
+	// Comprobamos si es nulo para no tenernos que meter en el bucle
+	if (c == '\0')
+		return (str1 + len);
+
+	// Condicional que devuelve el puntero del string si lo encuentra 
+	// en la primera posición  	
+	if (str1[0] == (char)c)
+		return(str1);
+
+	// Bucle donde buscamos el carácter de manera invertida 
+	while (len != 0)
+	{
+		// Condicional que chequea el carácter y devuelve su posición
+		if (str1[len] == (char)c)
+			return (str1 + len);
+		len--;
+	}
+  //en el caso que sea la primera psicion donde se encuentre el charh no hacemos ninguna operacion y devolvemos el puntero original
+  if (s[0] == (char)c)
+		return (str1);
+	// Devuelve nulo si no lo encuentra  
+	return (0);
+}
+
+  ```
+  - [subir](#Índice)
+
+
 ## Compilación de la Biblioteca
 
 1. **Makefile:**
@@ -740,11 +821,9 @@ si no se cumple lo anterior escribimos hacia delante como en un memcopy
 |--------------|-------------|---------------------|
 | ft_calloc    | ❌ Pendiente | -                   |
 | ft_strcat    | ❌ Pendiente | -                   |
-| ft_strchr    | ❌ Pendiente | -                   |
 | ft_strdup    | ❌ Pendiente | -                   |
 | ft_strlcat   | ❌ Pendiente | -                   |
 | ft_strncat   | ❌ Pendiente | -                   |
 | ft_strnstr   | ❌ Pendiente | -                   |
-| ft_strrchr   | ❌ Pendiente | -                   |
 | ft_strstr    | ❌ Pendiente | -                   |
 - [subir](#Índice)

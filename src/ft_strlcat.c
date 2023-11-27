@@ -1,0 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/27 19:32:28 by dgomez-m          #+#    #+#             */
+/*   Updated: 2023/11/27 19:42:49 by dgomez-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../libft.h"
+
+size_t		ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t		dst_len;
+	size_t		src_len;
+	size_t		index;
+
+	//si no existe size devolvemos el tamaño de dst 
+	if (!size)
+		return (ft_strlen(dst) + size);
+	//asignamos a src temporal el tamaño de src 
+	src_len = ft_strlen(src);
+	index = 0;
+	//recorremos destino para sacar el largo de destinoy guardo en dst_len
+	while (dst[index] && index < size)
+		index++;
+	dst_len = index;
+	//recorremos source gracias a aque tenemos un contador menos otro con
+	while (src[index - dst_len] && index < size - 1)
+	{
+		dst[index] = src[index - dst_len];
+		index++;
+	}
+	if (dst_len < size)
+		dst[index] = '\0';
+	return (dst_len + src_len);
+}
