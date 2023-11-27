@@ -587,12 +587,12 @@ Resultado con memcpy y solapamiento: WorldtXm
 Resultado con memmove y solapamiento: World
 nakama@MacBook-Air-de-David libft % 
 ```
+
 Vemos que con memcopy hay basura, eso se debe a que no esta inicializado todo el string y hace un comportamiento indefinido
 Este caso me ocurrio para el propio test de la funcion memcopy que no conseguia que fueran iguales los strings
 le meti un bzero a los dos stings y se arreglo el problema.
 
-```c
-```markdown
+
 # Implementación de la función `memmove` en C
 
 La siguiente implementación en C es una versión de la función `memmove`, utilizada para copiar bloques de memoria de una dirección de origen a una dirección de destino. La particularidad de `memmove` es que maneja correctamente regiones de memoria que se superponen, a diferencia de `memcpy`. En este código, se verifica si las regiones de origen y destino se superponen, y en caso afirmativo, se utiliza un enfoque de copia hacia atrás para garantizar que los datos no se corrompan durante la copia.
@@ -612,8 +612,9 @@ void *ft_memmove(void *dst, const void *src, size_t len)
     dst_temp = (unsigned char *)dst;
     src_temp = (unsigned char *)src;
 ````
--vayamos a la chicha del asunto hay dos caminos a tomar
--Si las regiones de origen y destino se superponen se utiliza una copia hacia atrás para evitar corrupción de datos. que pasa que necesitamos comprobar tambien que la direccion  destino 
+- vayamos a la chicha del asunto hay dos caminos a tomar
+- Si las regiones de origen y destino se superponen se utiliza una copia hacia atrás para evitar corrupción de datos.
+Lo que sucede es  que necesitamos comprobar tambien que la direccion  destino 
 sea menor que la direccion final de la region de origen src_temp+len
 # Verificación de Superposición de Regiones de Memoria
 
