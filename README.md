@@ -737,12 +737,50 @@ char	*strrchr(const char *s, int c)
 		len--;
 	}
   //en el caso que sea la primera psicion donde se encuentre el charh no hacemos ninguna operacion y devolvemos el puntero original
+  //ESTE IF esta aqui por la sencilla razon que debemos 
+  //pasar por todos los anteriores.
   if (s[0] == (char)c)
 		return (str1);
 	// Devuelve nulo si no lo encuentra  
 	return (0);
 }
 
+  ```
+  - [subir](#Índice)
+
+  ## [ft_strlcat](src/ft_strlcat.c) 
+  - ✔️ OK  
+  - **Explicacion** concatena dos strings y nos devuelve la nueva longitud
+```c
+size_t		ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t		dst_len;
+	size_t		src_len;
+	size_t		index;
+
+	//si no existe size devolvemos el tamaño de dst 
+	if (!size)
+		return (ft_strlen(src) + size);
+	//asignamos a src temporal el tamaño de src 
+	src_len = ft_strlen(src);
+	index = 0;
+	//recorremos destino para sacar el largo de destino y guardo en dst_len
+	while (dst[index] && index < size)
+		index++;
+	dst_len = index;
+	//recorremos source gracias a aque la resta de los dos contadores 
+	while (src[index - dst_len] && index < size - 1)
+	{
+		//entonces desde el final de origen empezamos a escribrir el inicio de source
+		dst[index] = src[index - dst_len];
+		index++;
+	}
+	if (dst_len < size)
+		//aseguramos el valor nulo al finalizar la copia
+		dst[index] = '\0';
+	//devolvemos como nos pide  el man la nueva longitud del string 
+	return (dst_len + src_len);
+}
   ```
   - [subir](#Índice)
 
