@@ -24,6 +24,8 @@
     - [ft\_memccpy](#ft_memccpy)
     - [ft\_atoi](#ft_atoi)
     - [ft\_memchar](#ft_memchar)
+    - [ft\_memmove](#ft_memmove)
+
 - [Verificación de Superposición de Regiones de Memoria](#verificación-de-superposición-de-regiones-de-memoria)
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
   - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
