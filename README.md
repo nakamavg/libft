@@ -24,6 +24,7 @@
      [`ft\_atoi`](#ft_atoi)
      [`ft\_memchar`](#ft_memchar)
     - [`ft_memmove`](#ft_memmove)
+    [`ft_memcmp`](#ft_memcmp)
       - [Implementación de la función `memmove` en C](#implementación-de-la-función-memmove-en-c)
       - [Verificación de Superposición de Regiones de Memoria](#verificación-de-superposición-de-regiones-de-memoria)
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
@@ -660,6 +661,11 @@ si no se cumple lo anterior escribimos hacia delante como en un memcopy
 ```
 
 - [subir](#Índice)
+## [ft_memcpm](src/ft_memcmp) 
+  - ✔️ OK  
+  - **Explicacion** 
+    - Devuelve la diferencia si los 2 strings son diferentes o 0 si son iguales
+  - [subir](#Índice)
 
 ## Compilación de la Biblioteca
 
