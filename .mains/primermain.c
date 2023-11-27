@@ -1,4 +1,4 @@
-#include "libft.h" #include < stdio.h>
+#include "../libft.h" 
 
 // primera parte por mucho que tenga putchar necesito putstring
 // vamos a por ello dejamos este main para el recuerdo

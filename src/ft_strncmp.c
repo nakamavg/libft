@@ -6,11 +6,11 @@
 /*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 17:58:10 by dgomez-m          #+#    #+#             */
-/*   Updated: 2023/11/24 20:31:46 by dgomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/26 04:49:22 by dgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

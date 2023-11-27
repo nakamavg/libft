@@ -6,11 +6,11 @@
 /*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 23:49:45 by dgomez-m          #+#    #+#             */
-/*   Updated: 2023/11/24 21:03:25 by dgomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/26 04:52:20 by dgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t destsize)
 {

@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 00:39:02 by dgomez-m          #+#    #+#             */
-/*   Updated: 2023/11/26 04:52:20 by dgomez-m         ###   ########.fr       */
+/*   Created: 2023/11/26 03:28:11 by dgomez-m          #+#    #+#             */
+/*   Updated: 2023/11/27 04:49:34 by dgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	const unsigned char	*source;
-	unsigned char		*destiny;
-	unsigned char		character;
-	size_t				i;
+	unsigned char	*dst_temp;
+	unsigned char	*src_temp;
 
-	i = 0;
-	source = (const unsigned char *)src;
-	destiny = (unsigned char *)dst;
-	character = (unsigned char)c;
-	while (i < n)
-	{
-		destiny[i] = source[i];
-		if (source[i] == character)
-		{
-			return ((void *)dst + i + 1);
-		}
-		i++;
-	}
-	return (NULL);
+	if (!dst && !src)
+		return (NULL);
+	dst_temp = (unsigned char *)dst;
+	src_temp = (unsigned char *)src;
+	if (src_temp < dst_temp && dst_temp < src_temp + len)
+		while (len--)
+			dst_temp[len] = src_temp[len];
+	else
+		while (len--)
+			*(dst_temp++) = *(src_temp++);
+	return (dst);
 }

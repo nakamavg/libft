@@ -6,11 +6,11 @@
 /*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 00:39:02 by dgomez-m          #+#    #+#             */
-/*   Updated: 2023/11/24 20:31:46 by dgomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/26 04:52:20 by dgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {

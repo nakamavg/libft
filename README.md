@@ -24,6 +24,7 @@
     - [ft\_memccpy](#ft_memccpy)
     - [ft\_atoi](#ft_atoi)
     - [ft\_memchar](#ft_memchar)
+- [Verificación de Superposición de Regiones de Memoria](#verificación-de-superposición-de-regiones-de-memoria)
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
   - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca-1)
@@ -96,7 +97,7 @@
   explicacion linea a  linea;
 
 ```c
-#include "libft.h"
+#include "../libft.h"
 ERROR DEPURADO GRACIAS A LOS TESTERS DE WARMACHINE 
 TE QUIERO WARMACHINE
 // size_t ft_strlcpy(char *dst, const char *src, size_t destsize)
@@ -137,7 +138,7 @@ TE QUIERO WARMACHINE
 //     return (count);
 // }
 ```c
-#include "libft.h"
+#include "../libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t destsize)
 {
@@ -280,7 +281,7 @@ nakama@MacBook-Air-de-David libft %
     - [ver main  de testeo con mi funcion](src/miftmccpy.c)
 ```c
 
-#include "libft.h"
+#include "../libft.h"
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
   //inicializacion de variables
@@ -381,7 +382,7 @@ int main() {
   
 ```c
 
-#include "libft.h"
+#include "../libft.h"
 int	ft_atoi(const char *str)
 {
 	int			count;
@@ -431,7 +432,7 @@ int	ft_atoi(const char *str)
   - **Explicación:** funcion que busca un caracter c (convertido a usgined char) en el string
   - y devuelve un puntero si lo encuentra a su posicion si no lo encuentra devuelve null
 ```c
-  #include "libft.h"
+  #include "../libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
@@ -546,6 +547,123 @@ int	main(void)
     printf("\n memchr   - Dirección apuntada por 'enCadenaCompleta': %p", (void *)enCadenaCompleta_std);
   ```
 - [subir](#Índice)
+  ### [ft_memmove](src/ft_memmove.c) 
+  - ✔️ OK  
+  - **Explicación:** 
+    - Hace lo mismo que memcopy lo malo es que memcopy puede tener compartamiento indefinido cuando
+      dos areas de memoria se sopan como en este ejemplo 
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[] = "Hello, World!";
+    char str_copy_memcpy[20];
+    char str_copy_memmove[20];
+
+    // Uso de memcpy con solapamiento
+    memcpy(str_copy_memcpy, str + 7, 5);
+    printf("Resultado con memcpy y solapamiento: %s\n", str_copy_memcpy);
+
+    // Uso de memmove con solapamiento
+    memmove(str_copy_memmove, str + 7, 5);
+    printf("Resultado con memmove y solapamiento: %s\n", str_copy_memmove);
+
+    return 0;
+}
+```
+el resultado al ejecutarlo 
+```bash
+nakama@MacBook-Air-de-David libft % ./a.out
+Resultado con memcpy y solapamiento: World��m
+Resultado con memmove y solapamiento: World
+nakama@MacBook-Air-de-David libft % ./a.out
+Resultado con memcpy y solapamiento: Worldtk
+Resultado con memmove y solapamiento: World
+nakama@MacBook-Air-de-David libft % ./a.out
+Resultado con memcpy y solapamiento: WorldtXm
+Resultado con memmove y solapamiento: World
+nakama@MacBook-Air-de-David libft % 
+```
+Vemos que con memcopy hay basura, eso se debe a que no esta inicializado todo el string y hace un comportamiento indefinido
+Este caso me ocurrio para el propio test de la funcion memcopy que no conseguia que fueran iguales los strings
+le meti un bzero a los dos stings y se arreglo el problema.
+
+```c
+```markdown
+# Implementación de la función `memmove` en C
+
+La siguiente implementación en C es una versión de la función `memmove`, utilizada para copiar bloques de memoria de una dirección de origen a una dirección de destino. La particularidad de `memmove` es que maneja correctamente regiones de memoria que se superponen, a diferencia de `memcpy`. En este código, se verifica si las regiones de origen y destino se superponen, y en caso afirmativo, se utiliza un enfoque de copia hacia atrás para garantizar que los datos no se corrompan durante la copia.
+
+```c
+void *ft_memmove(void *dst, const void *src, size_t len)
+{
+    // Declaración de variables
+    unsigned char *dst_temp;
+    unsigned char *src_temp;
+
+    // Verificación de punteros nulos
+    if (!dst && !src)
+        return (NULL);
+
+    // Inicialización de punteros a nivel de byte
+    dst_temp = (unsigned char *)dst;
+    src_temp = (unsigned char *)src;
+````
+-vayamos a la chicha del asunto hay dos caminos a tomar
+-Si las regiones de origen y destino se superponen se utiliza una copia hacia atrás para evitar corrupción de datos. que pasa que necesitamos comprobar tambien que la direccion  destino 
+sea menor que la direccion final de la region de origen src_temp+len
+# Verificación de Superposición de Regiones de Memoria
+
+Supongamos que tenemos dos regiones de memoria:
+
+```plaintext
+|---------------------|  <!-- Región de memoria A (src_temp) -->
+|        Datos A       |
+|---------------------|
+
+|---------------------|  <!-- Región de memoria B (dst_temp) -->
+|        Datos B       |
+|---------------------|
+```
+Si no comprobamos dst_temp < src_end y las regiones de memoria se superponen, podríamos tener un problema:
+```plaintext
+|---------------------|  <!-- Región de memoria A (src_temp) -->
+|        Datos A      |
+|---------------------|
+
+|-----------------------------|  <!-- Región de memoria B (dst_temp) -->
+|        Datos B (parcial)    |
+|-----------------------------|
+```
+En este caso el problema es que la region de memoria de dst_temp se ha extendido mas haya de la de origen
+y estariamos escribiendo en otras direcciones de memoria que no pertenecen a la memoria original
+lo solventamos gracias a este condicional
+```c
+    // Verificación de superposición de regiones de memoria
+    if (src_temp < dst_temp && dst_temp < src_temp + len)
+    {
+        // Copia hacia atrás en caso de superposición
+        while (len--)
+            dst_temp[len] = src_temp[len];
+    }
+````
+si no se cumple lo anterior escribimos hacia delante como en un memcopy
+```c
+    else
+    {
+        // Copia hacia adelante si no hay superposición
+        while (len--)
+            *(dst_temp++) = *(src_temp++);
+    }
+
+    // Devolución del puntero de destino
+    return (dst);
+}
+
+```
+
+- [subir](#Índice)
 
 ## Compilación de la Biblioteca
 
@@ -566,7 +684,7 @@ int	main(void)
    - Asegúrate de incluir el archivo de encabezado `libft.h` en tus programas que utilicen funciones de la librería. Esto se hace con la siguiente línea al inicio de tu archivo fuente:
 
      ```c
-     #include "libft.h"     ```
+     #include "../libft.h"     ```
 
 2. **Enlazado con la Biblioteca:**
    - Al compilar tu programa, asegúrate de enlazarlo con la biblioteca. Esto se hace generalmente añadiendo `-L.` y `-lft` al comando de compilación. Aquí hay un ejemplo:
@@ -600,7 +718,7 @@ int	main(void)
    - Asegúrate de incluir el archivo de encabezado `libft.h` en tus programas que utilicen funciones de la librería. Esto se hace con la siguiente línea al inicio de tu archivo fuente:
 
      ```c
-     #include "libft.h"     ```
+     #include "../libft.h"     ```
 
 2. **Enlazado con la Biblioteca:**
    - Al compilar tu programa, asegúrate de enlazarlo con la biblioteca. Esto se hace generalmente añadiendo `-L.` y `-lft` al comando de compilación. Aquí hay un ejemplo:
