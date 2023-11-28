@@ -6,7 +6,7 @@
 /*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 04:41:06 by nakama            #+#    #+#             */
-/*   Updated: 2023/11/28 12:44:54 by dgomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:58:34 by dgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+void	*ft_calloc(size_t count, size_t size);
+
 
 #endif//Declaracion final de la libreria, "cerrarla"

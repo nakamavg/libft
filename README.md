@@ -30,6 +30,8 @@
 - [Verificación de Superposición de Regiones de Memoria](#verificación-de-superposición-de-regiones-de-memoria)
   - [`ft_memcpm`](#ft_memcpm)
   [`ft_strnstr`](#ft_strnstr)
+    [`ft_calloc`](#ft_calloc)
+
 
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
   - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
@@ -820,6 +822,29 @@ size_t		ft_strlcat(char *dst, const char *src, size_t size)
   ```
   - [subir](#Índice)
 
+### [ft_calloc](src/ft_calloc.c) 
+  - ✔️ OK  
+  - **Explicación:** La función `calloc` en C se utiliza para asignar dinámicamente un bloque de memoria contigua para un número especificado de elementos, cada uno de un tamaño determinado. A diferencia de `malloc`, `calloc` inicializa la memoria asignada a cero
+```c
+void	*ft_calloc(size_t count, size_t size)
+{
+    // Declarar un puntero para almacenar la memoria asignada
+    void	*pointer;
+    
+    // Utilizar malloc para asignar un bloque de memoria del tamaño requerido
+    pointer = malloc(size * count);
+    
+    // Verificar si la asignación de memoria fue exitosa
+    if (!pointer)
+        return (NULL);
+
+    // Inicializar la memoria asignada a cero 
+    ft_bzero(pointer, size * count);
+
+    // Devolver el puntero a la memoria asignada e inicializada
+    return(pointer);
+}
+```
 
 ## Compilación de la Biblioteca
 
