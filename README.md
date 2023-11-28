@@ -5,12 +5,11 @@
   - [Índice](#índice)
     - [libft.h](#libfth)
     - [Makefile](#makefile)
+    ### Primera Parte Obligatoria
   - [`ft_strlen`](#ft_strlen)
-    [`ft_putchar_fd`](#ft_putchar_fd)
      [`ft_isascii`](#ft_isascii)
     [`ft_isdigit`](#ft_isdigit)
      [`ft_isalpha`](#ft_isalpha)
-     [`ft_putstr_fd`](#ft_putstr_fd)
     [`ft_isprint`](#ft_isprint)
     [`ft_isalnum`](#ft_isalnum)
      [`ft_tolower`](#ft_tolower)
@@ -32,6 +31,11 @@
   [`ft_strnstr`](#ft_strnstr)
     [`ft_calloc`](#ft_calloc)
     [`ft_strdup`](#ft_strdup)
+    ### Segunda Parte Obligatoria
+    - [`ft_substr`](#ft_substr);
+    [`ft_putstr_fd`](#ft_putstr_fd)
+    [`ft_putchar_fd`](#ft_putchar_fd)
+    
 
 
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
@@ -39,6 +43,7 @@
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca-1)
   - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa-1)
   - [Funciones Pendientes](#funciones-pendientes)
+
 ### [libft.h](libft.h)
   - ✔️ OK  
   - **Explicación:** 
@@ -900,6 +905,68 @@ char	*ft_strdup(const char *s1)
 ```
 - [subir](#Índice)
 
+### [ft_substr](src/ft_substr.c)      
+  - ✔️ OK  
+  - **Explicación:** Reserva memoria para la cadena de caracteres que va a devolver, y que proviene de la
+cadena pasada como argumento.Esta nueva cadena comienza en el índice ’start’ y tiene como tamaño máximo ’len’
+  DESGRANANDO LOS PROBLEMAS
+  - ESTO funciona 
+ ```C
+
+#include "../libft.h"
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*newstring;
+  //comprobando que exita s 
+		if (!s)
+			return (NULL);
+  //haciendo un callor de la longitud mas uno para cada char
+	newstring = (char *)ft_calloc((len + 1), sizeof(char));
+  //comprobar que se ha podido asignar la memoria
+	if (!newstring)
+		return (NULL);
+    //copiar en en el nuevo string usando para ello la direccion de donde empieza s + start
+	ft_memcpy(newstring, (void *)(s + start), len);
+  //ASIGNAL LA NULL TERMINACION
+	newstring[len] = '\0';
+	return (newstring);
+}
+  ```
+  En principio este codidgo funciona pero nos da errores  hay que mejorarlo
+
+
+```c
+char *ft_substr(char const *s, unsigned int start, size_t len)
+{
+    char *newstring;
+    size_t slen;
+
+    slen = ft_strlen(s);
+    if (!s)
+        return (NULL);
+    if (start >= slen)
+        return (ft_strdup(""));
+```
+`if (start >= slen) return (ft_strdup(""));`: Esta línea verifica si el índice de inicio `start` es mayor o igual que la longitud de la cadena de entrada `s`. Si es así, la función devuelve una cadena vacía llamando a `ft_strdup("")`. Esto maneja el caso en el que el índice de inicio está fuera de los límites
+```c
+    if (len > slen - start)
+        len = slen - start;
+```
+-comprobamos si la longitud es mayor que la cadena que vamos a copiar desde start,si la longitud se pasa entonces le decimos que sea la que verdaremente nos queda ya que si no lo hacemos tendremos pobrlemas;
+```c
+    newstring = (char *)ft_calloc((len + 1), sizeof(char));
+    if (!newstring)
+        return (NULL);
+    ft_memcpy(newstring, (void *)(s + start), len);
+    newstring[len] = '\0';
+    return (newstring);
+      }
+  ```
+resto del codigo
+
+
+  - [subir](#índice)
 ## Compilación de la Biblioteca
 
 1. **Makefile:**

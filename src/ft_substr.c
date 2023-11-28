@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 15:04:14 by dgomez-m          #+#    #+#             */
-/*   Updated: 2023/11/28 20:47:22 by dgomez-m         ###   ########.fr       */
+/*   Created: 2023/11/28 18:15:21 by dgomez-m          #+#    #+#             */
+/*   Updated: 2023/11/28 21:30:02 by dgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	len;
-	char	*str;
+	char	*newstring;
+	size_t	slen;
 
-	len = ft_strlen(s1) + 1;
-	str = ft_calloc(sizeof(char), len);
-	if (!str)
+	slen = ft_strlen(s);
+	if (!s)
 		return (NULL);
-	ft_memcpy(str, s1, len);
-	return (str);
+	if (start >= slen)
+		return (ft_strdup(""));
+	if (len > slen - start)
+		len = slen - start;
+	newstring = (char *)ft_calloc((len + 1), sizeof(char));
+	if (!newstring)
+		return (NULL);
+	ft_memcpy(newstring, (void *)(s + start), len);
+	newstring[len] = '\0';
+	return (newstring);
 }
