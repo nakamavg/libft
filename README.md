@@ -31,6 +31,7 @@
   - [`ft_memcpm`](#ft_memcpm)
   [`ft_strnstr`](#ft_strnstr)
     [`ft_calloc`](#ft_calloc)
+    [`ft_strdup`](#ft_strdup)
 
 
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
