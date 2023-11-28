@@ -6,7 +6,7 @@
     - [libft.h](#libfth)
     - [Makefile](#makefile)
   - [`ft_strlen`](#ft_strlen)
-    [`ft_putchar\_fd`](#ft_putchar_fd)
+    [`ft_putchar_fd`](#ft_putchar_fd)
      [`ft_isascii`](#ft_isascii)
     [`ft_isdigit`](#ft_isdigit)
      [`ft_isalpha`](#ft_isalpha)
@@ -28,7 +28,9 @@
     - [`ft_strchr` y `ft_strrchr`](#ft_strchr-y-ft_strrchr)
 - [Implementación de la función `memmove` en C](#implementación-de-la-función-memmove-en-c)
 - [Verificación de Superposición de Regiones de Memoria](#verificación-de-superposición-de-regiones-de-memoria)
-  - [ft\_memcpm](#ft_memcpm)
+  - [`ft_memcpm`](#ft_memcpm)
+  [`ft_strnstr`](#ft_strnstr)
+
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
   - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca-1)
@@ -783,6 +785,40 @@ size_t		ft_strlcat(char *dst, const char *src, size_t size)
 }
   ```
   - [subir](#Índice)
+  ## [ft_strnstr](src/ft_strnstr.c) 
+  - ✔️ OK  
+  - **Explicacion** busca una aguja en un pajar el string que pasemos por aguja sera buscado en el pajar y comprobara el largo de la aguja que le pasemos por n
+```c
+  char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+ {
+	size_t 	index;
+	int		len_search;
+	char	*str;
+	char	*search_string;
+	//COMPROBACION DE AGUJA VACIA
+	if (*needle == '\0')
+		return((char *)haystack);
+	//ASIGNACION 
+	str = (char *)haystack;
+	search_string = (char *)needle;
+	index = 0;
+	//longitud de la palabra a buscar
+	len_search = ft_strlen(search_string);
+	while(str[index] != '\0' && (index + len_search ) <= len)
+	{
+		//CONDICIONAL que comprueba si son iguales con la funcion ft_strncmp
+		//index por index; y gracias a la longit de la palabra recorre justamente
+		// lo que tendria que ser igual 
+		if (ft_strncmp((str + index), search_string,len_search) == 0)
+		{
+			return (str + index);
+		}
+		index++;
+	}
+	return(NULL);
+ }
+  ```
+  - [subir](#Índice)
 
 
 ## Compilación de la Biblioteca
@@ -852,16 +888,5 @@ size_t		ft_strlcat(char *dst, const char *src, size_t size)
 3. **Ejecución del Programa:**
    - Ahora puedes ejecutar tu programa como de costumbre.
 - [subir](#Índice)
-## Funciones Pendientes
 
-
-| Función      | Estado      | Explicación/Código |
-|--------------|-------------|---------------------|
-| ft_calloc    | ❌ Pendiente | -                   |
-| ft_strcat    | ❌ Pendiente | -                   |
-| ft_strdup    | ❌ Pendiente | -                   |
-| ft_strlcat   | ❌ Pendiente | -                   |
-| ft_strncat   | ❌ Pendiente | -                   |
-| ft_strnstr   | ❌ Pendiente | -                   |
-| ft_strstr    | ❌ Pendiente | -                   |
 - [subir](#Índice)
