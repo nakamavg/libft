@@ -845,39 +845,58 @@ void	*ft_calloc(size_t count, size_t size)
     return(pointer);
 }
 ```
+  ## [ft_strdup](src/ft_strdup.c) 
+  - ✔️ OK  
+  - **Explicacion** 
+      - Esta funcion se encarga de comprobar que hay suficiente memoria para el string que le pasas.
+      - Despues copia el string en el puntero que ha reservado la memoria 
+      - si hubo suficiente memoria te devuelve un puntero si no pudo hacerlo te devuelve nulo
+      - Problemas durante la funcion , Explicacion de errores
+```c
+char *ft_strdup(const char *s1)
+{
+    size_t len;
+    char *str;
+    
+    len = 0;
+    // Calcula la longitud de la cadena s1
+    while(s1[len])
+        len++;
 
-## Compilación de la Biblioteca
+    //Mi primer error
+    // Error: Deberia asignar espacio para len + 1 caracteres para incluir el final del string
+    str = ft_calloc(sizeof(char), len);
+    if (!str)
+        return (NULL);
 
-1. **Makefile:**
-   - Asegúrate de tener un Makefile bien configurado. Este archivo se encargará de compilar tus archivos fuente y generar la biblioteca estática.
+    //MI segundo error 
+    //Error: Deberia copiar len + 1 bytes para incluir el caracter de final del string
+    ft_memcpy(str, s1, len);
 
-     ```make
-     libft.a: ${OBJS}
-        ar rc $@ $^
-     ```
+    return str;
+}
+```
+Como no pasaba el len  + 1 no tenia espacio para el caracter nulo
+-Codigo arreglado :
+```c
+#include "../libft.h"
 
-2. **Comandos de Compilación:**
-   - Ejecuta el comando `make` en tu terminal. Esto debería compilar tus archivos fuente y generar la biblioteca `libft.a`. Si hay errores, asegúrate de revisar los mensajes del compilador y ajusta el código según sea necesario.
 
-## Uso de la Biblioteca en un Programa
+char	*ft_strdup(const char *s1)
+{
+	size_t	len;
+	char	*str;
+  //mejora aplicando ft_strlen al string recibido + 1 nos devuelve la longitud mas un espacio
+  //para el caracter null;
+	len = ft_strlen(s1) + 1;
+	str = ft_calloc(sizeof(char),len);
+	if (!str)
+		return (NULL);
+	ft_memcpy(str, s1, len);
+	return (str);
+}
 
-1. **Inclusión de Encabezados:**
-   - Asegúrate de incluir el archivo de encabezado `libft.h` en tus programas que utilicen funciones de la librería. Esto se hace con la siguiente línea al inicio de tu archivo fuente:
-
-     ```c
-     #include "../libft.h"     ```
-
-2. **Enlazado con la Biblioteca:**
-   - Al compilar tu programa, asegúrate de enlazarlo con la biblioteca. Esto se hace generalmente añadiendo `-L.` y `-lft` al comando de compilación. Aquí hay un ejemplo:
-
-     ```bash
-     gcc -o mi_programa mi_programa.c -L. -lft
-     ```
-
-     Esto indica al compilador buscar la biblioteca en el directorio actual (`-L.`) y enlazarla (`-lft`).
-
-3. **Ejecución del Programa:**
-   - Ahora puedes ejecutar tu programa como de costumbre.
+```
 - [subir](#Índice)
 
 ## Compilación de la Biblioteca
@@ -912,6 +931,4 @@ void	*ft_calloc(size_t count, size_t size)
 
 3. **Ejecución del Programa:**
    - Ahora puedes ejecutar tu programa como de costumbre.
-- [subir](#Índice)
-
 - [subir](#Índice)
