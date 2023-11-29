@@ -971,9 +971,9 @@ resto del codigo
   ### [ft_strjoin](src/ft_strjoin.c) 
   - ✔️ OK  
   - **Explicación:** UNE DOS STRING USANDO  MALLOC
-    ```c
+```c
     char	*ft_strjoin(char const *s1, char const *s2)
-  {
+    {
     //declaramos longitudes y un puntero 
     size_t	lens1;
     size_t	lens2;
@@ -996,7 +996,7 @@ resto del codigo
     ft_memcpy(newstring + lens1, s2, lens2);
     return (newstring);
   }
-    ```
+  ```
   - [subir](#Índice)
 ## Compilación de la Biblioteca
 
