@@ -5,8 +5,8 @@
 
 int	main(void)
 {
-	char c[] = "\n127";
-	printf("%d\n", ft_isprint(c[0]));
-	printf("%d\n", isprint(c[0]));
+	char c = '2';
+	printf("%d\n", ft_isprint(c));
+	printf("%d\n", isprint(c));
 	return (0);
 }
