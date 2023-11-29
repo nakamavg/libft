@@ -32,9 +32,10 @@
     [`ft_calloc`](#ft_calloc)
     [`ft_strdup`](#ft_strdup)
     ### Segunda Parte Obligatoria
-    - [`ft_substr`](#ft_substr);
+    - [`ft_substr`](#ft_substr)
     [`ft_putstr_fd`](#ft_putstr_fd)
     [`ft_putchar_fd`](#ft_putchar_fd)
+    [`ft_strjoin`](#ft_strjoin)
     
 
 
@@ -967,6 +968,36 @@ resto del codigo
 
 
   - [subir](#índice)
+  ### [ft_strjoin](src/ft_strjoin.c) 
+  - ✔️ OK  
+  - **Explicación:** UNE DOS STRING USANDO  MALLOC
+    ```c
+    char	*ft_strjoin(char const *s1, char const *s2)
+  {
+    //declaramos longitudes y un puntero 
+    size_t	lens1;
+    size_t	lens2;
+    size_t	lensdst;
+    char	*newstring;
+    //obtenemos longitudes de cada una y las sumamos con un + 1 para el caracter de null
+    lens1 = ft_strlen(s1);
+    lens2 = ft_strlen(s2);
+    lensdst = lens1 + lens2 + 1;
+    //comprobamos que existan una de las dos 
+    if (!s1 || !s2)
+      return (NULL);
+      //reservamos y asignamos memoria  con calloc un sizeof de char, y longitud final 
+    newstring = ft_calloc(sizeof(char), lensdst);
+    //comprobamos que haya salido bien
+    if (!newstring)
+      return (NULL);
+    //Hago memcopy del primero y al segundo le sumo la longitud del primero para concatenarlas justamente una en el final de la otra
+    ft_memcpy(newstring, s1, lens1);
+    ft_memcpy(newstring + lens1, s2, lens2);
+    return (newstring);
+  }
+    ```
+  - [subir](#Índice)
 ## Compilación de la Biblioteca
 
 1. **Makefile:**

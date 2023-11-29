@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 int main() {
-    char string[] = "";
-    char *substr_result = ft_substr(string , 10 , 10);
+    char string[] = "01234";
+    char *substr_result = ft_substr(string, 10 , 10);
 
     // Imprimir los caracteres de la cadena resultante y detectar el carácter nulo ('\0')
     for (int i = 0; substr_result[i] != '\0'; ++i) {
