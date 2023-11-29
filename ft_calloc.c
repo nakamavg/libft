@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iscntrl.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
+/*   By: ivarela77 <ivarela77@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 13:51:09 by dgomez-m          #+#    #+#             */
-/*   Updated: 2023/11/26 04:52:20 by dgomez-m         ###   ########.fr       */
+/*   Created: 2023/11/28 14:42:33 by dgomez-m          #+#    #+#             */
+/*   Updated: 2023/11/29 22:00:17 by ivarela77        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
-int	ft_iscntrl(int c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	return ((c >= 0 && c <= 31) || c == 127);
+	void	*pointer;
+
+	pointer = malloc(size * count);
+	if (!pointer)
+		return (NULL);
+	ft_bzero(pointer, size * count);
+	return (pointer);
 }

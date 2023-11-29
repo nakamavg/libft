@@ -1,60 +1,42 @@
-#  Defininimos el nombre del archivo de biblioteca que se va a crear
-NAME = libft.a
+# --VARIABLES--
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror
+LIBC		= ar -rcs
+NAME		= libft.a
+RM			= rm -rf
+SRC			= ft_isalpha.c ft_isdigit.c ft_isalnum.c \
+	ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c \
+	ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c \
+	ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c \
+	ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c \
+	ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c \
+	ft_substr.c ft_strjoin.c \
+	ft_putchar_fd.c \
+	ft_putstr_fd.c ft_isspace.c
+#BONUS_SRC	= ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
+	ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c \
+	ft_lstiter_bonus.c ft_lstmap_bonus.c
+SRC_OBJ		= $(SRC:.c=.o)
+#BONUS_OBJ 	= $(BONUS_SRC:.c=.o)
 
-#  Definimos el directorio donde se encuentran los archivos fuente
-SRC_DIR = src
+# --RULES--
+%.o: %.c
+	$(CC) $(CFLAGS) -c $^ -o $@
 
-# Definimos el directorio donde se crearán los archivos objeto
-OBJ_DIR = obj
-
-# Con la función wildcard buscamos todos los archivos con la extensión .c en el directorio src
-SRCS = $(wildcard $(SRC_DIR)/*.c)
-
-# Definimos la lista de todos los archivos objeto con la función patsbust que sirve para reemplazar el prefijo 
-# $(SRC_DIR) por el sufijo $(SRC_DIR) en cada archivo fuente de la lista SRCS, Por lo tanto los archivos fuente
-# en el directorio src se convertiran en archivos objeto en el directorio obj
-OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
-
-# Definimos el directorio donde se encuentran los archivos de encabezado
-INCLUDES = ./
-
-# Definimos el compilador
-CC = gcc
-
-# Definimos las opciones para el compilado
-# -Wall y -Wextra -> Para activar las advertencias de compilacion
-# -Werror -> Convierte las advertencias en errores
-# -I$(INCLUDES) -> indica al compilador que busque los archivos de encabezado en el directorio especificado
-# -c -> Compila los archivos fuente en archivos objeto
-CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES) -c
-
-# Definimos el comando para eliminar los archivos objeto, el modificador -f se utiliza para eliminar los archivos
-# recursivamente
-RM = rm -f
-
-# Crea el directorio obj en caso de que no exista
-$(shell mkdir -p $(OBJ_DIR))
-
-# Compilamos cada archivo fuente (.c) en un archivo objeto (.o)
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# Creamos el archivo de biblioteca libft.a 
-$(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
-
-# Compilamos todos los archivos fuente y creamos el archivo de biblioteca libft.a
 all: $(NAME)
 
-# Comando para eliminar todos los archivos objeto
-clean:
-	$(RM) $(OBJS)
+$(NAME): $(SRC_OBJ)
+	$(LIBC) $(NAME) $(SRC_OBJ)
 
-# Comando para eliminar el archivo de biblioteca libft.a	
+#bonus: $(BONUS_OBJ) $(SRC_OBJ)
+#	$(LIBC) $(NAME) $(BONUS_OBJ) $(SRC_OBJ)
+
+clean:
+	$(RM) *.o
+
 fclean: clean
 	$(RM) $(NAME)
 
-# Comando que vuelve a compilar todos los archivos fuente y crea el archivo de biblioteca libft.a
-re: fclean all
-.PHONY: all clean fclean re
+re: fclean $(NAME)
+
+.PHONY: all clean fclean re bonus

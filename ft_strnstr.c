@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
+/*   By: ivarela77 <ivarela77@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 00:03:00 by dgomez-m          #+#    #+#             */
-/*   Updated: 2023/11/28 12:44:24 by dgomez-m         ###   ########.fr       */
+/*   Updated: 2023/11/29 22:02:34 by ivarela77        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 /*BUSCAR LA AGUJA EN UN PAJAR
 	POR EJEMPLO ft_strstr("gerardo david ivan  jesus mikel","david")
