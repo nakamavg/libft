@@ -36,6 +36,7 @@
     [`ft_putstr_fd`](#ft_putstr_fd)
     [`ft_putchar_fd`](#ft_putchar_fd)
     [`ft_strjoin`](#ft_strjoin)
+    [`ft_strtrim`](#ft_strtrim)
     
 
 
@@ -683,7 +684,7 @@ si no se cumple lo anterior escribimos hacia delante como en un memcopy
 ## [ft_strchr](src/ft_strchr.c) y [ft_strrchr](src/ft_strrchr.c)
   - ✔️ OK  
   - **Explicacion** Son dos funciones muy parecidas.
-    - La diferencia es que `ft_strchr` devuelve un puntero al primer char que igual al que le metamos para comparar y `ft_strrchr` lo devuelve al ultimo 
+    - La diferencia es que `ft_strchr` devuelve un puntero al primer char igual al que le metamos para comparar y `ft_strrchr` lo devuelve al ultimo 
     que sea igual en la cadena
  - ```c
     char	*ft_strchr(const char *s, int c)
@@ -997,6 +998,58 @@ resto del codigo
     return (newstring);
   }
   ```
+  ### [ft_strtrim](/src/ft_strtrim.c)      
+  - ✔️ OK  
+  - **Explicación:** Esta funcion solo quita del principio y del final  nunca por el medio es decir si tenemos 
+    - un string "que hola que tal que"
+    - y por set tenemos "que"
+    - nos devolverlia hola que tal
+```c
+
+      #include "libft.h"
+
+      char	*ft_strtrim(char const *s1, char const *set)
+      {
+        char *newstring;
+        size_t start;
+        size_t lens1;
+
+        if (!s1 || !set)
+          return (NULL);
+        start = 0;
+        // EL FINAL MENOS EL CHAR DE CARACTER NULO
+        lens1 = ft_strlen(s1) - 1;
+  ```
+   - Mientras s1 exista y ft_strchr devuelva un puntero diferente de NULL,
+    incrementamos start para encontrar el primer carácter que no está en el conjunto.
+
+  ```c
+        while (s1[start] && ft_strchr(set, s1[start]))
+          start++;
+        // CONDICIONAL QUE COMPRUEBA SI ESTAMOS EN EL FINAL SI ES ASI LA CADENA ESTABA EN LLENA DE LOS CARACTERES NO DESEADOS
+        // Y DEVUELVE UN STRING VACIO
+        if (start == lens1 + 1)
+          return (ft_strdup(""));
+          	// Si start es igual a lens1 + 1, significa que toda la cadena consistía en caracteres no deseados y devolvemos una cadena vacía.
+        	// En este bucle while, retrocedemos lens1 hasta el último carácter que no está en el conjunto set.
+        while (ft_strchr(set, s1[lens1]))
+          lens1--;
+  ```
+    -  La nueva cadena se obtiene utilizando ft_substr, que crea una nueva cadena con calloc.
+          Los parámetros son la cadena original, la posición desde la cual comenzar la nueva cadena (start),
+          y la longitud de la nueva cadena, que se calcula restando start de lens1 y sumando 1 para incluir el carácter nulo.
+          Por ejemplo, en un trim de "que hola que tal que" con el conjunto "que":
+          start vale 4, lens1 vale 17.
+          La longitud de la nueva cadena sería 17 - 4 + 1 = 14 (13 caracteres de contenido más el carácter nulo).
+  ```c
+       
+        newstring = ft_substr(s1, start, lens1 - start + 1);
+        if (!newstring)
+          return (NULL);
+        return (newstring);
+      }
+   ```
+  
   - [subir](#Índice)
 ## Compilación de la Biblioteca
 
