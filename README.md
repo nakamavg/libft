@@ -28,7 +28,7 @@
 - [Implementación de la función `memmove` en C](#implementación-de-la-función-memmove-en-c)
 - [Verificación de Superposición de Regiones de Memoria](#verificación-de-superposición-de-regiones-de-memoria)
   - [`ft_memcpm`](#ft_memcpm)
-  [`ft_strnstr`](#ft_strnstr)
+    [`ft_strnstr`](#ft_strnstr)
     [`ft_calloc`](#ft_calloc)
     [`ft_strdup`](#ft_strdup)
     ### Segunda Parte Obligatoria
@@ -39,6 +39,8 @@
     [`ft_strtrim`](#ft_strtrim)
     [`ft_strsplit`](#ft_strsplit)
     [`ft_itoa`](#ft_itoa)
+    [`ft_strmapi`](#ft_strmapi)
+    [`ft_striteri`](#ft_striteri)
 
     
 
@@ -1253,7 +1255,67 @@ resto del codigo
     }
 
     ```
+### [ft_strmapi](src/ft_strmapi.c) 
+  - ✔️ OK  
+  - **Explicación:** aplica una funcion a un string 
+  ```c
+  char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+  {
+    size_t	len;
+    char	*result;
+    size_t	index;
 
+    index = 0;
+    if (s == NULL || f == NULL)
+      return (NULL);
+    //objtener longitud asignar tamao
+    len = ft_strlen(s);
+    result = (char *)malloc((len + 1) * sizeof(char));
+    if (result == NULL)
+      return (NULL);
+      //bucle que recorre toda la cadena de entrada aplicando la funcion de entrada y guardando
+      //el resultado en el nuevo string
+    while (index < len)
+    {
+      result[index] = f((unsigned int)index, s[index]);
+      index++;
+    }
+    result[len] = '\0';
+    return (result);
+  }
+  ```
+  - [subir](#Índice)
+  ### [ft_striteri](src/ft_striteri.c)      
+  - ✔️ OK  
+  - **Explicación:**
+  Esta función itera sobre cada carácter de la cadena s y llama a la función f proporcionándole el índice del carácter y la dirección del carácter. La función f puede modificar el carácter directamente si es necesario.
+  ```c
+  void ft_striteri(char *s, void (*f)(unsigned int, char *))
+  {
+      // Se declara la variable 'index' para representar el índice de la cadena.
+      unsigned int index;
+
+      // Se inicializa el índice en 0.
+      index = 0;
+
+      // Se verifica si tanto la cadena 's' como la función 'f' son no nulas.
+      if (s && f)
+      {
+          // Se inicia un bucle while que recorre la cadena hasta encontrar el carácter nulo ('\0').
+          while (s[index] != '\0')
+          {
+              // En cada iteración, se llama a la función 'f' con el índice y la dirección del carácter actual.
+              f(index, &s[index]);
+
+              // Se incrementa el índice para pasar al siguiente carácter en la siguiente iteración.
+              index++;
+          }
+      }
+      // Si 's' o 'f' es nulo, la función no realiza ninguna acción.
+  }
+  ```
+  - [subir](#índice)
+ 
 
 ## Compilación de la Biblioteca
 
