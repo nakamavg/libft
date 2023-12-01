@@ -38,7 +38,7 @@
     [`ft_strjoin`](#ft_strjoin)
     [`ft_strtrim`](#ft_strtrim)
     [`ft_strsplit`](#ft_strsplit)
-    [`ft_strsplit`](#ft_itoa)
+    [`ft_itoa`](#ft_itoa)
 
     
 
