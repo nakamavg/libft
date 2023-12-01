@@ -37,6 +37,8 @@
     [`ft_putchar_fd`](#ft_putchar_fd)
     [`ft_strjoin`](#ft_strjoin)
     [`ft_strtrim`](#ft_strtrim)
+    [`ft_strsplit`](#ft_strsplit)
+
     
 
 
@@ -1051,6 +1053,126 @@ resto del codigo
    ```
   
   - [subir](#Índice)
+  ### [ft_strsplit](src/ft_split.c)      
+  - ✔️ OK  
+  - **Explicación:** Esta explicacion estara dividida en 5 funciones
+  - `ft_getnumberstrings`
+    [adjunto foto](/resources/ft_getnumberstrings.jpg)
+```c
+    static int	ft_getnumberstrings(char const *s, char c)
+  {
+    int	index;
+    int	numberstr;
+
+    index = 0;
+    numberstr = 0;
+    /// Ejemplo con HOLA HOLA HOLA y H
+    while (s[index])
+    {
+      // 1 iteracion H es igual a H?
+      // 2 interacion index vale 5  h es igual a h?
+      while (s[index] == c)
+        index++;
+      //corremos el index o es diferente de h
+      // y diferente de terminacion nulla
+      if (s[index] != c && s[index] != '\0')
+      {
+        numberstr++; // contador de palabra vale 1 ahora
+          //2 iteracion ahora vale el contador de palabras vale 2
+      }
+      // este while es donde se hace la magia y saltamos todos los caracteres que no sean iguales
+      // gracias a ello vamos siempre a empezar por el char delimitador
+      // es decir que si tenemos un hola hola hola y una h como delimitador en cuyanto llegue aqui va a saltar directamente a la siguiente h
+      while (s[index] != c && s[index] != '\0')
+        index++;
+      // ahora el while entero empezaria otra vez desde la h
+      // 
+    }
+    return (numberstr);
+  }
+```
+  `ft_getlenstrings`
+  ```c
+  static int	getlenstrings(char const *s, char c)
+  { 
+	int	index;
+	int	lenstr;
+
+	index = 0;
+	lenstr = 0;
+	while (s[index] && s[index] == c)
+		index++;
+  //Magia para calcular la longitud de cada subcadena
+	while (s[index] && s[index] != c)
+	{
+		lenstr++;
+		index++;
+	}
+	return (lenstr);  
+  }
+  ```
+  `ft__free`: Sacar fuera linea de codigo de limpiar memoria si ha fallado la asignacion al apuntero
+  ```c
+  
+  static void	ft_free(char **substrings, int index)
+{
+	while (index > 0)
+		free(substrings[--index]);
+	free(substrings);
+}
+  ```
+  `ft_get_substrings`: He tenido que sacar fuera parte de lo que hacia el split por que si no norminette no pasaba por lineas, al final nos queda mas facil de leer ft_split
+  ```c
+  static int	ft_get_substrings(char const *s, char c, char **substrings,
+		int num_str)
+{
+	int	index; // Índice para recorrer las subcadenas
+	int	len;   // Longitud de la subcadena actual
+
+	index = 0;
+	while (index < num_str)
+	{
+		while (*s == c) // Saltar caracteres delimitadores
+			s++;
+		len = ft_getlenstrings(s, c); // Obtener longitud de la subcadena actual
+		substrings[index] = ft_strndup(s, len); // Copiar la subcadena actual
+		if (!substrings[index])
+			return (0); // Devolver 0 en caso de error al duplicar la subcadena
+		s += len; // Mover el puntero s a la siguiente posición después de la subcadena
+		index++; // Mover al siguiente índice de subcadena
+	}
+	return (1); // Devolver 1 si se completó exitosamente la obtención de subcadenas
+}
+
+  ```
+  `ft_split`
+  ```c
+  char	**ft_split(char const *s, char c)
+{
+	int		num_str;      // Número de subcadenas
+	char	**substrings; // Arreglo de subcadenas
+
+	if (!s)
+		return (NULL); // Devolver NULL si la cadena de entrada es nula
+
+	num_str = ft_getnumberstrings(s, c); // Obtener el número de subcadenas
+	substrings = ft_calloc(num_str + 1, sizeof(char *)); // Asignar memoria para el arreglo de subcadenas
+	if (!substrings)
+		return (NULL); // Devolver NULL si falla la asignación de memoria
+
+	if (!ft_get_substrings(s, c, substrings, num_str))
+	{
+		ft_free(substrings, num_str); // Liberar memoria en caso de error
+		return (NULL);
+	}
+
+	substrings[num_str] = NULL; // Establecer el último elemento del arreglo como NULL
+	return (substrings); // Devolver el arreglo de subcadenas
+}
+
+  ```
+
+
 ## Compilación de la Biblioteca
 
 1. **Makefile:**

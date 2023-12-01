@@ -3,15 +3,15 @@
 
 int main(void)
 {
-    char str[] = "Hola que tal Hola";
-    char set[] = "hola";
+    char str[] = "BAD BUNNY BAD";
+    char set[] = "BAD";
     
     char *newstr = ft_strtrim(str, set);
     
     if (newstr)
     {
         printf("%s\n", newstr);
-        free(newstr); // Asegúrate de liberar la memoria asignada por ft_strtrim
+        free(newstr); 
     }
     else
     {

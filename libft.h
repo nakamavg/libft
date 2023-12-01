@@ -6,13 +6,13 @@
 /*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 04:41:06 by nakama            #+#    #+#             */
-/*   Updated: 2023/11/30 03:21:59 by dgomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/01 03:26:36 by dgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //inicalizacion de la libreria
 #ifndef LIBFT_H
-# define LIBFT_H //formra de llamar a la libreria externamente
+# define LIBFT_H //forma de llamar a la libreria externamente
 
 # include <unistd.h>
 //TODAS las llamadas a otras librerias
@@ -52,5 +52,8 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strndup(const char *s1, size_t n);
+char	**ft_split(char const *s, char c);
+
 
 #endif//Declaracion final de la libreria, "cerrarla"
