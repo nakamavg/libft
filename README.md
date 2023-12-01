@@ -1057,7 +1057,7 @@ resto del codigo
   - ✔️ OK  
   - **Explicación:** Esta explicacion estara dividida en 5 funciones
   - `ft_getnumberstrings`
-    [adjunto foto](/resources/ft_getnumberstrings.jpg)
+    [adjunto foto diagrama de flujo de contar las palabras](/resources/diagramacontarpalabras.jpg)
 ```c
     static int	ft_getnumberstrings(char const *s, char c)
   {
