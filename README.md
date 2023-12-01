@@ -38,6 +38,7 @@
     [`ft_strjoin`](#ft_strjoin)
     [`ft_strtrim`](#ft_strtrim)
     [`ft_strsplit`](#ft_strsplit)
+    [`ft_strsplit`](#ft_itoa)
 
     
 
@@ -1171,6 +1172,87 @@ resto del codigo
 }
 
   ```
+- [subir](#Índice)
+
+  ### [ft_itoa](src/ft_itoa.c)      
+  - ✔️ OK  
+  - **Explicación:** Esta explicacion estara dividida en 3 funciones
+  - [adjunto foto diagrama flujo](resources/Ilustración_sin_título%202.jpg)
+  `ft_itoa`
+  ```c
+  char	*ft_itoa(int n)
+  {
+    char	*result;
+    int		len;
+    //Controlar el numero negatimo maximo en este caso metemos
+    //directamente el numero como strin
+    if (n == -2147483648)
+      return (ft_strdup("-2147483648"));
+    //obtencion longitud del string 
+    len = get_int_len(n);
+    //asignar conn malloc el espacio gracias al len
+    result = (char *)malloc((len + 1) * sizeof(char));
+    if (result == NULL)
+      return (NULL);
+      //llamar a la chicha recursiva
+    recursive_itoa(n, result);
+    //asignar al final del strinng el caracter null termination
+    result[len] = '\0';
+    return (result);
+  }
+  ```
+  `ft_get_int_len`
+
+  ```c
+  static int	ft_get_int_len(int n)
+  {
+    int	len;
+      
+    if (n <= 0)
+      len = 1;
+    else
+      len = 0;
+    while (n != 0)
+    {
+      //mientras n sea diferente de 0 dividimos por 10 para obtener la longitud del string 123 123/10 12/10 1/10 longitud 3
+      n /= 10;
+      len++;
+    }
+    return (len);
+  }
+  ```
+  `ft_recursive_itoa`
+    ```c
+    static void	ft_recursive_itoa(int n, char *result)
+    {
+      int	len;
+
+      if (n < 0)
+      {
+        *result = '-';
+        //si el numero es negatimo guardamos el signo en el string
+        //y con el -delante de la n hacemos la recursividad
+        //al pasarle -n pasa el opuesto en este caso lo convierte en nnegativo y corremos la posicion del string
+        ft_recursive_itoa(-n, result + 1);
+      }
+      else if (n >= 10)
+      {
+        //se llamara de manera recursiva por ejemplo 123
+        //123/10  12   12/10 1
+        ft_recursive_itoa(n / 10, result);
+        len = ft_get_int_len(n / 10);
+        result += len;
+        //cualquier numero sumado a 0 da el numero hacemos el modulo de 10 para que nos de  el numero que queremos obtener ya que 
+        //123 % 10 = 3  12 %10 = 2  
+        *result = '0' + (n % 10);
+      }
+      else
+      {
+        *result = '0' + n;
+      }
+    }
+
+    ```
 
 
 ## Compilación de la Biblioteca
