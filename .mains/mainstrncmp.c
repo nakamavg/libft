@@ -15,17 +15,11 @@ int	main(void)
 	}
 	else if (result < 0)
 	{
-		printf("Las primeras
-			%zu letras de la cadena \"%s\" son menores que las de la cadena \"%s\".\n",
-			n, str1, str2);
+		printf("Las primeras %zu letras de la cadena \"%s\" son menores que las de la cadena \"%s\".\n",n, str1, str2);
 	}
 	else
 	{
-		printf("Las primeras
-					% zu letras de la cadena \"%s\" son mayores que las de la cadena \"%s\".\n",
-				n,
-				str1,
-				str2);
+		printf("Las primeras % zu letras de la cadena \"%s\" son mayores que las de la cadena \"%s\".\n",n,str1,str2);
 	}
 	return (0);
 }

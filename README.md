@@ -23,7 +23,7 @@
      [`ft_atoi`](#ft_atoi)
      [`ft_memchar`](#ft_memchar)
     - [`ft_memmove`](#ft_memmove)
-    [`ft_memcmp`](#ft_memcmp)
+    [`ft_memccmp`](#ft_memccmp)
     - [`ft_strchr` y `ft_strrchr`](#ft_strchr-y-ft_strrchr)
 - [Implementación de la función `memmove` en C](#implementación-de-la-función-memmove-en-c)
 - [Verificación de Superposición de Regiones de Memoria](#verificación-de-superposición-de-regiones-de-memoria)
@@ -686,10 +686,31 @@ si no se cumple lo anterior escribimos hacia delante como en un memcopy
 ```
 
 - [subir](#Índice)
-## [ft_memcpm](src/ft_memcmp) 
+## [ft_memccpm](src/ft_memcmp) 
   - ✔️ OK  
   - **Explicacion** 
     - Devuelve la diferencia si los 2 strings son diferentes o 0 si son iguales
+    ```c
+    #include "../libft.h"
+
+  int	ft_strncmp(const char *s1, const char *s2, size_t n)
+      {
+        size_t	x;
+
+        x = 0;
+        //comprobacion que n sea 0 
+        if (n == 0)
+          return (0);
+        //Aqui validamos  que s1 no sea null y validamos que s1 y s2 sean igual y asi no hace falta , validar que s2 no sea null
+        // por que si s2 es igual a s2 ya no va ser null s2
+        // para que validemos el tamaño que nos pide n validamos que x  sea menor que n menos 1 (por que n seria el null terminacion)
+        while (s1[x] && (x < n - 1) && s1[x] == s2[x])
+          x++;//Mientras sean iguales el index sube cada caracter hastas llegar hasta el final 
+          //como el man de la funcion original nos pide devolver unsigned char hacemos un casting en el return
+        return ((unsigned char)s1[x] - (unsigned char)s2[x]);
+      }
+
+    ```
   - [subir](#Índice)
 
 ## [ft_strchr](src/ft_strchr.c) y [ft_strrchr](src/ft_strrchr.c)
