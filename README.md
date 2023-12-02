@@ -43,7 +43,11 @@
     [`ft_itoa`](#ft_itoa)
     [`ft_strmapi`](#ft_strmapi)
     [`ft_striteri`](#ft_striteri)
-
+    ### Bonus Linked List
+   - [Linked list](#Declarar-una-linked-list)
+      [`ft_lstnew`](#ft_lstnew)
+      [`ft_lstadd_front`](#ft_lstadd_front)
+      [`ft_lstsize`](#ft_lstsize)
     
 
 
@@ -1363,6 +1367,109 @@ resto del codigo
   }
 
   ```
+  - [subir](#índice)
+  ### Declarar una linked list
+- Las listas enlazadas son estructuras de datos que permiten acceder a elementos almacenados en puntos de memoria no necesariamente contiguos. Cada elemento, llamado nodo, contiene información y un puntero que indica la ubicación del siguiente nodo en la secuencia. Esto proporciona flexibilidad para gestionar datos dinámicamente y facilita la inserción o eliminación de elementos en cualquier posición de la lista sin necesidad de reorganizar la memoria de manera contigua
+
+     ```c
+     // Definición de la estructura 't_list'
+      typedef struct s_list
+      {
+          void *content;          // Puntero genérico que puede apuntar a cualquier tipo de datos
+          struct s_list *next;    // Puntero al siguiente nodo en la lista
+      } t_list;
+
+    ``` 
+    ### Lo basico
+    - Declarar Nuevos elementos : Puedes hacerlo asi pero la gracia esta mas abajo
+    ```c
+      //Declarar nuevos elementos de la t_list  
+       t_list *root; //valor inicial o tlist
+       t_list *node_1
+       t_list *node_2
+       //Asignar memoria a los elementos de la t_list
+       root = malloc(sizeof(t_node));
+       node_1 = malloc(sizeof(t_node));
+       node_2= malloc(sizeof(t_node));
+   ```
+  - Asi mejor
+    ```c
+    /Declarar nuevos elementos de la t_list  
+       t_list *root; //valor inicial o tlist
+      
+       //Asignar memoria a los elementos de la t_list
+       root = malloc(sizeof(t_node));
+       root -> next = malloc(sizeof(t_node));
+       root -> next -> next = malloc(sizeof(t_node));
+   ```
+    ```plaintext
+      ------------------------------              ------------------------------
+    |              |             |            \ |              |             |
+    |     DATA     |     NEXT    |--------------|     DATA     |     NEXT    |
+    |              |             |            / |              |             |
+    ------------------------------              ------------------------------
+    ```
+
+
+  
+  - [subir](#índice)
+
+   ### [ft_lstnew](/bonus/ft_lstnew.c)
+    - ✔️ OK  
+  - **Explicación:** una funcion que crea un nodo.
+  ```c
+  t_list	*ft_lstnew(void *content)
+  {
+    t_list	*new_list;
+
+    new_list = malloc(sizeof(struct s_list));
+    if (!new_list)
+      return (NULL);
+    //despues de crear la lista le pasamos el valor de content a el primer elemento de la lista y  en next un puntero nulo
+    new_list -> content = content;
+    new_list -> next = NULL;
+    return (new_list);
+  }
+  ```
+  - [subir](#Índice)
+### [ft_lstadd_front](/bonus/ft_lstadd_front.c)      
+  - ✔️ OK  
+  - **Explicación:** Une un nodo a la lista.
+  ```c
+  void ft_lstadd_front(t_list **lst, t_list *new)
+      {
+          // Verifica si el nuevo nodo no es NULL
+          if (new)
+          {
+              // Establece el puntero next del nuevo nodo al primer elemento actual de la lista
+              new->next = *lst;
+
+              // Actualiza el puntero al primer elemento de la lista para que apunte al nuevo nodo
+              *lst = new;
+          }
+      }
+
+  ```
+  - [subir](#índice)
+  ### [ft_lstsize](/bonus/ft_lstsize.c)      
+  - ✔️ OK  
+  - **Explicación:** la forma de iterar en las listas seria lo importante en esta funcion
+  ```c
+  int	ft_lstsize(t_list *lst)
+  {
+  int	count;
+
+  count = 0;
+  //PARA ITERAR A LO LARGO DE UNA LISTA El tope es que sea diferente de null 
+    while (lst != NULL) 
+    {
+      count++;//CONTADOR PARA DEVOLVER EL TAMAÑO 
+      lst = lst->next;//esto seria un index/i ++  en arrays array[i] o *p+`
+    }
+  return (count);
+  }
+  ```
+ 
   - [subir](#índice)
 
 ## Compilación de la Biblioteca

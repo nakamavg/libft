@@ -1,4 +1,20 @@
-#include "libft.h"
+#include "../libft.h"
+
+static int	get_int_len(int n)
+{
+	int	len;
+
+	if (n <= 0)
+		len = 1;
+	else
+		len = 0;
+	while (n != 0)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
+}
 
 int main(void)
 {
