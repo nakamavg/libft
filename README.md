@@ -1492,7 +1492,7 @@ resto del codigo
   ```
  
   - [subir](#índice)
-  ### [ft_lstsize](Makefile)      
+  ### [ft_lstlast](/bonus/ft_lstlast.c)      
   - ✔️ OK  
   - **Explicación:** iteramos la lista con la validacion lst -> next  Mientras haya siguiente lst -> next
   ```c
