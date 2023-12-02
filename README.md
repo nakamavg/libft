@@ -45,7 +45,7 @@
     [`ft_striteri`](#ft_striteri)
     ### Bonus Linked List
    - [Linked list](#Declarar-una-linked-list)
-      [`ft_lstnew`](#ft_lstnew)
+     - [`ft_lstnew`](#ft_lstnew)
       [`ft_lstadd_front`](#ft_lstadd_front)
       [`ft_lstsize`](#ft_lstsize)
     
