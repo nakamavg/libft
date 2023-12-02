@@ -35,6 +35,8 @@
     - [`ft_substr`](#ft_substr)
     [`ft_putstr_fd`](#ft_putstr_fd)
     [`ft_putchar_fd`](#ft_putchar_fd)
+    [`ft_putendl_fd`](#ft_putendl_fd)
+    [`ft_putnbr_fd`](#ft_putnbr_fd)
     [`ft_strjoin`](#ft_strjoin)
     [`ft_strtrim`](#ft_strtrim)
     [`ft_strsplit`](#ft_strsplit)
@@ -1315,7 +1317,53 @@ resto del codigo
   }
   ```
   - [subir](#índice)
- 
+### [ft_putendl_fd](src/ft_putendl_fd.c) 
+  - ✔️ OK  
+  - **Explicación:** Muy simple solo tienes que llamar a putstr y añadir un write 
+    ```c
+    void	ft_putendl_fd(char *c, int fd)
+        {	
+          if (c)
+          {
+          ft_putstr_fd(c, fd);
+          write(fd, "\n", 1);
+          }
+        }
+    ```
+  - [subir](#índice)
+
+  ### [ft_putnbr_fd](src/ft_putnbr_fd.c)      
+  - ✔️ OK  
+  - **Explicación:** lo mismo que en itoa pero sin alojar memoria.
+  ```c
+    void ft_putnbr_fd(int n, int fd)
+  {
+      // Comprobar si el número es el mínimo entero representable en un 'int'
+      if (n == -2147483648)
+          ft_putstr_fd("-2147483648", fd);
+      // Comprobar si el número es negativo
+      else if (n < 0)
+      {
+          // Imprimir el signo negativo
+          ft_putchar_fd('-', fd);
+          // Llamar recursivamente a la función con el valor absoluto de 'n'
+          ft_putnbr_fd(-n, fd);
+      }
+      // Comprobar si el número es mayor o igual a 10
+      else if (n >= 10)
+      {
+          // Llamar recursivamente a la función con la parte entera de 'n' dividida por 10
+          ft_putnbr_fd(n / 10, fd);
+          // Imprimir el dígito más bajo de 'n' 
+          ft_putchar_fd(n % 10 + '0', fd);
+      }
+      // Si el número es un solo dígito, imprimirlo directamente
+      else
+          ft_putchar_fd(n + '0', fd);
+  }
+
+  ```
+  - [subir](#índice)
 
 ## Compilación de la Biblioteca
 
