@@ -27,7 +27,7 @@
     - [`ft_strchr` y `ft_strrchr`](#ft_strchr-y-ft_strrchr)
 - [Implementación de la función `memmove` en C](#implementación-de-la-función-memmove-en-c)
 - [Verificación de Superposición de Regiones de Memoria](#verificación-de-superposición-de-regiones-de-memoria)
-  - [`ft_memcpm`](#ft_memcpm)
+  - [`ft_memcmp`](#ft_memcmp)
     [`ft_strnstr`](#ft_strnstr)
     [`ft_calloc`](#ft_calloc)
     [`ft_strdup`](#ft_strdup)
@@ -232,28 +232,25 @@ int main() {
   Si las letras De la primera cadena son mayores devuelve un numero positivo, si son menores un 
   numero negativo y si son iguales un 0;
 ```c
-int ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-    size_t x;
-    unsigned char *str1;
-    unsigned char *str2;
+    #include "../libft.h"
 
-    // Inicializar variables
-    x = 0;
-    str1 = (unsigned char*)s1;
-    str2 = (unsigned char*)s2;
-    // hago casting a unsigned char para asegurarme que comparo byte a byte la cadena;
-    // Iterar a través de las cadenas hasta el final o hasta que se comparen n caracteres
-    while (str1[x] && str2[x] && (x < n - 1) && str1[x] == str2[x])
-        x++;
+  int	ft_strncmp(const char *s1, const char *s2, size_t n)
+      {
+        size_t	x;
 
-    // Verificar si n es mayor a  0
-  if (n > 0)
-  //si n es mayor a 0 devuelvo la diferencia entre el primer y segundo string 
-    return (str1[x] - str2[x]);
-else
-    return (0);
-}
+        x = 0;
+        //comprobacion que n sea 0 
+        if (n == 0)
+          return (0);
+        //Aqui validamos  que s1 no sea null y validamos que s1 y s2 sean igual y asi no hace falta , validar que s2 no sea null
+        // por que si s2 es igual a s2 ya no va ser null s2
+        // para que validemos el tamaño que nos pide n validamos que x  sea menor que n menos 1 (por que n seria el null terminacion)
+        while (s1[x] && (x < n - 1) && s1[x] == s2[x])
+          x++;//Mientras sean iguales el index sube cada caracter hastas llegar hasta el final 
+          //como el man de la funcion original nos pide devolver unsigned char hacemos un casting en el return
+        return ((unsigned char)s1[x] - (unsigned char)s2[x]);
+      }
+  
 //main de ejemplo
 int main() {
     const char *str1 = "Hello, World!";
@@ -274,7 +271,7 @@ int main() {
 }
 
 ```
-``\`
+
 nakama@MacBook-Air-de-David libft % ./a.out 
 Las primeras 8 letras de la cadena "Hello, World!" son mayores que las de la cadena "Hello, C!".
 nakama@MacBook-Air-de-David libft %
@@ -686,31 +683,33 @@ si no se cumple lo anterior escribimos hacia delante como en un memcopy
 ```
 
 - [subir](#Índice)
-## [ft_memccpm](src/ft_memcmp) 
+## [ft_memccmp](src/ft_memcmp.c) 
   - ✔️ OK  
   - **Explicacion** 
     - Devuelve la diferencia si los 2 strings son diferentes o 0 si son iguales
     ```c
     #include "../libft.h"
 
-  int	ft_strncmp(const char *s1, const char *s2, size_t n)
-      {
-        size_t	x;
+    int	ft_memcmp(const void *s1, const void *s2, size_t n)
+          {
+            unsigned char	*str1;
+            unsigned char	*str2;
 
-        x = 0;
-        //comprobacion que n sea 0 
-        if (n == 0)
-          return (0);
-        //Aqui validamos  que s1 no sea null y validamos que s1 y s2 sean igual y asi no hace falta , validar que s2 no sea null
-        // por que si s2 es igual a s2 ya no va ser null s2
-        // para que validemos el tamaño que nos pide n validamos que x  sea menor que n menos 1 (por que n seria el null terminacion)
-        while (s1[x] && (x < n - 1) && s1[x] == s2[x])
-          x++;//Mientras sean iguales el index sube cada caracter hastas llegar hasta el final 
-          //como el man de la funcion original nos pide devolver unsigned char hacemos un casting en el return
-        return ((unsigned char)s1[x] - (unsigned char)s2[x]);
-      }
+            str1 = (unsigned char *) s1;
+            str2 = (unsigned char *) s2;
+            while (n > 0)
+            {
+              if (*str1 != *str2)
+                return (*str1 - *str2);
+              str1++;
+              str2++;
+              n--;
+            }
+            return (0);
+          }
 
     ```
+ 
   - [subir](#Índice)
 
 ## [ft_strchr](src/ft_strchr.c) y [ft_strrchr](src/ft_strrchr.c)
