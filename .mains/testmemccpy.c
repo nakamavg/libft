@@ -26,7 +26,7 @@ int	main(void)
 	printf("Contenido de dst1: %s\n", dst1);
 	printf("Contenido de dst2: %s\n", dst2);
 	// Compara los resultados basándonos en el contenido de las cadenas
-	if (strcmp(dst1, dst2) == 0)
+	if (ft_memcmp(dst1, "perico",20) == 0)
 	{
 		printf("Dan el mismo array.\n");
 	}

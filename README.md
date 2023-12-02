@@ -48,6 +48,7 @@
      - [`ft_lstnew`](#ft_lstnew)
       [`ft_lstadd_front`](#ft_lstadd_front)
       [`ft_lstsize`](#ft_lstsize)
+      [`ft_lstlast`](#ft_lstlast)
     
 
 
@@ -1490,6 +1491,21 @@ resto del codigo
   }
   ```
  
+  - [subir](#índice)
+  ### [ft_lstsize](Makefile)      
+  - ✔️ OK  
+  - **Explicación:** iteramos la lista con la validacion lst -> next  Mientras haya siguiente lst -> next
+  ```c
+    t_list	*ft_lstlast(t_list *lst)
+    {
+      if (lst)
+      {
+        while (lst->next)
+          lst = lst->next; //Esto es igual a lst ++
+      }
+      return (lst);
+    }
+  ```
   - [subir](#índice)
 
 ## Compilación de la Biblioteca

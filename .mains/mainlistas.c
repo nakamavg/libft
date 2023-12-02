@@ -13,11 +13,18 @@
 		// Crear un nuevo nodo con contenido '42'
 		t_list *node = ft_lstnew("42");
 		// Crear un nuevo nodo con contenido '24'
-		t_list *node2 = ft_lstnew("world");
+		t_list *node2 = ft_lstnew("24");
 		ft_lstadd_front(&node,node2);
-		print_list(node2);
+		print_list(node);
+		//COnseguir el ultimo elemento de la lista
+		print_list(ft_lstlast(node2));
 			// Liberar la memoria asignada al nodo
 			free(node2);
+		//comprobar free
+		print_list(ft_lstlast(node));
+		print_list(ft_lstlast(node2));
+
+
 		
 	
 
