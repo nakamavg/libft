@@ -1,20 +1,35 @@
-	#include "../libft.h" // Asegúrate de incluir el archivo de encabezado correcto
-	
-	void print_list(t_list * head) {
-    t_list * current = head;
+	#include "../libft.h" 
 
-    while (current != NULL) {
-		printf("Valor del nodo: %s\n", (char *)current->content);
+void print_list(t_list *head) {
+    t_list *current = head;
+
+    while (current != NULL)
+	{
+        if (current->content != NULL) {
+            printf("Valor del nodo: %s\n", (char *)current->content);
+        } else {
+            printf("Valor del nodo: (null)\n");
+        }
         current = current->next;
     }
 }
+
+void	ft_del(void *content)
+{
+	free(content);
+}									
 	int main()
-	{	t_list 	*lista = NULL;
+	{	
+		char *str = ft_strdup("El primero que añadi");
+		char *str2 = ft_strdup("Añadido con front");
+		char *str3 = ft_strdup("Añadido con back ");
+
+		t_list 	*lista = NULL;
 		// Crear un nuevo nodo 
-		t_list *node = ft_lstnew("El primero que añadi");
+		t_list *node = ft_lstnew(str);
 		// Crear un nuevo nodo co
-		t_list *node2 = ft_lstnew("Añadido con front");
-		t_list *node3 = ft_lstnew("Añadido con back ");
+		t_list *node2 = ft_lstnew(str2);
+		t_list *node3 = ft_lstnew(str3);
 		ft_putstr_fd("**PRIMER NODO \n",1);
 		ft_lstadd_front(&lista,node);
 		print_list(lista);
@@ -27,11 +42,9 @@
 		printf("Numero de nodos : %i\n",ft_lstsize(lista));
 		ft_putstr_fd("**Ultimo nodo de la lista(ft_lstlast): \n",1);
 		print_list(ft_lstlast(lista));
-
-		
-
-		
-	
+		ft_putstr_fd("**Borrado del node 3: \n",1);
+		ft_lstdelone(node3,&ft_del);
+		print_list(lista);
 
 		return 0;
 	}

@@ -50,6 +50,7 @@
       [`ft_lstadd_front`](#ft_lstadd_front)
       [`ft_lstsize`](#ft_lstsize)
       [`ft_lstlast`](#ft_lstlast)
+      [`ft_lstdelone`](#ft_lstdelone)
     
 
 
@@ -1552,7 +1553,7 @@ resto del codigo
 
 ## Mi main de listas
 ```c
-	#include "../libft.h" // Asegúrate de incluir el archivo de encabezado correcto
+	#include "../libft.h" 
 	
 	void print_list(t_list * head) {
     t_list * current = head;
@@ -1606,6 +1607,98 @@ Numero de nodos : 3
 Valor del nodo: Añadido con back 
 ```
 - [subir](#índice)
+
+### [ft_lstdelone](bonus/ft_lstdelone.c)      
+  - ✔️ OK  
+  - **Explicación:** Funcon que elimina un nodo especifico de la lista y libera su memoria, el puntero next no se libera ya que se espera que la lista continúe  despues de eliminar el nodo
+  ```c
+  void ft_lstdelone(t_list *lst, void (*del)(void *))
+    {
+        if (lst && del)
+        {
+            // Llama a la función 'del' para liberar el contenido del nodo
+            if (lst->content)
+                del(lst->content);
+
+            // Libera la memoria ocupada por el nodo
+            free(lst);
+        }
+    }
+  ```
+  - Main Con la funcion borrar
+  ```c
+  	#include "../libft.h" 
+
+  void print_list(t_list *head) {
+      t_list *current = head;
+
+      while (current != NULL)
+    {
+          if (current->content != NULL) {
+              printf("Valor del nodo: %s\n", (char *)current->content);
+          } else {
+              printf("Valor del nodo: (null)\n");
+          }
+          current = current->next;
+      }
+  }
+
+  void	ft_del(void *content)
+  {
+    free(content);
+  }									
+    int main()
+    {	
+      char *str = ft_strdup("El primero que añadi");
+      char *str2 = ft_strdup("Añadido con front");
+      char *str3 = ft_strdup("Añadido con back ");
+
+      t_list 	*lista = NULL;
+      // Crear un nuevo nodo 
+      t_list *node = ft_lstnew(str);
+      // Crear un nuevo nodo co
+      t_list *node2 = ft_lstnew(str2);
+      t_list *node3 = ft_lstnew(str3);
+      ft_putstr_fd("**PRIMER NODO \n",1);
+      ft_lstadd_front(&lista,node);
+      print_list(lista);
+      ft_putstr_fd("**APLICAMOS AÑADIR FRONT: \n",1);
+      ft_lstadd_front(&lista,node2);
+      print_list(lista);
+      ft_putstr_fd("**APLICAMOS AÑADIR BACK: \n",1);
+      ft_lstadd_back(&lista,node3);
+      print_list(lista);
+      printf("Numero de nodos : %i\n",ft_lstsize(lista));
+      ft_putstr_fd("**Ultimo nodo de la lista(ft_lstlast): \n",1);
+      print_list(ft_lstlast(lista));
+      ft_putstr_fd("**Borrado del node 3: \n",1);
+      ft_lstdelone(node3,&ft_del);
+      print_list(lista);
+
+      return 0;
+      }
+  ```
+  ```bash
+    *PRIMER NODO 
+  Valor del nodo: El primero que añadi
+  **APLICAMOS AÑADIR FRONT: 
+  Valor del nodo: Añadido con front
+  Valor del nodo: El primero que añadi
+  **APLICAMOS AÑADIR BACK: 
+  Valor del nodo: Añadido con front
+  Valor del nodo: El primero que añadi
+  Valor del nodo: Añadido con back 
+  Numero de nodos : 3
+  **Ultimo nodo de la lista(ft_lstlast): 
+  Valor del nodo: Añadido con back 
+  **Borrado del node 3: 
+  Valor del nodo: Añadido con front
+  Valor del nodo: El primero que añadi
+  Valor del nodo: (null)
+  ```
+
+  
+  - [subir](#índice)
 
 ## Compilación de la Biblioteca
 
