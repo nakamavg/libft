@@ -42,9 +42,11 @@ void	ft_del(void *content)
 		printf("Numero de nodos : %i\n",ft_lstsize(lista));
 		ft_putstr_fd("**Ultimo nodo de la lista(ft_lstlast): \n",1);
 		print_list(ft_lstlast(lista));
-		ft_putstr_fd("**Borrado del node 3: \n",1);
-		ft_lstdelone(node3,&ft_del);
+		ft_putstr_fd("**Utilizamos lstdelone: \n",1);
+		
 		print_list(lista);
-
+		ft_putstr_fd("**Utilizamos lstclear: \n",1);
+		ft_lstclear(&lista,&ft_del);
+		print_list(lista);
 		return 0;
 	}

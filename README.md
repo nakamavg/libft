@@ -51,6 +51,7 @@
       [`ft_lstsize`](#ft_lstsize)
       [`ft_lstlast`](#ft_lstlast)
       [`ft_lstdelone`](#ft_lstdelone)
+      [`ft_lstclear`](#ft_lstclear)
     
 
 
@@ -1699,6 +1700,36 @@ Valor del nodo: Añadido con back
 
   
   - [subir](#índice)
+  ### [ft_lstclear](src/ft_lstclear.c) 
+  - ✔️ OK  
+  - **Explicación:** Se basa en usar la funcion `ft_lstdelone` mientras iteramos por toda la lista y usamos una lista temporal que apunte al siguiente nodo antes de borrar el nodo actual , para asi decirle a la lista que apunte al temporal, asi mantenemos la iteracion hasta que la validacion de lst sea null;
+  ```c
+  void	ft_lstclear(t_list **lst, void (*del)(void*))
+  {
+    t_list	*temp;
+    //verificar si los punteros son validos
+    if (lst && del)
+    {
+      //recorrer la lista y eliminar cada nodo
+      while (*lst)
+      {
+        /*
+        apuntamos en la lista temporal el siguiente nodo
+        para guardar el acceso a los demas nodos de la lista
+        */
+        temp = (*lst)->next;
+        //Eliminar el nodo actual y liberar su memoria
+        ft_lstdelone(*lst,del);
+        //como antes guardamos el resto de la lista en temporal
+        //podemos recuperarla ahora
+        *lst = temp;
+        //asi borramos desde la posicion inicial a la final hasta que
+        //lst no tenga nada que apuntar
+      }
+    }
+  }
+  ```
+  - [subir](#Índice)
 
 ## Compilación de la Biblioteca
 
