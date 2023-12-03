@@ -1482,7 +1482,7 @@ resto del codigo
   int	count;
 
   count = 0;
-  //PARA ITERAR A LO LARGO DE UNA LISTA El tope es que sea diferente de null 
+  //PARA ITERAR A LO LARGO DE UNA LISTA El tope es que la validacion sea Null 
     while (lst != NULL) 
     {
       count++;//CONTADOR PARA DEVOLVER EL TAMAÑO 
