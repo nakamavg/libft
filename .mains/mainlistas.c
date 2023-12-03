@@ -9,21 +9,26 @@
     }
 }
 	int main()
-	{
-		// Crear un nuevo nodo con contenido '42'
-		t_list *node = ft_lstnew("42");
-		// Crear un nuevo nodo con contenido '24'
-		t_list *node2 = ft_lstnew("24");
-		ft_lstadd_front(&node,node2);
-		print_list(node);
-		//COnseguir el ultimo elemento de la lista
-		print_list(ft_lstlast(node2));
-			// Liberar la memoria asignada al nodo
-			free(node2);
-		//comprobar free
-		print_list(ft_lstlast(node));
-		print_list(ft_lstlast(node2));
+	{	t_list 	*lista = NULL;
+		// Crear un nuevo nodo 
+		t_list *node = ft_lstnew("El primero que añadi");
+		// Crear un nuevo nodo co
+		t_list *node2 = ft_lstnew("Añadido con front");
+		t_list *node3 = ft_lstnew("Añadido con back ");
+		ft_putstr_fd("**PRIMER NODO \n",1);
+		ft_lstadd_front(&lista,node);
+		print_list(lista);
+		ft_putstr_fd("**APLICAMOS AÑADIR FRONT: \n",1);
+		ft_lstadd_front(&lista,node2);
+		print_list(lista);
+		ft_putstr_fd("**APLICAMOS AÑADIR BACK: \n",1);
+		ft_lstadd_back(&lista,node3);
+		print_list(lista);
+		printf("Numero de nodos : %i\n",ft_lstsize(lista));
+		ft_putstr_fd("**Ultimo nodo de la lista(ft_lstlast): \n",1);
+		print_list(ft_lstlast(lista));
 
+		
 
 		
 	

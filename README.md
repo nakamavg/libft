@@ -45,6 +45,7 @@
     [`ft_striteri`](#ft_striteri)
     ### Bonus Linked List
    - [Linked list](#Declarar-una-linked-list)
+    - [Mis problemas con las listas](#mis-idas-y-venidas-con-las-listas)
      - [`ft_lstnew`](#ft_lstnew)
       [`ft_lstadd_front`](#ft_lstadd_front)
       [`ft_lstsize`](#ft_lstsize)
@@ -1455,7 +1456,7 @@ resto del codigo
   - [subir](#Índice)
 ### [ft_lstadd_front](/bonus/ft_lstadd_front.c)      
   - ✔️ OK  
-  - **Explicación:** Une un nodo a la lista.
+  - **Explicación:**  Añade un nodo delante del anterior nodo.
   ```c
   void ft_lstadd_front(t_list **lst, t_list *new)
       {
@@ -1495,6 +1496,7 @@ resto del codigo
   ### [ft_lstlast](/bonus/ft_lstlast.c)      
   - ✔️ OK  
   - **Explicación:** iteramos la lista con la validacion lst -> next  Mientras haya siguiente lst -> next
+  Al final obtendremos el nodo en la ultima  posicion
   ```c
     t_list	*ft_lstlast(t_list *lst)
     {
@@ -1507,6 +1509,103 @@ resto del codigo
     }
   ```
   - [subir](#índice)
+  
+### [ft_lstadd_back](/bonus/ft_lstadd_front.c)      
+  - ✔️ OK  
+  - **Explicación:** Añadimos un nodo en la primera posicion de nuestra lista, para ello usaremos la funcion anterior `ft_lstlast`.
+  ```c
+  void	ft_lstadd_back(t_list **lst, t_list *new)
+    {
+      t_list *last;
+      
+      //importante verificar con !* si el contenido del puntero es nulo
+      //hacer !lst verifica si el puntero apunta a nullo y no es lo que queremos.
+      if (!*lst)
+        *lst = new;
+      else
+      {
+        last = ft_lstlast(*lst);//obtenemos la posicion del nodo 1
+        last -> next = new;
+      }
+    }
+  ```
+  ## Mis Idas y venidas con las listas 
+    - He tardado un poco en darme cuenta de esta movida, no se si eran las horas 
+    o si era la noche que me confunde pero cosas a tener en cuenta 
+  `ft_lstadd_back` Te añade un nodo al final de la lista el termino back me dio un giro
+  y es que Back no refiere al que este mas atras por la izquierda es que realmente es el
+  ultimo nodo en la lista, la confusion viene por que `ft_lstadd_front` parece que es la de frente la primera que te topas y no lo que hace es ser el primer nodo de la lista.
+  ```plaintext
+  Si tengo 3 nodos
+  PRimer Nodo Manolo apunta a PEPE
+  Segundo NOdo PEPE apunta Benito
+  tercer  NOdo Benito apunta a null
+  si hacemos `ft_lstadd_back("Rigoberta")
+  AHora benito apunta a rigoberta
+  y si hacemos ft_lstadd_front("Bandini")
+  Ahora bandini apunta a manolo que apunta a pepe, etc
+  ```
+  En resumen 
+  - FRONT SE REFIERE AL PRINCIPIO DE LA LISTA
+  - BACK SE REFIERE AL FINAL DE LA LISTA
+  - [subir](#índice)
+
+## Mi main de listas
+```c
+	#include "../libft.h" // Asegúrate de incluir el archivo de encabezado correcto
+	
+	void print_list(t_list * head) {
+    t_list * current = head;
+
+    while (current != NULL) {
+		printf("Valor del nodo: %s\n", (char *)current->content);
+        current = current->next;
+    }
+}
+	int main()
+	{	//cramos una lista null
+    t_list 	*lista = NULL;
+		//genaramos 3 nodos
+    t_list *node = ft_lstnew("El primero que añadi");
+		t_list *node2 = ft_lstnew("Añadido con front");
+		t_list *node3 = ft_lstnew("Añadido con el back");
+		ft_putstr_fd("**PRIMER NODO \n",1);
+    //añadidmos el node a lista
+		ft_lstadd_front(&lista,node);
+    //imprimimos lista
+		print_list(lista);
+    //comprobamos la diferencia despues de añadir el primero
+    //uno por el principio de la lista es decir que la posicion uno que antes tenia 42
+    //ahora la tiene añadido con el front
+		ft_putstr_fd("**APLICAMOS AÑADIR FRONT: \n",1);
+		ft_lstadd_front(&lista,node2);
+		print_list(lista);
+		ft_putstr_fd("**APLICAMOS AÑADIR BACK: \n",1);
+    //y 
+		ft_lstadd_back(&lista,node3);
+		print_list(lista);
+		printf("Numero de nodos : %i\n",ft_lstsize(lista));
+		ft_putstr_fd("**Ultimo nodo de la lista(ft_lstlast): \n",1);
+		print_list(ft_lstlast(lista));
+		return 0;
+	}
+```
+output
+```bash
+**PRIMER NODO 
+Valor del nodo: El primero que añadi
+**APLICAMOS AÑADIR FRONT: 
+Valor del nodo: Añadido con front
+Valor del nodo: El primero que añadi
+**APLICAMOS AÑADIR BACK: 
+Valor del nodo: Añadido con front
+Valor del nodo: El primero que añadi
+Valor del nodo: Añadido con back 
+Numero de nodos : 3
+**Ultimo nodo de la lista(ft_lstlast): 
+Valor del nodo: Añadido con back 
+```
+- [subir](#índice)
 
 ## Compilación de la Biblioteca
 
