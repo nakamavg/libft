@@ -51,7 +51,8 @@
       - [`ft_lstsize`](#ft_lstsize)
       - [`ft_lstlast`](#ft_lstlast)
       - [`ft_lstdelone`](#ft_lstdelone)
-      - [`ft_lstclear`](#ft_lstclear)  
+      - [`ft_lstclear`](#ft_lstclear) 
+      - [`ft_lstiter`](#ft_lstiter) 
     ### Problemas / Soluciones / Conclusiones listas
       - [Problemas que me encontre en mi programa main para testear estas funciones](#problemas-que-me-encontre-en-mi-programa-main-para-testear-estas-funciones)
       - [Caso 1: Borramos `node`](#caso-1-borramos-node)
@@ -1732,6 +1733,27 @@ Valor del nodo: Añadido con back
       }
     }
   }
+  ```
+  - [subir](#Índice)
+  ### [ft_lstiter](src/ft_lstiter.c) 
+   - ✔️ OK  
+  - **Explicación:** Aplicar funcion a todos los content de la lista [Main](.mains/mainiterarlistas.c)
+  ```c
+      void	ft_lstiter(t_list *lst, void (*f)(void *))
+      {
+        //comprobar lst y funcion sean pasadas
+        if (lst && f)
+        {
+          //iteramos mientras lst tenga nodos que procesar
+          while (lst)
+          {
+            //aplicamos la f funcion a el contenido de la lista
+            f(lst->content);
+            lst = lst->next;//nuestro i ++
+          }
+        }
+      }
+
   ```
   - [subir](#Índice)
 
