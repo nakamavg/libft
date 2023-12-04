@@ -58,7 +58,7 @@
       - [Caso 2: Borramos `node2`](#caso-2-borramos-node2)
       - [Caso 3: Borramos `node3`](#caso-3-borramos-node3)
       - [Conclusiones De las listas](#conclusiones-de-las-listas)
-      - [Resumen Final Listas](#lo-que-he-sacado-de-todo-estodespues-de-ft_lstadd_back-ft_lstadd_frontft_lstlastft_lstdeloneft_lstnewft_lstsizeft_lstclear)
+      - [Resumen Final Listas](#lo-que-he-sacado-de-todo-esto-despues-de-ft_lstadd_back-ft_lstadd_frontft_lstlastft_lstdeloneft_lstnewft_lstsizeft_lstclear)
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
   - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca-1)
@@ -1996,7 +1996,7 @@ Numero de nodos : 1
 **Utilizamos list clear: 
 Numero de nodos : 0
 ```
-## Lo que He Sacado de todo esto(Despues de `ft_lstadd_back`, `ft_lstadd_front`,`ft_lstlast`,`ft_lstdelone`,`ft_lstnew`,`ft_lstsize`,`ft_lstclear`) 
+## Lo que He Sacado de todo esto Despues de `ft_lstadd_back`, `ft_lstadd_front`,`ft_lstlast`,`ft_lstdelone`,`ft_lstnew`,`ft_lstsize`,`ft_lstclear` 
   - Primero : Si no borramos desde el final adelante tendremos problemas con esta lista asique 
   me doy cuenta que sigue el metodo LAST IN FIRST OUT , me recuerda a cuando era joven y estudiaba los diferentes tipos FiRST IN FIRST OUT . Comprender la importancia de seguir un orden específico al eliminar nodos, en este caso, siguiendo el principio LIFO (Last In, First Out) para evitar problemas al borrar nodos.
 
