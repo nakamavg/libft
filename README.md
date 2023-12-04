@@ -577,8 +577,8 @@ int	main(void)
 # [ft_memmove](src/ft_memmove.c) 
   - ✔️ OK  
   - **Explicación:** 
-    - Hace lo mismo que memcopy lo malo es que memcopy puede tener compartamiento indefinido cuando
-      dos areas de memoria se sopan como en este ejemplo 
+    - Hace lo mismo que memcopy lo malo es que memcopy puede tener comportamiento indefinido cuando
+      dos areas de memoria se solapan como en este ejemplo 
 ```c
 #include <stdio.h>
 #include <string.h>

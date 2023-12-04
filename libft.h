@@ -6,18 +6,15 @@
 /*   By: dgomez-m <aecm.davidgomez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 04:41:06 by nakama            #+#    #+#             */
-/*   Updated: 2023/12/04 06:03:41 by dgomez-m         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:34:13 by dgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//inicalizacion de la libreria
 #ifndef LIBFT_H
-# define LIBFT_H //forma de llamar a la libreria externamente
+# define LIBFT_H 
 
 # include <unistd.h>
-//TODAS las llamadas a otras librerias
 # include <stdlib.h>
-//Desde aqui ya nos evita tener que llamarlas en los .C de las funciones
 # include <string.h>
 # include <stdio.h>
 
@@ -27,22 +24,22 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-size_t	ft_strlen(const char *s);//Obtiene longitud
-void	ft_putchar_fd(char c, int fd);//filedescriptor o salida standar 
-int		ft_isalpha(int c);//comprueba letras
-int		ft_isdigit(int c);//comprueba numeros
-int		ft_isascii(int c);//comprueba que el estandar ascii
-int		ft_isprint(int c);//comprueba que es printable
-int		ft_isalnum(int c);//comprueba numeros y letras 
-int		ft_tolower(int c);//pasa a minuscualas las mayusculas
-int		ft_toupper(int c);// pasa a mayus las minus
-void	ft_putstr_fd(char *s, int fd);//con filedescriptor
+size_t	ft_strlen(const char *s);
+void	ft_putchar_fd(char c, int fd);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+int		ft_isalnum(int c);
+int		ft_tolower(int c);
+int		ft_toupper(int c);
+void	ft_putstr_fd(char *s, int fd);
 size_t	ft_strlcpy(char *dst, const char *src, size_t destsize);
 void	ft_bzero(void *s, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);//
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
-int		ft_iscntrl(int c);//Copia de Ctype.h caracteres control
+int		ft_iscntrl(int c);
 int		ft_atoi(const char *str);
 int		ft_isspace(int c);
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
@@ -73,5 +70,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-#endif//Declaracion final de la libreria, "cerrarla"
+#endif
