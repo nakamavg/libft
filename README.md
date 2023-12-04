@@ -52,7 +52,8 @@
       - [`ft_lstlast`](#ft_lstlast)
       - [`ft_lstdelone`](#ft_lstdelone)
       - [`ft_lstclear`](#ft_lstclear) 
-      - [`ft_lstiter`](#ft_lstiter) 
+      - [`ft_lstiter`](#ft_lstiter)
+      - [`ft_lstmap`](#ft_lstmap) 
     ### Problemas / Soluciones / Conclusiones listas
       - [Problemas que me encontre en mi programa main para testear estas funciones](#problemas-que-me-encontre-en-mi-programa-main-para-testear-estas-funciones)
       - [Caso 1: Borramos `node`](#caso-1-borramos-node)
@@ -1753,6 +1754,41 @@ Valor del nodo: Añadido con back
           }
         }
       }
+
+  ```
+  - [subir](#Índice)
+   ### [ft_lstmap](src/ft_lstmap.c) 
+   - ✔️ OK  
+   - **Explicación:** Aplicar funcion a todos los content de la lista y utilizar la funcion del si es necesario [Main](.mains/mainmaplist.c)
+  ```c
+      #include "../libft.h"  // Incluye el archivo de encabezado libft.h
+
+  t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+  {
+    t_list	*list_map;  // Puntero para la nueva lista resultante
+    t_list	*new_node;  // Puntero para el nuevo nodo a agregar
+
+    list_map = NULL;  // Inicializa el puntero a la nueva lista como NULL
+
+    if (!lst || !f || !del)
+      return (NULL);  // Verifica que los punteros no sean nulos; si alguno lo es, retorna NULL
+
+    while (lst)
+    {
+      new_node = ft_lstnew(f(lst->content));  // Crea un nuevo nodo aplicando la función f al contenido actual
+
+      if (!new_node)
+      {
+        ft_lstclear(&list_map, del);  // En caso de fallo, limpia la memoria y retorna NULL
+        return (NULL);
+      }
+
+      ft_lstadd_back(&list_map, new_node);  // Agrega el nuevo nodo al final de la lista resultante
+      lst = lst->next;  // Mueve al siguiente nodo en la lista original
+    }
+
+    return (list_map);  // Retorna el puntero a la nueva lista
+  }
 
   ```
   - [subir](#Índice)
