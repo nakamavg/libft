@@ -3,58 +3,62 @@
 ## Índice
 - [CREAR UNA Libreria en C](#crear-una-libreria-en-c)
   - [Índice](#índice)
-    - [libft.h](#libfth)
+    - [libft.h](#libft)
     - [Makefile](#makefile)
     ### Primera Parte Obligatoria
-  - [`ft_strlen`](#ft_strlen)
-     [`ft_isascii`](#ft_isascii)
-    [`ft_isdigit`](#ft_isdigit)
-     [`ft_isalpha`](#ft_isalpha)
-    [`ft_isprint`](#ft_isprint)
-    [`ft_isalnum`](#ft_isalnum)
-     [`ft_tolower`](#ft_tolower)
-    [`ft_toupper`](#ft_toupper)
-    [`ft_strlcpy`](#ft_strlcpy)
-     [`ft_bzero`](#ft_bzero)
-     [`ft_strncmp`](#ft_strncmp)
-    [`ft_memset`](#ft_memset)
-     [`ft_memcpy`](#ft_memcpy)
-     [`ft_memccpy`](#ft_memccpy)
-     [`ft_atoi`](#ft_atoi)
-     [`ft_memchar`](#ft_memchar)
-    - [`ft_memmove`](#ft_memmove)
-    [`ft_memcmp`](#ft_memccmp)
-    - [`ft_strchr` y `ft_strrchr`](#ft_strchr-y-ft_strrchr)
+      - [`ft_strlen`](#ft_strlen)
+      - [`ft_isascii`](#ft_isascii)
+      - [`ft_isdigit`](#ft_isdigit)
+      - [`ft_isalpha`](#ft_isalpha)
+      - [`ft_isprint`](#ft_isprint)
+      - [`ft_isalnum`](#ft_isalnum)
+      - [`ft_tolower`](#ft_tolower)
+      - [`ft_toupper`](#ft_toupper)
+      - [`ft_strlcpy`](#ft_strlcpy)
+      - [`ft_bzero`](#ft_bzero)
+      - [`ft_strncmp`](#ft_strncmp)
+      - [`ft_memset`](#ft_memset)
+      - [`ft_memcpy`](#ft_memcpy)
+      - [`ft_memccpy`](#ft_memccpy)
+      - [`ft_atoi`](#ft_atoi)
+      - [`ft_memchar`](#ft_memchar)
+      - [`ft_memmove`](#ft_memmove)
+      - [`ft_memcmp`](#ft_memcmp)
+      - [`ft_strchr` y `ft_strrchr`](#ft_strchr-y-ft_strrchr)
 - [Implementación de la función `memmove` en C](#implementación-de-la-función-memmove-en-c)
 - [Verificación de Superposición de Regiones de Memoria](#verificación-de-superposición-de-regiones-de-memoria)
   - [`ft_memcmp`](#ft_memcmp)
-    [`ft_strnstr`](#ft_strnstr)
-    [`ft_calloc`](#ft_calloc)
-    [`ft_strdup`](#ft_strdup)
+  - [`ft_strnstr`](#ft_strnstr)
+  - [`ft_calloc`](#ft_calloc)
+  - [`ft_strdup`](#ft_strdup)
     ### Segunda Parte Obligatoria
     - [`ft_substr`](#ft_substr)
-    [`ft_putstr_fd`](#ft_putstr_fd)
-    [`ft_putchar_fd`](#ft_putchar_fd)
-    [`ft_putendl_fd`](#ft_putendl_fd)
-    [`ft_putnbr_fd`](#ft_putnbr_fd)
-    [`ft_strjoin`](#ft_strjoin)
-    [`ft_strtrim`](#ft_strtrim)
-    [`ft_strsplit`](#ft_strsplit)
-    [`ft_itoa`](#ft_itoa)
-    [`ft_strmapi`](#ft_strmapi)
-    [`ft_striteri`](#ft_striteri)
+    - [`ft_putstr_fd`](#ft_putstr_fd)
+    - [`ft_putchar_fd`](#ft_putchar_fd)
+    - [`ft_putendl_fd`](#ft_putendl_fd)
+    - [`ft_putnbr_fd`](#ft_putnbr_fd)
+    - [`ft_strjoin`](#ft_strjoin)
+    - [`ft_strtrim`](#ft_strtrim)
+    - [`ft_strsplit`](#ft_strsplit)
+    - [`ft_itoa`](#ft_itoa)
+    - [`ft_strmapi`](#ft_strmapi)
+    - [`ft_striteri`](#ft_striteri)
     ### Bonus Linked List
-   - [Linked list](#Declarar-una-linked-list)
+    - [Linked list](#declarar-una-linked-list)
     - [Mis problemas con las listas](#mis-idas-y-venidas-con-las-listas)
-     - [`ft_lstnew`](#ft_lstnew)
-      [`ft_lstadd_front`](#ft_lstadd_front)
-      [`ft_lstsize`](#ft_lstsize)
-      [`ft_lstlast`](#ft_lstlast)
-      [`ft_lstdelone`](#ft_lstdelone)
-      [`ft_lstclear`](#ft_lstclear)
-    
-
-
+      - [`ft_lstnew`](#ft_lstnew)
+      - [`ft_lstadd_front`](#ft_lstadd_front)
+      - [`ft_lstsize`](#ft_lstsize)
+      - [`ft_lstlast`](#ft_lstlast)
+      - [`ft_lstdelone`](#ft_lstdelone)
+      - [`ft_lstclear`](#ft_lstclear)  
+    ### Problemas / Soluciones / Conclusiones listas
+      - [Problemas que me encontre en mi programa main para testear estas funciones](#problemas-que-me-encontre-en-mi-programa-main-para-testear-estas-funciones)
+      - [Caso 1: Borramos `node`](#caso-1-borramos-node)
+      - [Caso 2: Borramos `node2`](#caso-2-borramos-node2)
+      - [Caso 3: Borramos `node3`](#caso-3-borramos-node3)
+      - [Conclusiones De las listas](#conclusiones-de-las-listas)
+      - [Resumen Final Listas](#lo-que-he-sacado-de-todo-estodespues-de-ft_lstadd_back-ft_lstadd_frontft_lstlastft_lstdeloneft_lstnewft_lstsizeft_lstclear)
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca)
   - [Uso de la Biblioteca en un Programa](#uso-de-la-biblioteca-en-un-programa)
   - [Compilación de la Biblioteca](#compilación-de-la-biblioteca-1)
@@ -1731,6 +1735,280 @@ Valor del nodo: Añadido con back
   ```
   - [subir](#Índice)
 
+  ## Problemas que me encontre en mi programa main para testear estas funciones
+  ```c
+    int main()
+      {	
+        //Creamos y asignamos strs
+        char *str = ft_strdup("El primero que añadi");
+        char *str2 = ft_strdup("Añadido con front");
+        char *str3 = ft_strdup("Añadido con back ");
+        
+        //generamos el principio de una lista null
+        t_list 	*lista = NULL;
+        // CreaMOs nuevos nodos 
+        t_list *node = ft_lstnew(str);
+        t_list *node2 = ft_lstnew(str2);
+        t_list *node3 = ft_lstnew(str3);
+        ft_putstr_fd("**PRIMER NODO \n",1);
+        //primer  nodo añadido por el frente
+        ft_lstadd_front(&lista,node);
+        print_list(lista);
+        ft_putstr_fd("**APLICAMOS AÑADIR FRONT: \n",1);
+        //segundo nodo añadido por el frente seria nuestro nodo 1 y el anterior seria el 2
+        ft_lstadd_front(&lista,node2);
+        print_list(lista);
+        //añadimos nodo por el final por detras y este seria nuestro nodo 3
+        ft_putstr_fd("**APLICAMOS AÑADIR BACK: \n",1);
+        ft_lstadd_back(&lista,node3);
+        print_list(lista);
+        printf("Numero de nodos : %i\n",ft_lstsize(lista));
+        //tendriamos que node node 2 es nuestro node 1  y a la de borrar puede genarnos confusiones
+        ft_putstr_fd("**Ultimo nodo de la lista(ft_lstlast): \n",1);
+        print_list(ft_lstlast(lista));
+  ```
+  - [subir](#Índice)
+      ### Veamos los diferentes pruebas borrando node , node 2 y node 3
+### caso 1 borramos node  
+      ```c
+          
+          ft_putstr_fd("**Utilizamos lstdelone: \n",1);
+          ft_lstdelone(node,&ft_del);
+          printf("Numero de nodos : %i\n",ft_lstsize(lista));
+          print_list(lista);
+          ft_putstr_fd("**Utilizamos lstclear: \n",1);
+          ft_lstclear(&lista,&ft_del);
+          printf("Numero de nodos : %i\n",ft_lstsize(lista));
+          print_list(lista);
+          return 0;
+        }
+      ```
+       - Hemos Borrado Node Que es el primero que añadi pero en realidad es el segundo porque el node2 lo añadi con front con lo cual me muestra el primer nodo y apartir de ahi ya no me muestra nada tambien me da error por intentar limpiar dos veces el mismo nodo 
+```bash
+       **PRIMER NODO 
+        Valor del nodo: El primero que añadi
+        **APLICAMOS AÑADIR FRONT: 
+        Valor del nodo: Añadido con front
+        Valor del nodo: El primero que añadi
+        **APLICAMOS AÑADIR BACK: 
+        Valor del nodo: Añadido con front
+        Valor del nodo: El primero que añadi
+        Valor del nodo: Añadido con back 
+        Numero de nodos : 3
+        **Ultimo nodo de la lista(ft_lstlast): 
+        Valor del nodo: Añadido con back 
+        **Utilizamos lstdelone: 
+        Numero de nodos : 2
+        Valor del nodo: Añadido con front
+        Valor del nodo: (null)
+        **Utilizamos lstclear: 
+        mi_programa(13225,0x1e5fd5ec0) malloc: Double free of object 0x155605fa0
+        mi_programa(13225,0x1e5fd5ec0) malloc: *** set a breakpoint in malloc_error_break to debug 
+  ```
+## Caso 2 Borramos node2
+
+```c
+    ft_putstr_fd("**Utilizamos lstdelone: \n",1);
+		ft_lstdelone(node2,&ft_del);
+		printf("Numero de nodos : %i\n",ft_lstsize(lista));
+		print_list(lista);
+		ft_putstr_fd("**Utilizamos lstclear: \n",1);
+		ft_lstclear(&lista,&ft_del);
+		printf("Numero de nodos : %i\n",ft_lstsize(lista));
+		print_list(lista);
+		return 0;
+ 
+ 
+ ```
+  - He Borrado el segundo nodo pero como lo añadimos con front seria nuestro primer nodo en la lista
+    y lo que pasa es que como es el primer nodo todo lo demas ya no nos lo muestra, depues de pasarle lst clear
+    esta vez no da error y nos termina de limpiar lista
+ ```bash
+    **PRIMER NODO 
+    Valor del nodo: El primero que añadi
+    **APLICAMOS AÑADIR FRONT: 
+    Valor del nodo: Añadido con front
+    Valor del nodo: El primero que añadi
+    **APLICAMOS AÑADIR BACK: 
+    Valor del nodo: Añadido con front
+    Valor del nodo: El primero que añadi
+    Valor del nodo: Añadido con back 
+    Numero de nodos : 3
+    **Ultimo nodo de la lista(ft_lstlast): 
+    Valor del nodo: Añadido con back 
+    **Utilizamos lstdelone: 
+    Numero de nodos : 1
+    Valor del nodo: (null)
+    **Utilizamos lstclear: 
+    Numero de nodos : 0
+  ```
+  ### Caso 3 Borramos node3
+  ```c
+    ft_lstdelone(node3,&ft_del);
+		printf("Numero de nodos : %i\n",ft_lstsize(lista));
+		print_list(lista);
+		ft_putstr_fd("**Utilizamos lstclear: \n",1);
+		ft_lstclear(&lista,&ft_del);
+		printf("Numero de nodos : %i\n",ft_lstsize(lista));
+		print_list(lista);
+		return 0;
+  ```
+  - Este es el caso donde todo sale a pedir de boca  al borrar el node 3 que tambien seria nuestro ultimo nodo en la lista sucede esto
+  ```bash
+  nakama@MacBook-Air-de-David libft % ./mi_programa                                 
+  **PRIMER NODO 
+  Valor del nodo: El primero que añadi
+  **APLICAMOS AÑADIR FRONT: 
+  Valor del nodo: Añadido con front
+  Valor del nodo: El primero que añadi
+  **APLICAMOS AÑADIR BACK: 
+  Valor del nodo: Añadido con front
+  Valor del nodo: El primero que añadi
+  Valor del nodo: Añadido con back 
+  Numero de nodos : 3
+  **Ultimo nodo de la lista(ft_lstlast): 
+  Valor del nodo: Añadido con back 
+  **Utilizamos lstdelone: 
+  Numero de nodos : 3
+  Valor del nodo: Añadido con front
+  Valor del nodo: El primero que añadi
+  Valor del nodo: (null)
+  **Utilizamos lstclear: 
+  Numero de nodos : 0
+  ```
+  - Con lo cual  todo funciona como deberia ya que realmente Estamos borrando el contendido de content
+- [subir](#Índice)
+# Conclusiones De las listas
+## Por fin he llegado a vislumbrar la luz de las listas
+### Ya era hora 
+- Vamos a ver como tengo mi main final
+```c
+void	print_list(t_list *head)
+{
+	t_list	*current;
+
+	current = head;
+	while (current != NULL)
+	{
+		if (current->content != NULL)
+		{
+			printf("Valor del nodo: %s\n", (char *)current->content);
+		}
+		else
+		{
+			printf("Valor del nodo: (null)\n");
+		}
+		current = current->next;
+	}
+}
+
+void	ft_del(void *content)
+{
+	free(content);
+}
+
+int	main(void)
+{
+	//creamos strings asignandoles memoria con ft_strdup
+  char *str = ft_strdup("El valor inicial:---EGUN ON----- Node 1");
+	char *str2 = ft_strdup("Valor añadido como front:------- Node 2");
+	char *str3 = ft_strdup("VALOR Añadido como back:-EGUN OF-Node 3");
+
+// declaramos nuestros *nodos de la t_list
+	t_list	*node;
+	t_list	*node2;
+	t_list	*node3;
+	t_list	*lista;
+	
+	lista = NULL;
+  //asignamos nuestros punteros acada nodo
+	node  = ft_lstnew(str);
+	node2 = ft_lstnew(str2);
+	node3 = ft_lstnew(str3);
+
+	ft_putstr_fd("**PRIMER NODO\n", 1);
+	ft_lstadd_front(&lista, node);
+	printf("Numero de nodos : %i\n", ft_lstsize(node));
+	print_list(lista);
+	ft_putstr_fd("**APLICAMOS AÑADIR FRONT: \n", 1);
+	ft_lstadd_front(&lista, node2);
+	printf("Numero de nodos : %i\n", ft_lstsize(node));
+	print_list(lista);
+	ft_putstr_fd("**APLICAMOS AÑADIR BACK: \n", 1);
+	ft_lstadd_back(&lista, node3);
+	printf("Numero de nodos : %i\n", ft_lstsize(lista));
+	print_list(lista);
+	ft_putstr_fd("**Ultimo nodo de la lista(ft_lstlast): \n", 1);
+	print_list(ft_lstlast(lista));
+
+  //vamos haciendo lstdelone de modo que siempre liberemos la memoria del ultimo en la lista
+	ft_putstr_fd("**Utilizamos lstdelone: \n", 1);
+	ft_lstdelone(node3, &ft_del);
+	printf("Numero de nodos : %i\n", ft_lstsize(lista));
+	print_list(lista);
+
+	ft_putstr_fd("**Utilizamos lstdelone por segunda vez: \n", 1);
+	ft_lstdelone(node, &ft_del);
+	print_list(lista);
+	printf("Numero de nodos : %i\n", ft_lstsize(lista));
+	ft_putstr_fd("**Utilizamos lstdelone por tercera vez: \n", 1);
+	ft_lstdelone(node2, &ft_del);
+	print_list(lista);
+	printf("Numero de nodos : %i\n", ft_lstsize(lista));
+  //list clear funciona
+	ft_putstr_fd("**Utilizamos list clear: \n", 1);
+	ft_lstclear(&lista, &ft_del);
+	print_list(lista);
+	printf("Numero de nodos : %i\n", ft_lstsize(lista));
+
+	return (0);
+}
+```
+- Y el output
+```bash
+nakama@MacBook-Air-de-David libft % ./mi_programa                                 
+**PRIMER NODO 
+Numero de nodos : 1
+Valor del nodo: El valor inicial:---EGUN ON----- Node 1
+**APLICAMOS AÑADIR FRONT: 
+Numero de nodos : 1
+Valor del nodo: Valor añadido como front:------- Node 2
+Valor del nodo: El valor inicial:---EGUN ON----- Node 1
+**APLICAMOS AÑADIR BACK: 
+Numero de nodos : 3
+Valor del nodo: Valor añadido como front:------- Node 2
+Valor del nodo: El valor inicial:---EGUN ON----- Node 1
+Valor del nodo: VALOR Añadido como back:-EGUN OF-Node 3
+**Ultimo nodo de la lista(ft_lstlast): 
+Valor del nodo: VALOR Añadido como back:-EGUN OF-Node 3
+**Utilizamos lstdelone: 
+Numero de nodos : 3
+Valor del nodo: Valor añadido como front:------- Node 2
+Valor del nodo: El valor inicial:---EGUN ON----- Node 1
+Valor del nodo: (null)
+**Utilizamos lstdelone por segunda vez: 
+Valor del nodo: Valor añadido como front:------- Node 2
+Valor del nodo: (null)
+Numero de nodos : 2
+**Utilizamos lstdelone por tercera vez: 
+Valor del nodo: (null)
+Numero de nodos : 1
+**Utilizamos list clear: 
+Numero de nodos : 0
+```
+## Lo que He Sacado de todo esto(Despues de `ft_lstadd_back`, `ft_lstadd_front`,`ft_lstlast`,`ft_lstdelone`,`ft_lstnew`,`ft_lstsize`,`ft_lstclear`) 
+  - Primero : Si no borramos desde el final adelante tendremos problemas con esta lista asique 
+  me doy cuenta que sigue el metodo LAST IN FIRST OUT , me recuerda a cuando era joven y estudiaba los diferentes tipos FiRST IN FIRST OUT . Comprender la importancia de seguir un orden específico al eliminar nodos, en este caso, siguiendo el principio LIFO (Last In, First Out) para evitar problemas al borrar nodos.
+
+  - Segundo : Tener un Centinela como lista para luego pasarlo como direccion de memoria puede simplificar la lógica, evitando problemas al manipular la lista.
+  - Tercero : Hacer hincapié en la eliminación segura de nodos, asegurandome de manejar correctamente la memoria para evitar errores de doble liberación o pérdida de memoria.
+  - Cuarto : Manipulación de Nodos (Front y Back):
+Entender la diferencia entre añadir nodos al frente y al final de la lista, y cómo estas operaciones afectan la estructura general de la lista.
+  - Quinto : 
+    - Desarrollo Iterativo:
+Adoptar un enfoque iterativo en el desarrollo, probando y ajustando partes del código a medida que avanzo, para asegurarme de que cada componente funcione correctamente antes de avanzar.
+
+- [subir](#Índice)
 ## Compilación de la Biblioteca
 
 1. **Makefile:**
