@@ -12,30 +12,23 @@
 
 #include "../libft.h"
 
-/*BUSCAR LA AGUJA EN UN PAJAR
-	POR EJEMPLO ft_strstr("gerardo david ivan  jesus mikel","david")
-	busca la aguja david en el pajar y el puntero resultante
-	seria david ivan jesus mikel
-	ideas aproximacion  bucle que hace stnrcmp cada posicion en el
-*/
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	index;
-	int		len_search;
-	char	*str;
-	char	*search_string;
+	size_t	needle_index;
 
 	if (*needle == '\0')
 		return ((char *)haystack);
-	str = (char *)haystack;
-	search_string = (char *)needle;
 	index = 0;
-	len_search = ft_strlen(search_string);
-	while (str[index] != '\0' && (index + len_search) <= len)
+	while (index < len && haystack[index])
 	{
-		if (ft_strncmp((str + index), search_string, len_search) == 0)
+		needle_index = 0;
+		while (haystack[index + needle_index] == needle[needle_index]
+			&& (index + needle_index) < len)
 		{
-			return (str + index);
+			needle_index++;
+			if (!needle[needle_index])
+				return ((char *)&haystack[index]);
 		}
 		index++;
 	}

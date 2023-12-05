@@ -840,34 +840,33 @@ size_t		ft_strlcat(char *dst, const char *src, size_t size)
   - ✔️ OK  
   - **Explicacion** busca una aguja en un pajar el string que pasemos por aguja sera buscado en el pajar y comprobara el largo de la aguja que le pasemos por n
 ```c
-  char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
- {
-	size_t 	index;
-	int		len_search;
-	char	*str;
-	char	*search_string;
-	//COMPROBACION DE AGUJA VACIA
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+{
+	size_t	index;           // Índice para recorrer el haystack
+	size_t	needle_index;    // Índice para recorrer el needle
+
+	// Si needle es una cadena vacía, devuelve un puntero al inicio de haystack
 	if (*needle == '\0')
-		return((char *)haystack);
-	//ASIGNACION 
-	str = (char *)haystack;
-	search_string = (char *)needle;
-	index = 0;
-	//longitud de la palabra a buscar
-	len_search = ft_strlen(search_string);
-	while(str[index] != '\0' && (index + len_search ) <= len)
+		return ((char *)haystack);
+
+	index = 0;  // Inicializa el índice del haystack
+	while (index < len && haystack[index])  // Recorre el haystack hasta len o el final de la cadena
 	{
-		//CONDICIONAL que comprueba si son iguales con la funcion ft_strncmp
-		//index por index; y gracias a la longit de la palabra recorre justamente
-		// lo que tendria que ser igual 
-		if (ft_strncmp((str + index), search_string,len_search) == 0)
+		needle_index = 0;  // Inicializa el índice del needle
+		while (haystack[index + needle_index] == needle[needle_index]
+			&& (index + needle_index) < len)  // Compara los caracteres de haystack y needle
 		{
-			return (str + index);
+			needle_index++;
+			// Si needle se ha consumido completamente, se encontró una coincidencia
+			if (!needle[needle_index])
+				return ((char *)&haystack[index]);
 		}
-		index++;
+		index++;  // Avanza al siguiente carácter en haystack
 	}
-	return(NULL);
- }
+
+	return (NULL);  // Si no se encuentra ninguna coincidencia, devuelve NULL
+}
+
   ```
   - [subir](#Índice)
 
@@ -953,7 +952,7 @@ char	*ft_strdup(const char *s1)
   - **Explicación:** Reserva memoria para la cadena de caracteres que va a devolver, y que proviene de la
 cadena pasada como argumento.Esta nueva cadena comienza en el índice ’start’ y tiene como tamaño máximo ’len’
   DESGRANANDO LOS PROBLEMAS
-  - ESTO funciona 
+  - version funcional pero que le falta trabajo
  ```C
 
 #include "../libft.h"
@@ -976,7 +975,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (newstring);
 }
   ```
-  En principio este codidgo funciona pero nos da errores  hay que mejorarlo
+ - Actualizacion no definitiva
 
 
 ```c
@@ -1007,12 +1006,61 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
       }
   ```
 resto del codigo
+  - Actualizacion v2 Despues de pasarle el libft_test y los demas testing la funcion quedaria asi el unico cambio seria mover de sitio la asignacion de tamaño
+  
+  ```c
+
+  char	*ft_substr(char const *s, unsigned int start, size_t len)
+    {
+    char	*newstring;
+    size_t	slen;
+
+    if (!s)
+      return (NULL);
+    slen = ft_strlen(s);
+    if (start >= slen)
+      return (ft_strdup(""));
+    if (len > slen - start)
+      len = slen - start;
+    newstring = (char *)ft_calloc((len + 1), sizeof(char));
+    if (!newstring)
+      return (NULL);
+    ft_memcpy(newstring, (void *)(s + start), len);
+    newstring[len] = '\0';
+    return (newstring);
+  }
+    ```
 
 
   - [subir](#índice)
   ### [ft_strjoin](src/ft_strjoin.c) 
   - ✔️ OK  
   - **Explicación:** UNE DOS STRING USANDO  MALLOC
+  - Version 1.1 (actualizada) 
+  - **Explicación v2:** Al pasar libft test me daba Error con los leaks de memoria , aunque en el codigo original validaba los casos de recibir string nullo cuando asignaba tamaños lo hacia antes de la comprobacion de cadenas vacias ahora se hacen donde deben.
+
+  ```c
+  char	*ft_strjoin(char const *s1, char const *s2)
+  {
+    size_t	lens1;
+    size_t	lens2;
+    size_t	lensdst;
+    char	*newstring;
+
+    if (!s1 || !s2)
+      return (NULL);
+    lens1 = ft_strlen(s1);
+    lens2 = ft_strlen(s2);
+    lensdst = lens1 + lens2 + 1 ;
+    newstring = ft_calloc(sizeof(char), lensdst);
+    if (!newstring)
+      return (NULL);
+    ft_memcpy(newstring, s1, lens1);
+    ft_memcpy(newstring + lens1, s2, lens2);
+    return (newstring);
+  }
+  ```
+  - Version 1.0 (con problemas de leaks de memoria por los tamaños)
 ```c
     char	*ft_strjoin(char const *s1, char const *s2)
     {
@@ -1039,6 +1087,8 @@ resto del codigo
     return (newstring);
   }
   ```
+  - [subir](#Índice)
+
   ### [ft_strtrim](/src/ft_strtrim.c)      
   - ✔️ OK  
   - **Explicación:** Esta funcion solo quita del principio y del final  nunca por el medio es decir si tenemos 

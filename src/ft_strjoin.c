@@ -19,11 +19,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	lensdst;
 	char	*newstring;
 
-	lens1 = ft_strlen(s1);
-	lens2 = ft_strlen(s2);
-	lensdst = lens1 + lens2 + 1;
 	if (!s1 || !s2)
 		return (NULL);
+	lens1 = ft_strlen(s1);
+	lens2 = ft_strlen(s2);
+	lensdst = lens1 + lens2 + 1 ;
 	newstring = ft_calloc(sizeof(char), lensdst);
 	if (!newstring)
 		return (NULL);
