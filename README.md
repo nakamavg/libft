@@ -1810,6 +1810,40 @@ Valor del nodo: Añadido con back
    ### [ft_lstmap](src/ft_lstmap.c) 
    - ✔️ OK  
    - **Explicación:** Aplicar funcion a todos los content de la lista y utilizar la funcion del si es necesario [Main](.mains/mainmaplist.c)
+   - **Explicaciónv2:** Mejorar la funcion por problemas en la validacion de new node para ello , hago el paso intermedio de crear *map_content y luego le paso a new node el content mapeado
+   en la validacion de new node tambien valido el contenido como fallo new node si hay algo en map_content se procede a borrarlo.
+   - V2
+   ```c
+   
+   t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+  {
+    t_list	*list_map;
+    t_list	*new_node;
+    void	*map_content;
+
+    if (!lst || !f || !del)
+      return (NULL);
+    list_map = NULL;
+    while (lst)
+    {
+      map_content = f(lst->content);
+      new_node = ft_lstnew(map_content);
+      if (!new_node)
+      {
+        if (map_content)
+          del(map_content);
+        ft_lstclear(&list_map, del);
+        return (NULL);
+      }
+      ft_lstadd_back(&list_map, new_node);
+      lst = lst->next;
+    }
+    return (list_map);
+  }
+   
+   
+   ```
+   
   ```c
       #include "../libft.h"  // Incluye el archivo de encabezado libft.h
 
