@@ -1008,29 +1008,28 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 resto del codigo
   - Actualizacion v2 Despues de pasarle el libft_test y los demas testing la funcion quedaria asi el unico cambio seria mover de sitio la asignacion de tamaño
   
-  ```c
+	  ```c
 
-  char	*ft_substr(char const *s, unsigned int start, size_t len)
-    {
-    char	*newstring;
-    size_t	slen;
+  	char	*ft_substr(char const *s, unsigned int start, size_t len)
+  	  {
+    	char	*newstring;
+    	size_t	slen;
 
-    if (!s)
-      return (NULL);
-    slen = ft_strlen(s);
-    if (start >= slen)
-      return (ft_strdup(""));
-    if (len > slen - start)
-      len = slen - start;
-    newstring = (char *)ft_calloc((len + 1), sizeof(char));
-    if (!newstring)
-      return (NULL);
-    ft_memcpy(newstring, (void *)(s + start), len);
-    newstring[len] = '\0';
-    return (newstring);
-  }
+	    if (!s)
+	      return (NULL);
+	    slen = ft_strlen(s);
+	    if (start >= slen)
+	      return (ft_strdup(""));
+	    if (len > slen - start)
+	      len = slen - start;
+	    newstring = (char *)ft_calloc((len + 1), sizeof(char));
+	    if (!newstring)
+	      return (NULL);
+	    ft_memcpy(newstring, (void *)(s + start), len);
+	    newstring[len] = '\0';
+	    return (newstring);
+	  }
     ```
-
 
   - [subir](#índice)
   ### [ft_strjoin](src/ft_strjoin.c) 
